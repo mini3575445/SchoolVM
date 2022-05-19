@@ -1,0 +1,77 @@
+﻿@font-face {
+    font-family: 'webdings';
+    src: url('fonts/webdings.eot') format('embedded-opentype');
+}
+@font-face {
+    font-family: 'webdings';
+    src: url('fonts/webdings.svg') format('svg');
+}
+@font-face {
+    font-family: 'webdings';
+    src: url('fonts/webdings.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'webdings';
+    src: url('fonts/webdings.woff') format('woff');
+}
+@font-face {
+    font-family: 'webdings';
+    src: url('fonts/webdings.woff2') format('woff2');
+}
+#ControlPanel{     
+    margin:auto;
+    width:600px;
+    text-align:center;
+    background-color:#a14b0a;
+}
+
+#ControlPanel > span {
+    border-radius:15%;
+    font-family: Webdings;
+    font-size: 3em;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px 1px;
+}
+
+#rangeVolume {
+    width: 494px;
+    
+}
+  
+
+
+  
+#progress {
+    width: 600px;
+}
+
+#textVolume{
+    width:30px;
+} 
+
+#book > div {
+    float: left;
+    border: 1px groove;
+    width: 298px;
+    height: 200px;
+}
+
+    #book > div > div {
+        border: 1px groove;
+        background-color: silver;
+    }
+
+#book > button {
+}
+#song, #info {
+    border-radius: 5px;
+    width: inherit;
+    font-size: 1.5rem;
+    background-color: #fcb388;
+    color: #a14b0a;
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}

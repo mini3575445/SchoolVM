@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .myClass:hover {
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+                            
+
+        for (i = 1; i <= 6;i++) {
+            document.write(`<h${i} class="myClass"> 你好!</h${i}>`)
+        }
+
+        //九九乘法改成while 迴圈
+        var r = 1, y = 1;
+        while (r <= 9) {
+            y = 1;
+            while (y <= 9) {
+                document.write(`${r} * ${y} = ${r * y}<br />`);
+                console.log("y=" + y);
+                y++;
+                
+            }
+            console.log("r=" + r);
+            r++;
+            
+        }
+
+        //請寫一個 function position，接收一個字串並回傳這個字串裡面的第一個大寫字母跟它的 index，若沒有則回傳 - 1
+        function position(text) {
+            document.write(text[text.search(/[A-Z]/)]+" "+ text.search(/[A-Z]/));            
+        }
+        position("aGdS");
+
+        //請寫出一個函式 findSmallCount，接收一個陣列跟一個數字 n，回傳有多少個數小於 n
+        function findSmallCount(n, m) {  //n須為陣列
+            let i = 0;
+            let sum = 0;
+            while (i < n.length) {
+                if (n[i] < m) {
+                    sum += n[i];
+                    console.log("sum=" + sum);
+                }
+                console.log("i=" + i);
+            i++;
+            }
+        }
+        findSmallCount([1, 2, 3, 4], 4)
+        //請寫一個函式 findAllSmall，接收一個陣列跟一個數字 n，回傳一個裡面有所有小於 n 的數的陣列（需按照原陣列順序）
+        function findAllSmall(n, m) {  //n須為陣列
+            let i = 0;
+            let array = [];
+            while (i < n.length) {
+                if (n[i] < m) {
+                    array.push(n[i])
+                    console.log("array=" + array);
+                }
+                i++;
+            }
+            return array;
+        }
+        console.log(findAllSmall([1, 2, 3, 4], 4));
+    </script>
+</body>
+</html>

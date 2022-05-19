@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        function switchTwoNumbers(a,b) {            
+
+            var x = a; var y = b;
+          
+            x = x + y;
+            y = x - y;
+            x = x - y;
+            document.write("x=" + x + ",y=" + y);            
+        }        
+
+        a = parseInt(prompt("請輸入a"));
+        b = parseInt(prompt("請輸入b"));
+        switchTwoNumbers(a, b);
+
+    </script>
+</body>
+</html>

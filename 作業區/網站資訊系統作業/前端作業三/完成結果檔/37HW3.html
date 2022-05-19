@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="37HW3.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <div id="ControlPanel">
+        <select id="song">
+        </select>
+        <hr />
+        <span id="btnPlay" onclick="Play()" title="這是播放鈕">4</span>
+        <span onclick="Stop()"><</span>
+        <span onclick="changeTime(-5)">7</span>  <!--倒轉-->
+        <span onclick="changeTime(5)">8</span>   <!--快轉-->
+        <span onclick="changeSong(-1)">9</span>  <!--上一首-->
+        <span onclick="changeSong(1)">:</span>  <!--下一首-->
+        <span onclick="setMuted()">V</span>
+        <span onclick="setLoop()">q</span>
+        <span onclick="setRandom()">s</span>
+        <span onclick="setAllLoop()">`</span>
+        <span onclick="hide()">@</span>
+
+        <hr />
+        <input type="range" id="progress" step="0.001" min="0" max="1" value="0" oninput="setTimeBar()" />
+        <hr />
+        <input oninput="RangeVolume()" id="rangeVolume" value=0.5 type="range" max=1 min=0 step=0.01 />     <!--音量調整條-->
+        <input onclick="btnVolume(-0.01)" id="btnVolumeUp" type="button" value="-" />
+        <input onclick="btnVolume(0.01)" id="btnVolumeDown" type="button" value="+" />
+        <input type="text" id="textVolume" value=0.5 readonly />     <!--音量顯示-->
+        <hr />
+        <div id="info">
+            <marquee>請按下播放鈕</marquee>
+            <div>00:00 / 00:00</div>
+            <div></div>
+        </div>
+        <div id="book" class="hide">
+            <!--全部歌曲-->
+            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div title="music/elysees.mp3">Champs-Elyees</div>
+                <div title="music/airball.mp3">告白氣球</div>
+                <div title="music/travel.mp3">帶你去旅行</div>
+                <div title="music/moon.mp3">月亮</div>
+                <div title="music/nothing.mp3">nothing</div>
+            </div>
+            <!--我的歌本-->
+            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+            <button onclick="UpdateMusic()">更新歌單</button>
+        </div>
+    </div>
+
+    <audio id="music">
+        <source src="music/elysees.mp3" type="audio/mpeg" title="Champs-Elyees" />
+    </audio>
+    <script src="37HW3.js"></script>
+</body>
+</html>

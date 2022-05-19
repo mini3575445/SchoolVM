@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #div2{
+            width:400px;
+            height:200px;
+            background:#808080;        
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div id="song1" title="music/elysees.mp3" draggable="true" ondragstart="drag(event)">Champs-Elyees</div>
+        <div id="song2" title="music/airball.mp3" draggable="true" ondragstart="drag(event)">告白氣球</div>
+        <div id="song3" title="music/travel.mp3" draggable="true" ondragstart="drag(event)">帶你去旅行</div>
+        <div id="song4" title="music/moon.mp3" draggable="true" ondragstart="drag(event)">月亮</div>
+        <div id="song5" title="music/nothing.mp3" draggable="true" ondragstart="drag(event)">nothing</div>
+    </div>
+
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drop(ev) {		//放下來
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        function drag(ev) {		//拉起來
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    
+</head>
+<body>
+    <h1 id="t"></h1>
+    X:<input id="txtX" type="text" />
+    Y:<input id="txtY" type="text" />    
+    <script>
+        function myTimer() {
+        var timer = new Date();
+        t.innerText = timer;
+            setTimeout("myTimer(),1000");
+        }
+
+        //document.write(timer);
+
+        function getXY(evt) {
+            txtX.value = evt.pageX;
+            txtY.value = evt.pageY;
+        }
+        document.addEventListener("mousemove", getXY);
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        //迴圈(loop)敘述
+        //for 敘述
+        //用在知道要執行幾次
+        //for (起始值;結束值;增量值;)
+
+        for (i = 1; i <= 6; i++) {
+            document.write("<h"+ i +">Hello World<h"+ i +">");
+            console.log(i);
+        }
+      ///////////////
+       //雞兔同籠
+        //已知雞兔共35隻,雞兔的腳共94支,請問籠子裡雞兔各有幾隻?
+        //2x + 2y = 70
+        //2y = 24
+        //y = 12
+        //x=23
+        //提示:聯立方程式，設雞=x，兔=y，x+y=35，2x+4y=94
+
+        //let n1 = 1;          //輸入方程式的解 n1*x + n2*y = total1
+        //let n2 = 1;          //               n3*x + n4*y = total2
+        //let n3 = 2;
+        //let n4 = 4;
+        //let total1 = 35;
+        //let total2 = 94;
+                            
+
+        //let result = Boolean
+        //let count = 0
+        //result = 0
+
+        //for (x = 0; x <= (total1 - x); x++) {
+        //    for (y = 0; y <= (total1 - x) ; y++) {
+        //        count += 1;
+        //        if ((n1 * x + n2 * y === total1 && (n3 * x + n4 * y) === total2) || (n1 * y + n2 * x === total1 && (n3 * y + n4 * x) === total2)) {
+        //            result = 1
+        //            console.log("成功，x=" + x + "，y=" + y+"，count="+count);                   
+        //            break;
+        //        }                
+        //        else console.log("失敗，x=" + x + "，y=" + y);
+        //    }
+        //    if (result) break;
+        //}
+        ///////////////////////////////////////////////
+        //輸入方程式的解 n1*x + n2*y = t1
+        //               n3*x + n4*y = t2
+        
+        let n1 = 2;
+        let n2 = 6;
+        let t1 = 120;
+        let n3 = 2;
+        let n4 = 8;
+        let t2 = 140;
+        let y = 20;
+
+        for (x = 0; x <= t1; x++) {
+            x = t1 / x - n2 / x * y;
+            console.log(x,y);
+        }               
+
+
+
+
+
+        // 1加到100的總和
+        let j = 0
+        for (i = 1; i <= 100; i++) {
+            j += i
+        }
+        document.write("j=" + j);
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+    //費氏數列 1,1,2,3,5,8,13,21,34,55,89
+        let firstNum = 1;
+        let lastNum = 1;
+        let result = 0
+        let n = 9; //費氏數列第幾個數
+
+        for (i = 1; i <= n - 2; i++) {
+            result = firstNum + lastNum;
+            console.log(`firstNum=${firstNum}，lastNum=${lastNum}，result=${result}`)
+            firstNum = lastNum;
+            lastNum = result;                                  
+        }
+        document.write(`費氏數列第${n}個數=${result} <br />`)
+    ////for in 
+    //    let obj = { name: "XXX", sex: "M", age: 19 };
+    //    for (let x in obj) {
+    //        document.write(`x=${obj[x]}<br />`);
+    ////    }
+    ////while
+    //    let i = 1;
+    //    let j = 0;
+    //    while (i <= 10) {
+    //        j += i;
+    //        document.write(`i=${i}，j=${j}<br />`);
+    //        i++;
+    //    }
+    </script>
+</body>
+</html>

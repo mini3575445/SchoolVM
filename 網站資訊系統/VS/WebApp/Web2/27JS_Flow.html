@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        //流程控制  if...else
+    var a=4;
+
+        //二擇一條件(if...else...敘述)
+        if (a > 10) {
+            document.write(a)
+        }            
+        else {
+                document.write("a沒有大於10")
+        }
+        
+    //////////////////////////////////////////////
+        //1.信用卡付款   2.現金    3.轉帳    4.Line Pay  5.貨到付款
+        let intPayType = 1;
+
+        if (intPayType === 1) {
+            document.write("信用卡支付")
+        }
+        else {
+            if (intPayType === 2) {
+                document.write("現金")
+            }
+            else {
+                if (intPayType === 3) {
+                    document.write("轉帳")
+                }
+                else {
+                    if (intPayType === 4) {
+                        document.write("Line Pay")
+                    }
+                    else {
+                        if (intPayType === 5) {
+                            document.write("貨到付款")
+                        }
+                        else {
+                            document.write("都不是")
+                        }
+                    }
+                }
+            }
+        }
+        //區分等第
+        //90分以上為優等，80~89分為甲等，70~79分為乙等
+        //60~69分丙等，60分以下為不及格        
+        let score = 78
+        let result = ""
+        if (score >= 90) result = "優等";
+        else if (score >= 80) result = "甲等";
+        else if (score >= 70) result = "乙等";
+        else if (score >= 60) result = "丙等";
+        else result = "不及格";
+        document.write("<br />" + result)
+
+        let score2 = 79
+        let result2 = ""
+        if (score2 >= 90) result2 = "優等";        
+        if (score2 >= 80 && score2 <= 89) result2 = "甲等";
+        if (score2 >= 70 && score2 <= 79) result2 = "乙等";       
+        if (score2 >= 60 && score2 <= 59) result2 = "丙等";
+        document.write("<br />"+result2)
+
+        /////////////////////////////////////////////////////
+        //字串中包含，可複數選項
+        let food = "57216"
+        let print = ""
+        if (food.indexOf("1") !== -1) print += " 吐司";
+        if (food.indexOf("2") !== -1) print += " 蛋";        
+        if (food.indexOf("3") !== -1) print += " 生菜";
+        if (food.indexOf("4") !== -1) print += " 小熱狗";
+        if (food.indexOf("5") !== -1) print += " 豬排";
+        if (food.indexOf("6") !== -1) print += " 火腿";        
+        if (food.indexOf("7") !== -1) print += " 鮪魚";        
+        if (food.indexOf("8") !== -1) print += " 玉米";        
+        if (food.indexOf("9") !== -1) print += " 大冰奶";
+
+        document.write("<br />" + print)
+    </script>
+</body>
+</html>
