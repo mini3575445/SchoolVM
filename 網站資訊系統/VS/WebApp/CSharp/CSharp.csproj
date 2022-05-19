@@ -96,6 +96,7 @@
     <Compile Include="Controllers\_HW0518Controller.cs" />
     <Compile Include="Controllers\_01VarController.cs" />
     <Compile Include="Controllers\_02StatementController.cs" />
+    <Compile Include="Controllers\_03HW2Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -117,6 +118,7 @@
     <Folder Include="Views\_01Var\" />
     <Folder Include="Views\_02Statement\" />
     <Folder Include="Views\_HW0518\" />
+    <Folder Include="Views\_HW2\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

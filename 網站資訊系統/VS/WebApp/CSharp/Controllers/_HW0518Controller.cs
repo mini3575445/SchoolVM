@@ -52,17 +52,18 @@ namespace CSharp.Controllers
                     Response.Write(",");
                 }
             }            
-        }
+        }        
         public void HW6(int N)
         {
+            int sum = 0;
             for (int i = 1; i <= N; i++)
             {
-                if (i % 5 != 0)
+                if (i % 3 != 0)
                 {
-                    Response.Write(i);
-                    Response.Write(",");
+                    sum += i;
                 }
             }
+            Response.Write(sum);
         }
     }
 }
