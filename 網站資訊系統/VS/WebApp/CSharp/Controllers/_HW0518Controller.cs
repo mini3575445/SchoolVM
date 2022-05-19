@@ -30,18 +30,39 @@ namespace CSharp.Controllers
             x = x - y;
             Response.Write("x=" + x + " y=" + y);
         }
-        public string HW4(int intScore)
+        public string HW4(int score)
         {
-            
-            switch (intScore)
+            int fristNum = score / 10;
+                switch (fristNum)
             {
-                case 90:
-                    return "優等";
-                case 80:
-                    return "甲等";
-
+                case 9: return "優等";
+                case 8: return "甲等";
+                case 7: return "乙等";
+                case 6: return "丙等";
+            }            
+        return "丁等";
+        }
+        public void HW5(int N)  
+        {
+            for (int i = 1; i <= N; i++)
+            {
+                if (i % 5 != 0)
+                {
+                    Response.Write(i);
+                    Response.Write(",");
+                }
+            }            
+        }
+        public void HW6(int N)
+        {
+            for (int i = 1; i <= N; i++)
+            {
+                if (i % 5 != 0)
+                {
+                    Response.Write(i);
+                    Response.Write(",");
+                }
             }
-        return "輸入錯誤";
         }
     }
 }
