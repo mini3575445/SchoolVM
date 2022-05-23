@@ -89,10 +89,63 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="poker_img\1.gif" />
+    <Content Include="poker_img\10.gif" />
+    <Content Include="poker_img\11.gif" />
+    <Content Include="poker_img\12.gif" />
+    <Content Include="poker_img\13.gif" />
+    <Content Include="poker_img\14.gif" />
+    <Content Include="poker_img\15.gif" />
+    <Content Include="poker_img\16.gif" />
+    <Content Include="poker_img\17.gif" />
+    <Content Include="poker_img\18.gif" />
+    <Content Include="poker_img\19.gif" />
+    <Content Include="poker_img\2.gif" />
+    <Content Include="poker_img\20.gif" />
+    <Content Include="poker_img\21.gif" />
+    <Content Include="poker_img\22.gif" />
+    <Content Include="poker_img\23.gif" />
+    <Content Include="poker_img\24.gif" />
+    <Content Include="poker_img\25.gif" />
+    <Content Include="poker_img\26.gif" />
+    <Content Include="poker_img\27.gif" />
+    <Content Include="poker_img\28.gif" />
+    <Content Include="poker_img\29.gif" />
+    <Content Include="poker_img\3.gif" />
+    <Content Include="poker_img\30.gif" />
+    <Content Include="poker_img\31.gif" />
+    <Content Include="poker_img\32.gif" />
+    <Content Include="poker_img\33.gif" />
+    <Content Include="poker_img\34.gif" />
+    <Content Include="poker_img\35.gif" />
+    <Content Include="poker_img\36.gif" />
+    <Content Include="poker_img\37.gif" />
+    <Content Include="poker_img\38.gif" />
+    <Content Include="poker_img\39.gif" />
+    <Content Include="poker_img\4.gif" />
+    <Content Include="poker_img\40.gif" />
+    <Content Include="poker_img\41.gif" />
+    <Content Include="poker_img\42.gif" />
+    <Content Include="poker_img\43.gif" />
+    <Content Include="poker_img\44.gif" />
+    <Content Include="poker_img\45.gif" />
+    <Content Include="poker_img\46.gif" />
+    <Content Include="poker_img\47.gif" />
+    <Content Include="poker_img\48.gif" />
+    <Content Include="poker_img\49.gif" />
+    <Content Include="poker_img\5.gif" />
+    <Content Include="poker_img\50.gif" />
+    <Content Include="poker_img\51.gif" />
+    <Content Include="poker_img\52.gif" />
+    <Content Include="poker_img\6.gif" />
+    <Content Include="poker_img\7.gif" />
+    <Content Include="poker_img\8.gif" />
+    <Content Include="poker_img\9.gif" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\_04HW3Controller.cs" />
     <Compile Include="Controllers\_HW0518Controller.cs" />
     <Compile Include="Controllers\_01VarController.cs" />
     <Compile Include="Controllers\_02StatementController.cs" />
@@ -117,6 +170,7 @@
     <Folder Include="Models\" />
     <Folder Include="Views\_01Var\" />
     <Folder Include="Views\_02Statement\" />
+    <Folder Include="Views\_04HW3\" />
     <Folder Include="Views\_HW0518\" />
     <Folder Include="Views\_HW2\" />
   </ItemGroup>

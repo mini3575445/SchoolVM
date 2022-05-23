@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SQL Server 指令碼1">
+  <Items>
+    <LogicalFolder Name="連線" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="MCSDD11101-9:VIEW\C501Teacher">
+          <Created>2022-05-16T13:51:22.293076+08:00</Created>
+          <Type>SQL</Type>
+          <Server>MCSDD11101-9</Server>
+          <UserName />
+          <Authentication>Windows 驗證</Authentication>
+          <InitialDB>教務系統</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - 查詢</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="查詢" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="01Select-1.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>01Select-1.sql</FullPath>
+        </FileNode>
+        <FileNode Name="02Select-2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>02Select-2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="03Select-3.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>03Select-3.sql</FullPath>
+        </FileNode>
+        <FileNode Name="04Select-4.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>04Select-4.sql</FullPath>
+        </FileNode>
+        <FileNode Name="05Select-5.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>05Select-5.sql</FullPath>
+        </FileNode>
+        <FileNode Name="06Select_inner_join.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>06Select_inner_join.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="其他" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
