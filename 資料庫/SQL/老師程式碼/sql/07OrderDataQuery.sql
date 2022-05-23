@@ -53,7 +53,7 @@ group by o.CustomerID
 
 ---------------------------
 select o.CustomerID,c.CompanyName,c.ContactName,c.ContactTitle,
-count(*) as 下單次數,ROUND( sum(od.UnitPrice*od.Quantity*(1-od.Discount)),2 )as 客戶總業績
+count(*) as 下單次數,ROUND(sum(od.UnitPrice*od.Quantity*(1-od.Discount)),2 ) as 客戶總業績
 from Orders as o inner join Customers as c
 on o.CustomerID=c.CustomerID
 inner join [Order Details] as od on o.OrderID=od.OrderID
@@ -62,8 +62,8 @@ group by o.CustomerID,c.CompanyName,c.ContactName,c.ContactTitle
 order by 客戶總業績 desc,下單次數 desc
 
 --7.承上題,加上客戶名稱、員工姓名與運送方式等欄位
-
-select od.OrderID,c.CompanyName,e.FirstName,e.LastName,s.CompanyName as shipper,sum(od.UnitPrice*od.Quantity*(1-od.Discount)) as 訂單總額
+select od.OrderID,c.CompanyName,e.FirstName,e.LastName,s.CompanyName as shipper,
+sum(od.UnitPrice*od.Quantity*(1-od.Discount)) as 訂單總額
 from [Order Details] as od
 inner join orders as o on od.OrderID=o.OrderID
 inner join Customers as c on o.CustomerID=c.CustomerID

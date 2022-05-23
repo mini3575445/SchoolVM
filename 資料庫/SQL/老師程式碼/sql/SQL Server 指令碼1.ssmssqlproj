@@ -55,6 +55,30 @@
           <AssociatedConnUserName />
           <FullPath>06Select_inner_join.sql</FullPath>
         </FileNode>
+        <FileNode Name="07OrderDataQuery.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>07OrderDataQuery.sql</FullPath>
+        </FileNode>
+        <FileNode Name="08Select_OuterJoin.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>08Select_OuterJoin.sql</FullPath>
+        </FileNode>
+        <FileNode Name="09OrderDataQuery2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>09OrderDataQuery2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="10Select_Set.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>10Select_Set.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="其他" Type="3" Sorted="true">

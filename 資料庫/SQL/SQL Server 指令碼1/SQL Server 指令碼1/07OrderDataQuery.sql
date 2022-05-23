@@ -35,8 +35,8 @@ group by OrderID
 order by sum(UnitPrice*Quantity*(1-Discount))
 --group by當作聚合函數的基準點
 
---6.1統計每個客戶訂的單總額，並由大到小排序
-select c.ContactName,sum(UnitPrice*Quantity*(1-Discount)) as 訂單總額
+--6.1統計每個客戶的訂單總額，並由大到小排序
+select c.ContactName,sum(UnitPrice*Quantity*(1-Discount)) as 客戶總業績
 from [Order Details] as od 
 inner join orders as o on od.OrderID = o.OrderID
 inner join Customers as c on c.CustomerID = o.CustomerID
@@ -45,7 +45,6 @@ order by sum(UnitPrice*Quantity*(1-Discount)) desc
 
 
 --7.承上題，加上客戶名稱、員工姓名與運送方式等欄位
-
 select od.OrderID,c.CompanyName,e.FirstName,e.LastName,s.CompanyName as shipper,sum(od.UnitPrice*od.Quantity*(1-od.Discount)) as 訂單總額
 from [Order Details] as od
 inner join orders as o on od.OrderID=o.OrderID
