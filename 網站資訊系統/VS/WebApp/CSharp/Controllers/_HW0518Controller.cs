@@ -12,7 +12,8 @@ namespace CSharp.Controllers
         {
             int a = 42;
             float b = 2.5f;
-            Response.Write("a + b = "+(a+b) + "</br>");
+            
+            Response.Write("a + b = "+(a+b) + "</br>");     //資料型態不同無法運算，程式自動隱含轉換把a轉成float，再與b相加
             Response.Write("a - b = "+(a-b) + "</br>");
             Response.Write("a * b = "+(a * b) + "</br>");
             Response.Write("a / b = "+(a / b) + "</br>");
@@ -29,6 +30,11 @@ namespace CSharp.Controllers
             y = x - y;
             x = x - y;
             Response.Write("x=" + x + " y=" + y);
+            //正規寫法:1.效能最好 2.避免溢位問題(可以適用所有參數)&
+            //^位元運算
+            //x = x^y;
+            //y = x^y;
+            //x = x^y;
         }
         public string HW4(int score)
         {

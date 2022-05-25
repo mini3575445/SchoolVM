@@ -146,6 +146,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\_04HW3Controller.cs" />
+    <Compile Include="Controllers\_0521testController.cs" />
+    <Compile Include="Controllers\_0525Controller.cs" />
     <Compile Include="Controllers\_HW0518Controller.cs" />
     <Compile Include="Controllers\_01VarController.cs" />
     <Compile Include="Controllers\_02StatementController.cs" />
@@ -153,6 +155,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,10 +170,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\_01Var\" />
     <Folder Include="Views\_02Statement\" />
     <Folder Include="Views\_04HW3\" />
+    <Folder Include="Views\_0525\" />
     <Folder Include="Views\_HW0518\" />
     <Folder Include="Views\_HW2\" />
   </ItemGroup>
