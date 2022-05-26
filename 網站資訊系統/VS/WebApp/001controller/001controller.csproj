@@ -96,9 +96,12 @@
     <Compile Include="Controllers\ComplexBindController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SimpleBindController.cs" />
+    <Compile Include="Controllers\test020526Controller.cs" />
+    <Compile Include="Controllers\test0526Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -107,6 +110,8 @@
     <None Include="packages.config" />
     <Content Include="Views\SimpleBind\Create.cshtml" />
     <Content Include="Views\ComplexBind\Create.cshtml" />
+    <Content Include="Views\test0526\create.cshtml" />
+    <Content Include="Views\test020526\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

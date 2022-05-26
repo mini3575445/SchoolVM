@@ -10,7 +10,11 @@ namespace _001controller.Controllers
 {
     public class ComplexBindController : Controller
     {
-        // GET: ComplexBind
+        public ActionResult Create()
+        {            
+            return View();
+        }
+        [HttpPost]
         public ActionResult Create(Product p)
         {
             ViewBag.PId = p.PId;
