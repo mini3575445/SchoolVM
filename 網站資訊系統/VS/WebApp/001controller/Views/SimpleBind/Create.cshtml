@@ -1,0 +1,29 @@
+﻿
+@{
+    //Razor:這裡是用C#寫
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />   <!--響應式網頁用的meta-->
+    <title>產品資料新增作業</title>
+</head>
+<body>
+    <h1>@ViewBag.Date</h1>
+    <form action="/SimpleBind/Create" method="post">
+        <p>品號：<input id="PId" name="PId" type="text" /></p>
+        <p>品名：<input id="PName" name="PName" type="text" /></p>
+        <p>單價：<input id="Price" name="Price" type="text" /></p>
+        <input type="submit" value="新增商品" />
+    </form>
+    <hr />
+    <h3>新增作業完成</h3>
+    <p>內容如下</p>
+    <p>品號:@ViewBag.PId</p>
+    <p>品名:@ViewBag.PName</p>
+    <p>單價:@ViewBag.Price</p>
+</body>
+</html>
