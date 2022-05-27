@@ -102,7 +102,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ComplexBindController.cs" />
+    <Compile Include="Controllers\FileUpLoadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MultiFileUpLoadController.cs" />
     <Compile Include="Controllers\SimpleBindController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -115,6 +117,8 @@
     <None Include="packages.config" />
     <Content Include="Views\SimpleBind\Create.cshtml" />
     <Content Include="Views\ComplexBind\Create.cshtml" />
+    <Content Include="Views\FileUpLoad\Create.cshtml" />
+    <Content Include="Views\MultiFileUpLoad\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -124,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Photos\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>

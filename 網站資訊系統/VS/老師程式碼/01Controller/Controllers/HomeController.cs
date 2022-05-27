@@ -105,3 +105,36 @@ namespace _01Controller.Controllers
 //       按下加入鈕
 //02-3-9 修改title文字與加入form內容
 //02-3-10 執行並測試 http://localhost:53468/ComplexBind/Create (port可能不同)
+
+
+//02-4 檔案上傳功能
+//02-4-1 建立Photos資料夾
+//02-4-2 在Controllers資料夾上按右鍵,加入,控制器,選擇 MVC5控制器-空白
+//02-4-3 指定控制器名稱為FileUpLoadController,並開啟FileUpLoadController
+//02-4-4 using System.IO
+//02-4-5 建立GET與POST的Create方法
+//02-4-6 建立ShowPhotos()一般方法-可顯示Photos資料夾下所有圖檔
+//02-4-7 在public ActionResult Create()上按右鍵,新增檢視,建立Create View
+//02-4-8 進行下列設定:
+//       檢視名稱:Create
+//       範本:Empty(沒有模型)
+//       不勾選 使用版面配置頁
+//       按下加入鈕
+//02-4-9 修改title文字與加入form內容
+//02-4-10 執行並測試 http://localhost:53468/FileUpLoad/Create (port可能不同)
+
+
+//02-5 一次多個檔案上傳功能
+//02-5-1 在Controllers資料夾上按右鍵,加入,控制器,選擇 MVC5控制器-空白
+//02-5-2 指定控制器名稱為MultiFileUploadController,並開啟MultiFileUploadController
+//02-5-3 using System.IO
+//02-5-4 建立GET與POST的Create方法
+//02-5-5 建立ShowPhotos()一般方法-可顯示Photos資料夾下所有圖檔
+//02-5-6 在public ActionResult Create()上按右鍵,新增檢視,建立Create View
+//02-5-7 進行下列設定:
+//       檢視名稱:Create
+//       範本:Empty(沒有模型)
+//       不勾選 使用版面配置頁
+//       按下加入鈕
+//02-5-8 修改title文字與加入form內容
+//02-5-9 執行並測試 http://localhost:53468/MultiFileUpload/Create (port可能不同)
