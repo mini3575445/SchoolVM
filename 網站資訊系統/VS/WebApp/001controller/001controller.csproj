@@ -98,7 +98,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MultFileUpLoadController.cs" />
     <Compile Include="Controllers\SimpleBindController.cs" />
-    <Compile Include="Controllers\test052701Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -110,7 +109,6 @@
     <None Include="packages.config" />
     <Content Include="Views\SimpleBind\Create.cshtml" />
     <Content Include="Views\ComplexBind\Create.cshtml" />
-    <Content Include="Views\test052701\Create.cshtml" />
     <Content Include="Views\FileUpLoad\Create.cshtml" />
     <Content Include="Views\MultFileUpLoad\Create.cshtml" />
     <None Include="Web.Debug.config">
