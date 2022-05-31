@@ -20,7 +20,7 @@ namespace _02View.Controllers
 
             List<NightMarket> list = new List<NightMarket>();   //List物件:泛型(用NightMarket做一個泛型
             //<>裡面放型別
-
+            
             NightMarket nm;
 
             for (int i = 0; i < id.Length; i++)
