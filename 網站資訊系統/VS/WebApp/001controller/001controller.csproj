@@ -94,16 +94,13 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ComplexBindController.cs" />
-    <Compile Include="Controllers\test052901Controller.cs" />
     <Compile Include="Controllers\FileUpLoadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MultFileUpLoadController.cs" />
     <Compile Include="Controllers\SimpleBindController.cs" />
-    <Compile Include="Controllers\test052701Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -112,7 +109,6 @@
     <None Include="packages.config" />
     <Content Include="Views\SimpleBind\Create.cshtml" />
     <Content Include="Views\ComplexBind\Create.cshtml" />
-    <Content Include="Views\test052701\Create.cshtml" />
     <Content Include="Views\FileUpLoad\Create.cshtml" />
     <Content Include="Views\MultFileUpLoad\Create.cshtml" />
     <Content Include="Views\test052901\Create.cshtml" />
