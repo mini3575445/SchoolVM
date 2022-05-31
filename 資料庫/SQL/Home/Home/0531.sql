@@ -41,9 +41,17 @@ select * from 課程 where not exists(
 select * from 班級 where exists(
 select * from 學生 where 姓名='周杰輪' and 班級.學號=學生.學號 and 課程.課程編號=班級.課程編號))
 --合併查
-
 select 課程.* from 課程 inner join (學生 inner join 班級 on 學生.學號=班級.學號) on 課程.課程編號=班級.課程編號
 where 姓名='周杰輪'
+
+--------------------------------
+--all
+--找出大於住在台北所有員工薪資的員工
+select * from 員工
+where 薪水 >=all (select 薪水 from 員工 where 城市='台北')
+--some
+select * from 員工
+where 薪水 >=some (select 薪水 from 員工 where 城市='台北')
 
 
 
