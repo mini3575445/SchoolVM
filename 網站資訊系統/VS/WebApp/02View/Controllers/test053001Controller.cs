@@ -9,17 +9,10 @@ namespace _02View.Controllers
 {
     public class test053001Controller : Controller
     {
-<<<<<<< HEAD
-        // GET: test053001
 
 
-        Apple apple = new Apple { Breed = "Fuji", Origin = "Japan", IsMature = true };
 
-
-        public string EatApple<T>(T num)
-=======
         public ActionResult Index()
->>>>>>> 48b7e749db85ffaa4bd366ab2339dbd2e93ef6d3
         {
             string[] id = { "A01", "A02", "A03", "A04", "A05", "A06", "A07" };
             string[] name = { "瑞豐夜市", "新堀江商圈", "六合夜市", "青年夜市", "花園夜市", "大東夜市", "武聖夜市" };

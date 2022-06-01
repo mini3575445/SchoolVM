@@ -1,32 +1,46 @@
 ﻿@model IEnumerable<_02View.Models.NightMarket>
+@*Controller中的View(list)*@
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index";    //被Layout索引
 }
 
-<h2>Index</h2>
+<h2>台南高雄各大夜市</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*等於<a href="/Home/Create">Create New</a>*@
+
+    @*@Html.ActionLink("Create New", "Create")*@
+
+    @*Html Helper：產生相對應的Html標籤*@
+    @*ActionLink(a標籤內的文字 , ActionName , controllerName)：產生a標籤，並連結Action*@
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Id)
+            @*顯示模型的名稱*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            夜市名稱
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            夜市地址
         </th>
-        <th></th>
-    </tr>
+        <th>
+            照片
+        </th>
+        <th>
+            地圖
+        </th>
+        @*<th>資料管理</th>*@
 
+    </tr>
+    @*var動態型別，因為不知道型別是什麼所以用Var*@
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @item.Id
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -35,10 +49,17 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                <img style="width:200px" src="~/images/@(item.Id).jpg" />
             </td>
+            <td>
+                <a href="https://www.google.com.tw/maps/search/@item.Address" class="btn btn-danger">看地圖</a>
+            </td>
+
+            @*<td>
+                @Html.ActionLink("編輯", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("詳細資料", "Details", new { id = item.Id }) |
+                @Html.ActionLink("刪除", "Delete", new { id = item.Id })
+            </td>*@
         </tr>
     }
 

@@ -10,7 +10,7 @@ namespace _02View.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index() //action把list傳到View
         {
             string[] id = { "A01", "A02", "A03", "A04", "A05", "A06", "A07" };
             string[] name = { "瑞豐夜市", "新堀江商圈", "六合夜市", "青年夜市", "花園夜市", "大東夜市", "武聖夜市" };
@@ -18,20 +18,40 @@ namespace _02View.Controllers
                 "80652高雄市前鎮區凱旋四路758號", "台南市北區海安路三段533號", "台南市東區林森路一段276號",
                 "台南市中西區武聖路69巷42號" };
 
+            
+
+
+            //宣告List
+            //類別            名稱  
             List<NightMarket> list = new List<NightMarket>();   //List物件:泛型(用NightMarket做一個泛型
             //<>裡面放型別
-            
-            NightMarket nm;
+
+            NightMarket nm; //一個變數空間
 
             for (int i = 0; i < id.Length; i++)
             {
-                nm = new NightMarket();
+                //每次創造新記憶體加入ID.Name.Address後再丟入list
+
+                nm = new NightMarket(); //多個值的空間
                 nm.Id = id[i];
                 nm.Name = name[i];
                 nm.Address = address[i];
                 list.Add(nm);
             }
+            nm = new NightMarket();
+            nm.Id = "B01";
+            nm.Name = "大大大夜市";
+            nm.Address = "高雄市前鎮區";
+            list.Add(nm);
+
+            nm = new NightMarket();
+            nm.Id = "B02";
+            nm.Name = "小小小夜市";
+            nm.Address = "高雄市三民區";
+            list.Add(nm);
+
             return View(list);
+            
         }
 
     }

@@ -5,6 +5,7 @@ using System.Web;
 
 namespace _02View.Models
 {
+    //03-1-2 在NightMarket class中輸入下列欄位以建立Model
     public class NightMarket
     {
         public string Id { get; set; }
