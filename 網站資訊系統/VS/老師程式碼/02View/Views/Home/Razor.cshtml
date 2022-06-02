@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "我的Razor學習";
+}
+
+@*//03-4-4 Razor語法練習*@
+
+@*
+
+    這裡是
+       區塊
+    的註解
+
+*@
+
+@{
+
+    string name = "John";
+    var name2 = "Kevin";
+    int Math = 85, Eng = 90, Chi = 95;
+
+    bool flage = true;
+
+    <h3>歡迎@(name2)光臨</h3>
+
+    <span>歡迎光臨</span>
+
+    @:歡迎 @name 光臨
+    @:歡迎@(name)光臨
+
+
+            if (1 == 1)
+            {
+
+            }
+
+}
+
+
+
+<h2>歡迎@(name2)光臨</h2>
+<h2>@Math+@Eng+@Chi=@(Math+Eng+Chi)</h2>
+<hr />
+
+
+@if (flage)
+{
+    <h3>您已登入本系統</h3>
+}
+else
+{
+    <h3>您尚未登入本系統</h3>
+}
+
+@{ 
+    string[] MarketName = { "瑞豐夜市", "新堀江商圈", "六合夜市", "青年夜市", "花園夜市", "大東夜市", "武聖夜市" };
+}
+
+<ul>
+    @foreach (var item in MarketName)
+    {
+    <li>@item</li>
+    }
+</ul>

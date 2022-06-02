@@ -1,0 +1,56 @@
+﻿@model _02View.Models.Member
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<form method="post" action="/HTMLHelper/Create">
+    <p>
+        帳號:<input type="text" name="UserId" value="" /> @*id不能重複，Name到後台會變陣列*@
+    </p>
+    <p>
+        密碼:<input type="text" name="Pwd" value="" />
+    </p>
+    <p>
+        姓名:<input type="text" name="Name" value="" />
+    </p>
+    <p>
+        E-mail:<input type="text" name="Email" value="" />
+    </p>
+    <p>
+        生日:<input type="text" name="Birthday" value="" />
+    </p>
+    <input type="submit" value="註冊會員" class="btn btn-default">
+</form>
+
+<hr />
+<h3>@Html.Raw(ViewBag.result)</h3>
+@*Html.Raw執行回傳值中的HTML標籤*@
+<hr />
+@*Html.BeginForm產生Form標籤*@
+@using (Html.BeginForm())
+{
+<p>                 @*lambda箭頭函數*@
+    @Html.LabelFor(model => model.UserId)   @*Html.LabelFor(參數)產生Lable*@
+    @Html.TextBoxFor(model => model.UserId)
+</p>
+<p>
+    @Html.LabelFor(model => model.Pwd) 
+    @Html.TextBoxFor(model => model.Pwd)
+</p>
+<p>
+    @Html.LabelFor(model => model.Name)   
+    @Html.TextBoxFor(model => model.Name)
+</p>
+<p>
+    @Html.LabelFor(model => model.Email)
+    @Html.TextBoxFor(model => model.Email)
+</p>
+<p>
+    @Html.LabelFor(model => model.Birthday)
+    @Html.TextBoxFor(model => model.Birthday)
+</p>
+<input type="submit" value="註冊會員" class="btn btn-default">
+}
+

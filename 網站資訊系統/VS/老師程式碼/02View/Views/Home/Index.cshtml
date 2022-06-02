@@ -30,9 +30,9 @@
         <th>
             地圖
         </th>
-        @*<th>
+        <th>
             資料管理
-        </th>*@
+        </th>
     </tr>
     @*//03-2-2 增加item.Id, 並將最後一欄註解*@
     @foreach (var item in Model)
@@ -55,11 +55,11 @@
             <td>
                 <a href="https://www.google.com.tw/maps/search/@item.Address" target="_blank" class="btn btn-danger">我要看地圖</a>
             </td>
-            @*<td>
-                @Html.ActionLink("編輯", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("詳細資料", "Details", new { id = item.Id }) |
-                @Html.ActionLink("刪除", "Delete", new { id = item.Id })
-            </td>*@
+            <td>
+                @*@Html.ActionLink("編輯", "Edit", new { id = item.Id }) |*@
+                @Html.ActionLink("詳細資料", "Details", new { NMid = item.Id }) |
+                @*@Html.ActionLink("刪除", "Delete", new { id = item.Id })*@
+            </td>
         </tr>
     }
 

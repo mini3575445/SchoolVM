@@ -54,5 +54,19 @@ namespace _02View.Controllers
             
         }
 
+        public ActionResult Details(string id)  //基本上都是傳PK
+        {
+            ViewBag.ID = id;
+            //select * from NightMarket where Id = 'A01'
+            return View();
+        }
+        //http://Your.DomainName.
+        //若參數名稱是id的話，參數可以不使用?id=xxx
+
+        public ActionResult Razor(string id)  
+        {     
+            return View();
+        }
+
     }
 }
