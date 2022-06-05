@@ -148,6 +148,7 @@
     <Content Include="Views\Home\Razor.cshtml" />
     <Content Include="Views\HTMLHelper\CreateOLD.cshtml" />
     <Content Include="Views\HTMLHelper\Create.cshtml" />
+    <Content Include="Views\test053001\IndexOLD.cshtml" />
     <Content Include="Views\test053001\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

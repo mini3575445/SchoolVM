@@ -37,14 +37,12 @@ namespace _02View.Controllers
 
             list.Add(new NightMarket
             {
-                Id = "B01",
-                Name = "可愛三明治夜市",
+                Id = "B02",
+                Name = "乖巧小五夜市",
                 Address = "高雄市三民區"
-            });
+            }); 
 
             return View(list);
         }
-
-
-    }
+       }
 }

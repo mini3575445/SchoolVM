@@ -31,7 +31,7 @@
 @*Html.BeginForm產生Form標籤*@
 @using (Html.BeginForm())
 {
-<p>                 @*lambda箭頭函數*@
+<p>                 @*lambda箭頭函數:參數名稱=>return xxx*@
     @Html.LabelFor(model => model.UserId)   @*Html.LabelFor(參數)產生Lable*@
     @Html.TextBoxFor(model => model.UserId)
 </p>
