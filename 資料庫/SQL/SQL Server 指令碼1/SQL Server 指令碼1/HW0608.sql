@@ -18,6 +18,7 @@ inner join [Order Details] as od on od.ProductID=p.ProductID
 inner join Orders as o on o.OrderID=od.OrderID
 inner join Customers as c on c.CustomerID=o.CustomerID
 where c.CustomerID='ANTON'
+order by p.ProductName
 
 --3. 請利用exists運算子配合子查詢式，找出哪些客戶從未下過訂單，並列出客戶的所有欄位。(不可用到in運算，亦不可用合併查詢式) 
 select * from Customers
