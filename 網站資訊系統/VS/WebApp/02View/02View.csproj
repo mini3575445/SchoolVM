@@ -129,9 +129,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HTMLHelperController.cs" />
     <Compile Include="Controllers\test053001Controller.cs" />
+    <Compile Include="Controllers\Test0607Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cat.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Market.cs" />
     <Compile Include="Models\NightMarket.cs" />
@@ -150,6 +152,7 @@
     <Content Include="Views\HTMLHelper\Create.cshtml" />
     <Content Include="Views\test053001\IndexOLD.cshtml" />
     <Content Include="Views\test053001\Index.cshtml" />
+    <Content Include="Views\Test0607\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cat\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

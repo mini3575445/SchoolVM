@@ -1,0 +1,27 @@
+﻿@model _02View.Models.Cat
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>可愛貓貓區</h2>
+@Html.ActionLink("首頁","Create","Test0607")
+<form action="/Test0607/Create" method="post">
+    <p>
+        @Html.DisplayNameFor(model => model.Id)
+        @Html.TextBoxFor(model=>model.Id)
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name)
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Color)
+        @Html.TextBoxFor(model => model.Color)
+    </p>   
+    <input type="submit" value="送出">
+</form>
+
+<hr>
+<p>@Html.Raw(ViewBag.result)</p>
