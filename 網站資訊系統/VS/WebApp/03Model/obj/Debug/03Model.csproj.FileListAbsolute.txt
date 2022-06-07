@@ -80,4 +80,3 @@ D:\SchoolVM\網站資訊系統\VS\WebApp\03Model\bin\EntityFramework.dll
 D:\SchoolVM\網站資訊系統\VS\WebApp\03Model\bin\EntityFramework.SqlServer.dll
 D:\SchoolVM\網站資訊系統\VS\WebApp\03Model\bin\EntityFramework.xml
 D:\SchoolVM\網站資訊系統\VS\WebApp\03Model\bin\EntityFramework.SqlServer.xml
-D:\SchoolVM\網站資訊系統\VS\WebApp\03Model\bin\zh-Hant\EntityFramework.resources.dll
