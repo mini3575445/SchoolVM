@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 using _02View.Models;
 
+
+//在View上利用HtmlHelper顯示Model.物件名稱,及input.name
 namespace _02View.Controllers
 {
     public class Test0607Controller : Controller
