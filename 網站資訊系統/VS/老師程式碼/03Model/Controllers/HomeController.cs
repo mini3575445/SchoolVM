@@ -198,4 +198,13 @@ namespace _03Model.Controllers
 //04-3-16 修改英文文字為中文
 //04-3-17 執行並測試
 //04-3-18 安裝驗證相關套件
+//套件1:jquery.validation
+//套件2:Microsoft.jQuery.Unobtrusive.Validation
 //04-3-17 再執行並測試
+
+//04-4   建立資料新增與刪除的功能
+//04-4-1 建立HttpPost Create() Action
+//04-4-2 執行新增資料測試
+//04-4-3 建立Delete() Action
+//04-4-4 編修Index View裡的Delete超連結
+//04-4-5 執行刪除資料測試

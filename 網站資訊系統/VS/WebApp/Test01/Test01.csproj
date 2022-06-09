@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -97,19 +105,76 @@
       <DependentUpon>Northwind.mdf</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Models\dbNorthWind.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>dbNorthWind.Context.cs</LastGenOutput>
+      <DependentUpon>dbNorthWind.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\dbNorthWind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbNorthWind.edmx</DependentUpon>
+      <LastGenOutput>dbNorthWind.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LinqController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\dbNorthWind.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbNorthWind.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbNorthWind.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbNorthWind.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbNorthWind.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\供應商.cs">
+      <DependentUpon>dbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\員工.cs">
+      <DependentUpon>dbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶.cs">
+      <DependentUpon>dbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\產品資料.cs">
+      <DependentUpon>dbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\產品類別.cs">
+      <DependentUpon>dbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\訂貨主檔.cs">
+      <DependentUpon>dbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\訂貨明細.cs">
+      <DependentUpon>dbNorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\貨運公司.cs">
+      <DependentUpon>dbNorthWind.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <EntityDeploy Include="Models\dbNorthWind.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbNorthWind.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\dbNorthWind.edmx.diagram">
+      <DependentUpon>dbNorthWind.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -120,6 +185,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Linq\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

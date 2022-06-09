@@ -56,8 +56,7 @@ namespace Test01.Controllers
 
             //純class
             //Member member = new Member() { UId = "A01", Pwd = "123", Name = "安安" };
-
-            //class陣列(裡面放member資料型態)
+            
             //class陣列(裡面放member資料型態)
             Member[] members = new Member[3]
             {

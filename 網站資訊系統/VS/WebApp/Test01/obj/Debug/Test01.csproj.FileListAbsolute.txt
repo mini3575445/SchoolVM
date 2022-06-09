@@ -154,3 +154,8 @@ C:\職訓\SchoolVM\網站資訊系統\VS\WebApp\Test01\obj\Debug\Test01.csproj.C
 C:\職訓\SchoolVM\網站資訊系統\VS\WebApp\Test01\obj\Debug\Test01.csproj.CopyComplete
 C:\職訓\SchoolVM\網站資訊系統\VS\WebApp\Test01\obj\Debug\Test01.dll
 C:\職訓\SchoolVM\網站資訊系統\VS\WebApp\Test01\obj\Debug\Test01.pdb
+D:\SchoolVM\網站資訊系統\VS\WebApp\Test01\bin\EntityFramework.dll
+D:\SchoolVM\網站資訊系統\VS\WebApp\Test01\bin\EntityFramework.SqlServer.dll
+D:\SchoolVM\網站資訊系統\VS\WebApp\Test01\bin\EntityFramework.xml
+D:\SchoolVM\網站資訊系統\VS\WebApp\Test01\bin\EntityFramework.SqlServer.xml
+D:\SchoolVM\網站資訊系統\VS\WebApp\Test01\bin\zh-Hant\EntityFramework.resources.dll

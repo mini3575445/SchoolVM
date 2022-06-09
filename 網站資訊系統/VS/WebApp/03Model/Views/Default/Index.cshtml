@@ -43,7 +43,14 @@
     <td>
         @*@Html.ActionLink("Edit", "Edit", new { id = item.fStuId }) |
         @Html.ActionLink("Details", "Details", new { id = item.fStuId }) |*@
-        @Html.ActionLink("刪除", "Delete", new { id = item.fStuId })
+        @Html.ActionLink("退學", "Delete", new { id = item.fStuId }, new { @class = "btn btn-danger", onclick = "return confirm('您確定要退學嗎')" })
+        @*Html.ActionLink：只要是HTML就是寫在第4個*@
+
+        <a href="/Default/Delete/@item.fStuId" class="btn btn-danger" onclick="return confirm('您確定要退學嗎')">退學</a>
+        @*先執行onclick再執行超連結*@
+
+
+        @*要為程式所有的例外狀況做處理*@
     </td>
 </tr>
 }

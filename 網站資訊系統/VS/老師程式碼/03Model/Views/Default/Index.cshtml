@@ -43,7 +43,10 @@
     <td>
         @*@Html.ActionLink("Edit", "Edit", new { id = item.fStuId }) |
         @Html.ActionLink("Details", "Details", new { id = item.fStuId }) |*@
-        @Html.ActionLink("刪除", "Delete", new { id = item.fStuId })
+        @*//04-4-4 編修Index View裡的Delete超連結*@
+        @Html.ActionLink("退學", "Delete", new { id = item.fStuId }, new { @class = "btn btn-danger", onclick = "return confirm('您確定要退學嗎？')" })
+
+        @*<a href="/Default/Delete/@item.fStuId" class="btn btn-danger" onclick="return confirm('您確定要退學嗎？')">退學</a>*@
     </td>
 </tr>
 }
