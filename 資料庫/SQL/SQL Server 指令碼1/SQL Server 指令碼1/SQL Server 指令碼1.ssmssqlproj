@@ -19,6 +19,12 @@
     </LogicalFolder>
     <LogicalFolder Name="查詢" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="00Query_Tool.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>00Query_Tool.sql</FullPath>
+        </FileNode>
         <FileNode Name="01Select-1.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
@@ -127,11 +133,29 @@
           <AssociatedConnUserName />
           <FullPath>18Merge.sql</FullPath>
         </FileNode>
-        <FileNode Name="19Query_Tool.sql">
+        <FileNode Name="19DDL-1.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>19Query_Tool.sql</FullPath>
+          <FullPath>19DDL-1.sql</FullPath>
+        </FileNode>
+        <FileNode Name="20DDL-2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>20DDL-2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="21DDL-3.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>21DDL-3.sql</FullPath>
+        </FileNode>
+        <FileNode Name="22DDL-4.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>22DDL-4.sql</FullPath>
         </FileNode>
         <FileNode Name="HW0517.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>

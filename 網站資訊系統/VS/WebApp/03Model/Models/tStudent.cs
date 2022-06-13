@@ -31,7 +31,7 @@ namespace _03Model.Models
         [EmailAddress(ErrorMessage ="電子郵件格式錯誤")]
         public string fEmail { get; set; }
 
-        [DisplayName("成績")]
+        [DisplayName("成績")]        
         [Range(0,100, ErrorMessage = "成績請填0~100")]  //驗證數值
         public Nullable<int> fScore { get; set; }   //可以不填的
     }
