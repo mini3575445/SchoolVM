@@ -1,6 +1,6 @@
 --1.請試寫一合併查詢，查詢出訂購日期落在1996年7月並指定送貨公司為「United Package」的有訂單之訂貨明細資料，並列出訂單號碼、產品類別名稱、產品名稱、產品訂購單價、產品訂購數量、產品價錢小計、客戶編號、客戶名稱、收貨人名字、訂購日期、處理訂單員工的姓名、送貨方式、供應商名稱等資料項目，其中產品價錢小計請以四捨五入計算至整數位。
 select o.OrderID, cate.CategoryName, p.ProductName , od.UnitPrice , od.Quantity , round(od.UnitPrice*od.Quantity*(1-od.Discount),0) as 產品價錢小計  ,
-cust.CustomerID , cust.CompanyName , cust.ContactName , o.OrderDate , e.LastName , e.FirstName , Ship.CompanyName as 送貨方式 , sup.CompanyName as 供應商名稱
+cust.CustomerID , cust.CompanyName , o.ShipName , o.OrderDate , e.LastName , e.FirstName , Ship.CompanyName as 送貨方式 , sup.CompanyName as 供應商名稱
 from Orders as o 
 inner join [Order Details] as od on o.OrderID=od.OrderID
 inner join Products as p on p.ProductID=od.ProductID
@@ -13,12 +13,12 @@ where OrderDate >= '1996/07/01' and OrderDate <= '1996/07/31' and Ship.CompanyNa
 
 
 --2.請試寫一合併查詢，查詢客戶ANTON歷年來所訂購的所有產品，並統計出各種產品的訂購數量，輸出如下結果。
-select c.CustomerID , c.ContactName , p.ProductName , od.Quantity from Products as p
+select c.CustomerID , c.ContactName , p.ProductName , sum(od.Quantity) as Quantity from Products as p
 inner join [Order Details] as od on od.ProductID=p.ProductID
 inner join Orders as o on o.OrderID=od.OrderID
 inner join Customers as c on c.CustomerID=o.CustomerID
 where c.CustomerID='ANTON'
-order by p.ProductName
+group by c.CustomerID , c.ContactName , p.ProductName
 
 --3. 請利用exists運算子配合子查詢式，找出哪些客戶從未下過訂單，並列出客戶的所有欄位。(不可用到in運算，亦不可用合併查詢式) 
 select * from Customers

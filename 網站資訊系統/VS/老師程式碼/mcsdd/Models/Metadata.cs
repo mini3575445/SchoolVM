@@ -67,4 +67,59 @@ namespace Northwind.Models
         [DefaultValue(false)]
         public bool Discontinued { get; set; }
     }
+
+    public class MetaCustomers
+    {
+        [Key]
+        [DisplayName("客戶編號")]
+        [Required(ErrorMessage = "請輸入客戶編號")]
+        [RegularExpression("[A-Z]{5}",ErrorMessage = "客戶編號須為五碼大寫字母")]
+        public string CustomerID { get; set; }
+
+        [DisplayName("客戶名稱")]
+        [Required(ErrorMessage = "請輸入客戶名稱")]
+        [StringLength(40, ErrorMessage = "客戶名稱最多40個字")]
+        public string CompanyName { get; set; }
+
+        [DisplayName("連絡人")]
+        [Required(ErrorMessage = "請輸入連絡人")]
+        [StringLength(30, ErrorMessage = "連絡人最多30個字")]
+        public string ContactName { get; set; }
+
+        [DisplayName("連絡人職稱")]
+        [Required(ErrorMessage = "請輸入連絡人職稱")]
+        [StringLength(30, ErrorMessage = "連絡人職稱最多30個字")]
+        public string ContactTitle { get; set; }
+
+        [DisplayName("地址")]
+        [Required(ErrorMessage = "請輸入地址")]
+        [StringLength(60, ErrorMessage = "地址最多60個字")]
+        public string Address { get; set; }
+
+        [DisplayName("城市")]
+        [StringLength(15, ErrorMessage = "城市區號最多15個字")]
+        public string City { get; set; }
+
+        [DisplayName("區域")]
+        [StringLength(15, ErrorMessage = "區域區號最多15個字")]
+        public string Region { get; set; }
+
+        [DisplayName("郵遞區號")]
+        [StringLength(10, ErrorMessage = "郵遞區號最多10個字")]
+        public string PostalCode { get; set; }
+
+        [DisplayName("國家")]
+        [StringLength(15, ErrorMessage = "國家區號最多15個字")]
+        public string Country { get; set; }
+
+        [DisplayName("電話")]
+        [Required(ErrorMessage = "請輸入電話")]
+        [StringLength(24, ErrorMessage = "電話最多24個字")]
+        public string Phone { get; set; }
+
+        [DisplayName("傳真")]
+        [StringLength(24, ErrorMessage = "傳真最多24個字")]
+        public string Fax { get; set; }
+
+    }
 }

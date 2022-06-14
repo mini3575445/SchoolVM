@@ -116,6 +116,8 @@
     <Content Include="37HW3.css" />
     <Content Include="37HW3.html" />
     <Content Include="37HW3.js" />
+    <Content Include="38Jquery.html" />
+    <Content Include="39jQuery_DOＭ.html" />
     <Content Include="fonts\webdings.svg" />
     <Content Include="images\Chrysanthemum.jpg" />
     <Content Include="images\Desert.jpg" />
@@ -131,6 +133,11 @@
     <Content Include="music\moon.mp3" />
     <Content Include="music\nothing.mp3" />
     <Content Include="music\travel.mp3" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Web.config" />
     <Content Include="作業\0418履歷作業.html" />
     <Content Include="作業\Koala.jpg" />
@@ -144,6 +151,8 @@
     <Content Include="fonts\webdings.woff" />
     <Content Include="fonts\webdings.woff2" />
     <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

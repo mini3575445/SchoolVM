@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+    <script>
+        let item = "";
+        
+
+
+        $.ajax({
+            type: 'get',
+            url: 'https://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvAttractions.aspx',
+            success: function (data) {
+                //data是自己取
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    item += `<h1>${data[i].Name}</h1>`;
+                    item += `<h2>${data[i].Tel}</h2>`;
+                    item += `<h2>${data[i].Address}</h2>`;
+                    item += "<img src='" + data[i].Photo + "' />";
+                    item += `<p><a href="https://www.google.com.tw/maps/search/${data[i].Address}" target="_blank">點我看地圖</a></p>`
+                }
+                $("#container").html(item);
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+        
+    </script>
+</body>
+</html>

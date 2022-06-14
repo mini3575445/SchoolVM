@@ -85,6 +85,90 @@
           <AssociatedConnUserName />
           <FullPath>11Select_SubQuery.sql</FullPath>
         </FileNode>
+        <FileNode Name="12HW5.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>12HW5.sql</FullPath>
+        </FileNode>
+        <FileNode Name="13Select_others.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>13Select_others.sql</FullPath>
+        </FileNode>
+        <FileNode Name="14SelectCTE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>14SelectCTE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="15Insert.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>15Insert.sql</FullPath>
+        </FileNode>
+        <FileNode Name="16Update.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>16Update.sql</FullPath>
+        </FileNode>
+        <FileNode Name="17Delete.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>17Delete.sql</FullPath>
+        </FileNode>
+        <FileNode Name="18Merge.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>18Merge.sql</FullPath>
+        </FileNode>
+        <FileNode Name="19DDL-1.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>19DDL-1.sql</FullPath>
+        </FileNode>
+        <FileNode Name="20DDL-2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>20DDL-2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="21DDL-3.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>21DDL-3.sql</FullPath>
+        </FileNode>
+        <FileNode Name="22DDL-4.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>22DDL-4.sql</FullPath>
+        </FileNode>
+        <FileNode Name="23HW6.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>23HW6.sql</FullPath>
+        </FileNode>
+        <FileNode Name="24View.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>24View.sql</FullPath>
+        </FileNode>
+        <FileNode Name="25T-SQL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>25T-SQL.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="其他" Type="3" Sorted="true">

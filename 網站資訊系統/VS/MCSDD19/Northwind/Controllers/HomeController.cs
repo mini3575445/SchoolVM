@@ -11,19 +11,11 @@ namespace Northwind.Controllers
     public class HomeController : Controller
     {
 
-        NorthwindEntities db = new NorthwindEntities();
-        public ActionResult Index2()
-        {
-            var Products = db.Products.ToList();
-            return View(Products);
-        }
-        public ActionResult Create()
-        {
+        
+        public ActionResult Index()
+        {            
             return View();
-        }
-
-
-
+        }      
 
         public ActionResult About()
         {

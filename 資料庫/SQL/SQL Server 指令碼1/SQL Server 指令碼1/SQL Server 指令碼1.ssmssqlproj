@@ -157,6 +157,30 @@
           <AssociatedConnUserName />
           <FullPath>22DDL-4.sql</FullPath>
         </FileNode>
+        <FileNode Name="24View.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>24View.sql</FullPath>
+        </FileNode>
+        <FileNode Name="25T-SQL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>25T-SQL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="26T-SQL-2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>26T-SQL-2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="27T-SQL-3.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>27T-SQL-3.sql</FullPath>
+        </FileNode>
         <FileNode Name="HW0517.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>

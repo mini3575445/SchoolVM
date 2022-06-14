@@ -1,4 +1,4 @@
---alter
+--alter 修改資料表定義
 alter table Orders
 	add foreign key(CustomerID) references Customers(CustomerID) on delete no action on update no action
 

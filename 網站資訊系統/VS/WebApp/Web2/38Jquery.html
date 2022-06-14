@@ -1,0 +1,35 @@
+﻿<!--用JS寫好的函式庫，JS像繁體中文，JQUERY像簡體-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <style>
+        .red {
+        color:red;
+        }
+    </style>
+</head>
+<body>
+    <h1 onclick="changeColor()" id="h1">welcome My Homepage!!!</h1>
+
+
+
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+    <script>
+
+        //JS
+        //function changeColor(){
+        //    var h1 = document.getElementById("h1");  //若抓class是集合
+        //    h1.className = "red";
+        //}
+
+        //JQ
+        function changeColor(){
+            //$是JQ的縮寫，"括號裡面跟CSS選擇器一樣"
+            $('#h1').addClass("red");
+        }
+    </script>
+</body>
+</html>
