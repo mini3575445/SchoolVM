@@ -3,7 +3,19 @@
   <Items>
     <LogicalFolder Name="連線" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="MCSDD11101-20:VIEW\C50119">
+        <ConnectionNode Name="(local):mini-PC\mini">
+          <Created>2022-06-15T23:37:51.683529+08:00</Created>
+          <Type>SQL</Type>
+          <Server>(local)</Server>
+          <UserName />
+          <Authentication>Windows 驗證</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - 查詢</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="MCSDD11101-20:mini-PC\mini">
           <Created>2022-05-16T13:51:15.2682191+08:00</Created>
           <Type>SQL</Type>
           <Server>MCSDD11101-20</Server>
@@ -192,6 +204,12 @@
           <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>HW0608.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HW7.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>HW7.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
