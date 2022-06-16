@@ -193,6 +193,12 @@
           <AssociatedConnUserName />
           <FullPath>27T-SQL-3.sql</FullPath>
         </FileNode>
+        <FileNode Name="EX01.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>EX01.sql</FullPath>
+        </FileNode>
         <FileNode Name="HW0517.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
