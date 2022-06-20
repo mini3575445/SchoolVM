@@ -19,9 +19,10 @@ go
 
 declare @i int=1 , @result varchar(max)=''
 
-while @i<=50
+while @i<=10
 begin
 	set @result += '*'
 	set @i+=1
 	print @result
 end
+

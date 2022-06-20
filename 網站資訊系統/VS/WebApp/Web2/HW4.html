@@ -94,7 +94,7 @@
                     //item += "<hr>";
 
 
-                    item = `<div onclick="viewword(Event)">
+                    item = `<div onclick="viewword(event)">
                                     <div class="center"><img src="${data[i].Photo}" /></div>
                                     <h2 class="center">${data[i].Name}</h2> 
                                     <h4>${data[i].Address}</h4>
@@ -135,9 +135,9 @@
        
 
 
-        function viewword(Event) {
-            console.log(Event);
-            $('.hiddenWord').removeClass('hiddenWord');
+        function viewword(e) {
+            console.log('e.target.nodeName.toLowerCase() .hiddenWord')
+            $('e.target.nodeName').toLowerCase() .hiddenWord.removeClass('hiddenWord');
         }
         setStyle1();
        

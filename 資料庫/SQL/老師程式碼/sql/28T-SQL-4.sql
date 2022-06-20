@@ -10,10 +10,19 @@ begin
 end
 
 print @sum
-
+go
 ----------------------------------
 --*
 --**
 --***
 --****
 --*****
+
+declare @i int=1, @star varchar(max)=''
+
+while @i<=50
+begin
+	set @star+='*'
+	print @star
+	set @i+=1
+end

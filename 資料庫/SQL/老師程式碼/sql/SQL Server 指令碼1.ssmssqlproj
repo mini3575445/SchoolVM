@@ -181,6 +181,24 @@
           <AssociatedConnUserName />
           <FullPath>27T-SQL-3.sql</FullPath>
         </FileNode>
+        <FileNode Name="28T-SQL-4.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>28T-SQL-4.sql</FullPath>
+        </FileNode>
+        <FileNode Name="29T-SQL-5.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>29T-SQL-5.sql</FullPath>
+        </FileNode>
+        <FileNode Name="30StoredProcedure.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-9:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-9</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>30StoredProcedure.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="其他" Type="3" Sorted="true">
