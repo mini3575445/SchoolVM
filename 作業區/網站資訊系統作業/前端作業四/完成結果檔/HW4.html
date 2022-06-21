@@ -1,62 +1,64 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta charset="utf-8" />
     <title>全國農業旅遊休閒園區</title>
 
     <style>
 
         #title {
-        text-align:center;
-        
+            text-align: center;
         }
+
         #container {
             width: 100%;
             margin: auto;
             text-align: center;
             display: flex;
-            flex-wrap: wrap;            
+            flex-wrap: wrap;
             justify-content: center;
         }
-            
-                #container > div {
-                    border: 2px groove #808080;
-                    border-radius: 3px;
-                    padding: 10px;
-                    width: 380px;
+
+            #container > div {
+                border: 2px groove #808080;
+                border-radius: 3px;
+                padding: 10px;
+                width: 380px;
+            }
+
+                #container > div > div {
+                    width: inherit;
                 }
 
-                    #container > div > div {
-                        width: inherit;
-                    }
                     #container > div > div > img {
                         width: inherit;
                         /*inherit繼承父節點*/
                     }
+
         button {
             border: none;
             border-radius: 5px;
             background-color: darkcyan;
             color: #FFFFFF;
             line-height: 2.2;
-            font-weight:bold;
+            font-weight: bold;
         }
-            
-                    
+
+
         .center {
-        text-align:center;
+            text-align: center;
         }
+
         .hiddenWord {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp:4;
-            -webkit-box-orient:vertical;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
             white-space: normal;
         }
-
-        
     </style>
 </head>
 <body>
@@ -65,7 +67,6 @@
     <div id="container">
     </div>
 
-    <script src="Scripts/jquery-3.6.0.min.js"></script>
     <script>
         let item = "";
 
