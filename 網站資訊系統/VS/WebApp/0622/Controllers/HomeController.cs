@@ -68,15 +68,21 @@ namespace _0622.Controllers
         //}
         public ActionResult Index()
         {
-            //把class實體化
+            //把class實體化            
             Student student = new Student();
             List<Student> list = new List<Student>();
             list.Add(new Student("01", "安安", 45));
             list.Add(new Student("02", "QQ", 100));
             list.Add(new Student("03", "BB", 75));
             list.Add(new Student("04", "CC", 68));
-
+                        
+            ViewBag.Student = student;
             ViewBag.List = list;
+
+
+            Tclass Tclass = new Tclass();
+
+            ViewBag.Tclass = Tclass;
             return View();
         }
     }

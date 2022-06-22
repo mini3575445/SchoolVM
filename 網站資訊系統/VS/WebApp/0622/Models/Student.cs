@@ -12,12 +12,14 @@ namespace _0622.Models
         public int score { get; set; }
 
 
+        //預設建構子
         public Student() {
             id = "";
             name = "";
             score = 0;            
         }
 
+        //第二個建構子，這樣就是多載，Student方法有兩種使用方式
         public Student(string _id , string _name , int _score)
         {
             id = _id;
@@ -26,7 +28,7 @@ namespace _0622.Models
         }
 
 
-        //修飾詞override，覆蓋繼承Object.ToString()這個內建方法
+        //修飾詞override，***覆蓋繼承Object.ToString()這個內建方法
         //所有的class都是繼承Object class
         public override string ToString() 
         {

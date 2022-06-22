@@ -2,36 +2,33 @@
     ViewBag.Title = "Home Page";
     Layout = null;
 
-    var date = ViewBag.Date;
-    var student = ViewBag.Student;
-    var list = ViewBag.List;
 }
 
+@*在前端要呼叫後端的物件就要用@*@
 <style>
     div {
         margin-bottom: 10px;
     }
 </style>
 
-<div>
-    現在時間: @date.ToString("yyyy/MM/dd HH:mm:ss")
-</div>
+
 
 <div>
-    學生成績: @student.ToString()
-    <br>View：@foreach (var item in list)
-    {
-<p>@item.name @item.score</p>
-        
-    }
+    學生成績輸出格式: @ViewBag.student.ToString()
+    @*與@ViewBag.student的輸出相同(預設使用ToString()方法輸出)*@
 </div>
 
 <div>
     學生成績列表:
 </div>
-@for (int i = 0; i < list.Count; i++)
+@for (int i = 0; i < @ViewBag.list.Count; i++)
 {
     <div>
-        @list[i].ToString()
+        @ViewBag.list[i].ToString()
     </div>
 }
+
+<div>
+    班級輸出格式:@ViewBag.Tclass
+    @*其他class的ToString()沒有被覆寫*@
+</div>
