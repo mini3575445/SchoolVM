@@ -19,6 +19,11 @@
 
 <div>
     學生成績: @student.ToString()
+    <br>View：@foreach (var item in list)
+    {
+<p>@item.name @item.score</p>
+        
+    }
 </div>
 
 <div>
