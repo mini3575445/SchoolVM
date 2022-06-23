@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>顯示測試</title>
+    <style>
+        h1:hover {
+            background-color: yellow;
+        }
+
+        .myStyle:hover {
+            background-color: pink;
+        }
+
+        .myStyle {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>一行字在第八行</h1>
+    <h1>一行字在第八行</h1>
+    <h2>一行字在第八行</h2>
+    <h3>一行字在第八行</h3>
+    <h4>一行字</h4>
+    一行小字(1~6號都會加粗)
+    <h5>一行字在第八行</h5>
+    <h6>一行字在第八行</h6>
+
+    一行小字
+    一行小字
+    一行小字
+    一行小字
+    一行小字
+    一行小字
+
+    <script>
+        for (j = 0; j < 100; j++) {
+            for (i = 1; i < 7; i++) { document.write(`<h${i} class='myStyle'>一行小字</h${i}>`);}
+            }</script>
+
+</body>
+</html>

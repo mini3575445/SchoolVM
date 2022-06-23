@@ -104,6 +104,7 @@
     <Content Include="25JS_Variable.html" />
     <Content Include="24JS_First.html" />
     <Content Include="37HW3.html" />
+    <Content Include="41jQuery_Animate.html" />
     <Content Include="40jQuery_API.html" />
     <Content Include="39jQuery_DOM.html" />
     <Content Include="38jQuery.html" />

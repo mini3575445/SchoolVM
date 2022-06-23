@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+@*//02-3-9 修改title文字與加入form內容*@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>產品資料新增作業</title>
+</head>
+<body>
+    <h2>產品資料新增作業</h2>
+    <form action="/SimpleBind/Create" method="post">
+        <p>品號：<input id="PId" name="PId" type="text" /></p>
+        <p>品名：<input id="PName" name="PName" type="text" /></p>
+        <p>單價：<input id="Price" name="Price" type="text" /></p>
+        <p><input id="Submit1" type="submit" value="新增商品" /></p>
+    </form>
+    <hr />
+    <h3>新增作業完成</h3>
+    <p>內容如下</p>
+    <p>
+    <p>品號：@ViewBag.PId</p>
+    <p>品名：@ViewBag.PName</p>
+    <p>單價：@ViewBag.Price</p>
+
+    </p>
+</body>
+</html>
