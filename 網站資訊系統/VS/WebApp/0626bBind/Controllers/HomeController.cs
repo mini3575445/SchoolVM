@@ -9,7 +9,7 @@ namespace _0626bBind.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        // 沒有連DB，只連Model
         public ActionResult Index()
         {
             List<NightMarket> list = new List<NightMarket>(4);
@@ -22,6 +22,33 @@ namespace _0626bBind.Controllers
 
             //Q1為甚麼能夠傳送list?
             return View(list);
+        }
+        //LinQ練習
+        public string ShowAryDesc() {
+
+            int[] score = { 78, 90, 20, 100, 66 };
+            string show = "";
+
+            //查詢運算式(Query Expression)
+            //這個result是什麼物件?
+            var result = from s in score
+                         orderby s
+                         select s;
+            show += result;
+            return show;
+        }
+
+
+
+
+
+        //連接DB並能在前端新增資料
+        public ActionResult Create() {
+
+            
+
+            return View();
+
         }
     }
 }
