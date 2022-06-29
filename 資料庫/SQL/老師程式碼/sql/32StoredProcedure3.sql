@@ -39,3 +39,49 @@ pivot
 
 )as pvt
 order by pvt.ProductID
+
+go
+--再進化-寫活欄位
+create proc Sum_for_Products_Salse_Pivot
+	@yy int
+as
+begin
+	declare @in_columns nvarchar(max)
+	select @in_columns=isnull(@in_columns+',['+ cast(Month as varchar)+']','['+cast(Month as varchar)+']')
+	from (select distinct month(OrderDate) as Month from Orders where year(OrderDate)=@yy) as o
+	order by Month
+	print @in_columns
+
+	declare @select_columns nvarchar(max)=''
+	select @select_columns+=',isnull(['+cast(Month as varchar)+'],0) as ['+cast(Month as varchar)+']'
+	from 
+	(select distinct month(OrderDate) as Month from Orders where year(OrderDate)=@yy) as o
+	order by Month
+	print @select_columns
+
+	declare @sql nvarchar(max)
+	set @sql='
+	select pvt.ProductName as 產品名稱'+ @select_columns+'
+	from
+	(select od.ProductID,p.ProductName,year(o.OrderDate) as [Year],month(o.OrderDate) as [Month],
+	round(sum(od.UnitPrice*od.Quantity*(1-od.Discount)),0) as Total
+	from [Order Details] as od
+	inner join Orders as o on od.OrderID=o.OrderID
+	inner join Products as p on od.ProductID=p.ProductID
+	where year(o.OrderDate)='+cast(@yy as varchar)+'
+	group by od.ProductID,p.ProductName,year(o.OrderDate),month(o.OrderDate)) as x
+	pivot
+	(
+		sum(x.Total)
+		for x.Month in
+		('+@in_columns+')
+
+	)as pvt
+	order by pvt.ProductID'
+
+	exec(@sql)
+end
+
+
+--測試
+exec Sum_for_Products_Salse_Pivot 1998

@@ -26,7 +26,7 @@ for 課程編號 in	--[]表示為物件，不是字串
 select 學號,isnull([CS101],'---')as[CS101],isnull([CS213],'---')as[CS213],isnull([CS349],'---')as[CS349]
 ,isnull([CS222],'---')as[CS222],isnull([CS203],'---')as[CS203],isnull([CS111],'---')as[CS111]
 ,isnull([CS121],'---')as[CS121],isnull([CS205],'---')as[CS205]from
-(select 學號,課程編號,教室 from 班級) as x 
+(select 課程編號,學號,教室 from 班級) as x 
 pivot
 (
 max(教室)
@@ -93,3 +93,8 @@ begin
 
 	exec(@sql)
 end
+
+
+
+
+
