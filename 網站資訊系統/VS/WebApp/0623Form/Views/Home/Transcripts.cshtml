@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+@model _0623Form.Models.Student
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Transcripts</title>
+</head>
+<body>
+    <div>@Html.DisplayNameFor(model => model.id)：</div>
+    <div>@Model.id</div>
+    <div>@Html.DisplayNameFor(model => model.name)：</div>
+    <div>@Model.name</div>
+    <div>@Html.DisplayNameFor(model => model.score)：</div>
+    <div>@Model.score</div>
+
+
+    
+</body>
+</html>
+@section Script{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

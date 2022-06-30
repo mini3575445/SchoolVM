@@ -6,7 +6,7 @@
 Q2:為何沒有引入model，也能使用@Model.id?   A:
 Q3:Controller也沒有指定ViewData.Model為data，只有return View(data)，那@Model.id怎麼來的?*@
 
-
+@model _0623Form.Models.Student
 <!DOCTYPE html>
 
 <html>
@@ -15,19 +15,19 @@ Q3:Controller也沒有指定ViewData.Model為data，只有return View(data)，�
     <title></title>
 </head>
 <body>
-    <form style="margin-left:10px;">
+    @****利用controller傳送預設值至form，送出form時，利用get方法將參數送至Transcripts Action*@
+    <form style="margin-left:10px;" method="post" action="/Home/Transcripts">
         <div class="form-group">
             <label for="exampleInputEmail1">學號</label>
-            <input type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="@Model.id">
-            <small id="emailHelp">請輸入數字</small>
+            <input type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="@Model.id" name="id" @Html.ValidationMessageFor(model=>model.id)>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">姓名</label>
-            <input type="text" id="exampleInputPassword1" placeholder="Password" value="@ViewData.Model.name">
+            <input type="text" id="exampleInputPassword1" placeholder="Password" value="@ViewData.Model.name" name="name">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">分數</label>
-            <input type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="@ViewData.Model.score ">
+            <input type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="@ViewData.Model.score" name="score">
         </div>
         <button type="submit">確定</button>
     </form>

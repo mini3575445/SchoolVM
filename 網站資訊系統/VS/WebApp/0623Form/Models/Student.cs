@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,9 +9,13 @@ namespace _0623Form.Models
 {
     public class Student
     {
+        [Required]
+        [RegularExpression("[AB][0-9]{3}")]
         public string id { get; set; }
         public string name { get; set; }
         public int score { get; set; }
+
+
         public Student()
         {
             id = string.Empty;
