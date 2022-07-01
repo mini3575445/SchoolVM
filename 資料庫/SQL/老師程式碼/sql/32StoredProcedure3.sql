@@ -29,7 +29,7 @@ round(sum(od.UnitPrice*od.Quantity*(1-od.Discount)),0) as Total
 from [Order Details] as od
 inner join Orders as o on od.OrderID=o.OrderID
 inner join Products as p on od.ProductID=p.ProductID
-where year(o.OrderDate)=1996
+where year(o.OrderDate)=1997
 group by od.ProductID,p.ProductName,year(o.OrderDate),month(o.OrderDate)) as x
 pivot
 (
@@ -42,7 +42,7 @@ order by pvt.ProductID
 
 go
 --再進化-寫活欄位
-create proc Sum_for_Products_Salse_Pivot
+alter proc Sum_for_Products_Salse_Pivot
 	@yy int
 as
 begin
@@ -53,7 +53,7 @@ begin
 	print @in_columns
 
 	declare @select_columns nvarchar(max)=''
-	select @select_columns+=',isnull(['+cast(Month as varchar)+'],0) as ['+cast(Month as varchar)+']'
+	select @select_columns+=',isnull(['+cast(Month as varchar)+'],0) as ['+cast(Month as varchar)+'月]'
 	from 
 	(select distinct month(OrderDate) as Month from Orders where year(OrderDate)=@yy) as o
 	order by Month
@@ -84,4 +84,4 @@ end
 
 
 --測試
-exec Sum_for_Products_Salse_Pivot 1998
+exec Sum_for_Products_Salse_Pivot 1997

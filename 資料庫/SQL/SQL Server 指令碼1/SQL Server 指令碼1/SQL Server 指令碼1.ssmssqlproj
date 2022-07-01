@@ -223,6 +223,18 @@
           <AssociatedConnUserName />
           <FullPath>32StoredProcedure-3.sql</FullPath>
         </FileNode>
+        <FileNode Name="33Function.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>33Function.sql</FullPath>
+        </FileNode>
+        <FileNode Name="34Function-2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>34Function-2.sql</FullPath>
+        </FileNode>
         <FileNode Name="EX01.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
@@ -246,6 +258,12 @@
           <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>HW7.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HW8.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>HW8.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
