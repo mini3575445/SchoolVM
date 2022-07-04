@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--viewport是個物件，content="width=device"寬度為螢幕解析度-->
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-grid.min.css" rel="stylesheet" />
+
+    <style>
+        .col1 {
+            background-color: dodgerblue;
+        }
+
+        .col2 {
+            background-color: #ff6a00;
+        }
+
+        .col3 {
+            background-color: #00ff21;
+        }
+        .col4 {
+            background-color:#b200ff;
+        }
+
+        .col5 {
+            background-color: #f86a80;
+        }
+
+        .col6 {
+            background-color: #ff00dc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col1 col-3">col 1</div>
+            <div class="col2 col-3">col 2</div>
+            <div class="col3 col-6">col 3</div><!--永遠都排列-->
+        </div>
+        <div class="row">
+            <div class="col4 col-md-3">col 1</div>
+            <div class="col5 col-md-3">col 2</div>
+            <div class="col6 col-md-6">col 3</div> <!--md以上才排列，md以下就不排列了-->
+        </div>
+
+        <div class="row">
+            <div class="col4 col-md-4 col-lg-2">col 1</div>
+            <div class="col5 col-md-4 col-lg-5">col 2</div>
+            <div class="col6 col-md-4 col-lg-5">col 3</div> <!--lg以上為2:5:5，md以下改為4:4:4-->
+        </div>
+        <h1>不設定寬，自動平均分配</h1>
+        <div class="row">
+            <div class="col4 col-md">col 1</div>
+            <div class="col5 col-md">col 2</div>
+            <div class="col6 col-md">col 3</div>
+            <div class="col4 col-md">col 4</div>
+            <div class="col5 col-md">col 5</div>
+        </div>
+        <h1>只設定某些寬，其他自動平均分配</h1>
+        <div class="row">
+            <div class="col4 col-md-3">col 1</div>
+            <div class="col5 col-md-3">col 2</div>
+            <div class="col6 col-md">col 3</div>
+            <div class="col4 col-md">col 4</div>
+            <div class="col5 col-md">col 5</div>
+        </div>
+    </div>
+
+</body>
+</html>

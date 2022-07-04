@@ -69,6 +69,9 @@
   <ItemGroup>
     <Content Include="01RWD_Page.html" />
     <Content Include="02Bootstrap_test.html" />
+    <Content Include="03GridSystem.html" />
+    <Content Include="07GridSystemAlign.html" />
+    <Content Include="08GridSystemOrder.html" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />

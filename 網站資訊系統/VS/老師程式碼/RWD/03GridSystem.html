@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .col1 {
+            background-color: aquamarine;
+        }
+
+        .col2 {
+            background-color: chocolate;
+        }
+
+        .col3 {
+            background-color: blueviolet;
+        }
+
+        .col4 {
+            background-color: cadetblue;
+        }
+
+        .col5 {
+            background-color: darkmagenta;
+        }
+
+        .col6 {
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="container" style="border:1px solid">
+        <div class="row">
+            <div class="col1 col-3">Col 1</div>
+            <div class="col2 col-5">Col 2</div>
+            <div class="col3 col-4">Col 3</div>
+        </div>
+        <div class="row">
+            <div class="col4 col-md-3">Col 1</div>
+            <div class="col5 col-md-5">Col 2</div>
+            <div class="col6 col-md-4">Col 3</div>
+        </div>
+
+        <div class="row">
+            <div class="col1 col-lg-4">Col 1</div>
+            <div class="col2 col-lg-4">Col 2</div>
+            <div class="col3 col-lg-4">Col 3</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col4 col-md-4 col-lg-2">Col 1</div>
+            <div class="col5 col-md-4 col-lg-5">Col 2</div>
+            <div class="col6 col-md-4 col-lg-5">Col 3</div>
+        </div>
+        <hr />
+        <h3>不設定寬(自動平均分配)</h3>
+        <div class="row">
+            <div class="col2 col-md">Col2</div>
+            <div class="col3 col-md">Col3</div>
+            <div class="col4 col-md">Col4</div>
+            <div class="col5 col-md">Col5</div>
+            <div class="col6 col-md">Col6</div>
+            <div class="col2 col-md">Col2</div>
+            <div class="col3 col-md">Col3</div>
+            <div class="col4 col-md">Col4</div>
+            <div class="col5 col-md">Col5</div>
+            <div class="col6 col-md">Col6</div>
+            <div class="col2 col-md">Col2</div>
+            <div class="col3 col-md">Col3</div>
+            <div class="col4 col-md">Col4</div>
+        </div>
+        <hr />
+        <h3>只設定某些寬(其他自動平均分配)</h3>
+        <div class="row">
+            <div class="col1 col-md">Col1</div>
+            <div class="col2 col-md-3">Col2</div>
+            <div class="col3 col-md">Col3</div>
+            <div class="col4 col-md-2">Col4</div>
+            <div class="col5 col-md">Col5</div>
+        </div>
+        <h3>動態調整寬度</h3>
+        <div class="row">
+            <div class="col3 col-md">Col3</div>
+            <div class="col4 col-md">Col4 dddddddddd ddddddddd dddddddddddddd dddddddddd dddddddddddddddd ddddddddddddd</div>
+            <div class="col5 col-md">Col5</div>
+        </div>
+        <div class="row">
+            <div class="col1 col-md">Col3</div>
+            <div class="col2 col-md-auto">Col4 dddddddddddddddddddddd dddddddddddd878787878787878787877dddddddddddddddddddddddddddddddddddddd</div>
+            <div class="col3 col-md">Col5</div>
+        </div>
+
+
+        <hr />
+
+        <h3>等寬多行</h3>
+        <div class="row">
+            <div class="col3 col-md">Col3</div>
+            <div class="col4 col-md-auto">Col4 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+            <div class="col5 w-75">Col5</div>
+            <div class="col6 col-md">Col5</div>
+        </div>
+        <hr />
+        <h3>有指定寬度,超過12格的特性</h3>
+        <div class="row">
+            <div class="col3 col-md-5">Col3</div>
+            <div class="col4 col-md-4">Col4</div>
+            <div class="col5 col-md-4">Col5</div>
+        </div>
+
+
+        <hr />
+        <h3>有指定寬度,不滿12格的特性</h3>
+        <div class="row justify-content-md-center">
+            <div class="col3 col-lg-3">Col3</div>
+            <div class="col4 col-lg-1">Col4</div>
+            <div class="col5 col-lg-2">Col5</div>
+        </div>
+    </div>
+
+
+</body>
+</html>

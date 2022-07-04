@@ -6,7 +6,8 @@ namespace _05CustomValidator.Models
     //如何驗證是否有重複的資料
     public class Member
     {
-        [Key]
+        
+        [Key] //唯一識別值
         public int id { get; set; }
 
         [Required]
@@ -25,7 +26,7 @@ namespace _05CustomValidator.Models
         {
             //override 覆蓋
             //IsValid功能就是有沒有驗證通過，但它裡面是空的，規則要自己寫
-            public override bool IsValid(object value)
+            public override bool IsValid(object value)  //身分證字號帶進來是物件所以要轉字串
             {
 
                 string id = value.ToString();//A123456789
