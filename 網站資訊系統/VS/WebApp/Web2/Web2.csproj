@@ -117,8 +117,6 @@
     <Content Include="37HW3.html" />
     <Content Include="37HW3.js" />
     <Content Include="38Jquery.html" />
-    <Content Include="41jQurey_Animate.html" />
-    <Content Include="42jQuery_Event.html" />
     <Content Include="HW4.html" />
     <Content Include="40jQuery_API.html" />
     <Content Include="39jQuery_DOＭ.html" />
@@ -180,7 +178,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50318</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4356/</IISUrl>
+          <IISUrl>http://localhost:50318/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
