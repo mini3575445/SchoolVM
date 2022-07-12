@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-4 mb-3">Customer Data List</h2>
+        <table id="table1" class="table text-dark table-hover shadow-lg border border-info">
+            
+           
+        </table>
+    </div>
+
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        let item = "<tr class='bg-dark text-white text-center'><th>CustomerID</th><th>CompanyName</th><th>ContactName</th><th>ContactTitle</th><th>Address</th><th>City</th><th>Country</th></tr>";
+        $.ajax({
+            type: 'get',
+            url: 'http://localhost:57237/api/values',
+            success: function (data) {
+                console.log(data);
+
+                //for....of....
+                for (let d of data) {
+                    item += `<tr><td>${d.CustomerID}</td><td>${d.CompanyName}</td><td>${d.ContactName}</td><td>${d.ContactTitle}</td><td>${d.Address}</td><td>${d.City}</td><td>${d.Country}</td></tr>`;
+                }
+
+                $('#table1').append(item);
+            }
+        });
+
+
+        
+    </script>
+</body>
+</html>
