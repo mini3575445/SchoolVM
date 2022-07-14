@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05CustomValidator", "05Cust
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BOOK7-32", "BOOK7-32\BOOK7-32.csproj", "{DF00C62B-3663-4EA9-9E53-3FF390740992}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06WebAPI", "06WebAPI\06WebAPI.csproj", "{6B9B07CA-392C-49FB-A0A8-EBE03DAD6ECA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RWD", "RWD\RWD.csproj", "{6265C397-044D-4FEF-A97E-FE2C0991A220}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{DF00C62B-3663-4EA9-9E53-3FF390740992}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF00C62B-3663-4EA9-9E53-3FF390740992}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF00C62B-3663-4EA9-9E53-3FF390740992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B9B07CA-392C-49FB-A0A8-EBE03DAD6ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B9B07CA-392C-49FB-A0A8-EBE03DAD6ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B9B07CA-392C-49FB-A0A8-EBE03DAD6ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B9B07CA-392C-49FB-A0A8-EBE03DAD6ECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6265C397-044D-4FEF-A97E-FE2C0991A220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6265C397-044D-4FEF-A97E-FE2C0991A220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6265C397-044D-4FEF-A97E-FE2C0991A220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6265C397-044D-4FEF-A97E-FE2C0991A220}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

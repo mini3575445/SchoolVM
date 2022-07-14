@@ -68,6 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="01RWD_Page.html" />
+    <Content Include="15Content-table.html" />
+    <Content Include="14Content-img.html" />
+    <Content Include="13Utilities-Text2.html" />
+    <Content Include="12Utilities-Text.html" />
+    <Content Include="11Utilities-Color.html" />
+    <Content Include="10Utilities-Flex.html" />
+    <Content Include="09Utilities-Display.html" />
     <Content Include="02Bootstrap_test.html" />
     <Content Include="08GridSystemOrder.html" />
     <Content Include="07GridSystemAlign.html" />
@@ -81,6 +88,8 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MyStyle.css" />
+    <Content Include="Desert.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

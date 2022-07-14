@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .col1 {
+            background-color: aquamarine;
+        }
+
+        .col2 {
+            background-color: brown;
+        }
+
+        .col3 {
+            background-color: cadetblue;
+        }
+
+        .col4 {
+            background-color: chartreuse;
+        }
+
+        .col5 {
+            background-color: cyan;
+        }
+
+        .col6 {
+            background-color: darkgray;
+        }
+
+        .col7 {
+            background-color: darkseagreen;
+        }
+
+        .col8 {
+            background-color: gold;
+        }
+
+        .col9 {
+            background-color: fuchsia;
+        }
+        .rowheight {
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <h2>Flexbox</h2>
+        <h3>Row</h3>
+        <div class="border border-primary d-flex">
+            <div class="col1 col-md-4">Col 1</div>
+            <div class="col2 col-md-4">Col 2</div>
+            <div class="col3 col-md-4">Col 3</div>
+        </div>
+        <div class="border border-primary d-flex flex-row-reverse">
+            <div class="col1 col-md-4">Col 1</div>
+            <div class="col2 col-md-4">Col 2</div>
+            <div class="col3 col-md-4">Col 3</div>
+        </div>
+        <hr />
+        <hr />
+        <h3>Column</h3>
+        <div class="d-flex border border-primary flex-column mb-3">
+            <div class="col1 p-5">Col 1</div>
+            <div class="col2 p-3">Col 2</div>
+            <div class="col3 p-0">Col 3</div>
+        </div>
+
+        <div class="d-flex border border-primary flex-column-reverse">
+            <div class="col1 p-5">Col 1</div>
+            <div class="col2 p-3">Col 2</div>
+            <div class="col3 p-0">Col 3</div>
+        </div>
+
+        <h3>justify</h3>
+        <div class="border border-primary d-flex justify-content-start mb-3">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+
+        <div class="border border-primary d-flex d-flex justify-content-center mb-3">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1">Colsssssssssssssssssssssssssssssssssssssssssssssssssssssssss2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+
+        <div class="border border-primary d-flex justify-content-end rowheight">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+
+
+        <hr />
+        <h3>align-item</h3>
+        <div class="rowheight border border-primary d-flex mb-3 align-items-center">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+        <div class="rowheight border border-primary d-flex mb-3 align-items-end">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+        <div class="rowheight border border-primary d-flex mb-3 align-items-start">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1" style="font-size:56pt">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+        <div class="rowheight border border-primary d-flex mb-3 align-items-baseline">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1" style="font-size:56pt">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+
+        <div class="rowheight border border-primary d-flex align-items-stretch">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+
+
+
+        <h3>align-self</h3>
+        <div class="rowheight border border-primary d-flex mb-3">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1 align-self-start">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+        <div class="rowheight border border-primary d-flex mb-3">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1 align-self-center" ">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+        <div class="rowheight border border-primary d-flex mb-3">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1 align-self-end" ">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+
+        <div class="rowheight border border-primary d-flex">
+            <div class="col1 p-1 align-self-baseline">Col 1</div>
+            <div class="col2 p-1 align-self-baseline" style="font-size:56pt">Col 2</div>
+            <div class="col3 p-1 align-self-baseline">Col 3</div>
+        </div>
+
+        <hr />
+
+        <h3>fill</h3>
+        <div class="border border-primary d-flex">
+            <div class="col1 p-2 flex-fill">Col 1</div>
+            <div class="col2 p-2">Col 2</div>
+            <div class="col3 p-2 flex-fill">Col 3</div>
+        </div>
+
+        <hr />
+        <hr />
+        <h3>auto margins</h3>
+        <div class="border border-primary d-flex mb-3">
+            <div class="col1 p-2">Col 1</div>
+            <div class="col2 p-2">Col 2</div>
+            <div class="col3 p-2">Col 3</div>
+        </div>
+
+        <div class="border border-primary d-flex mb-3">
+            <div class="col1 p-2 mr-auto">Col 1</div>
+            <div class="col2 p-2">Col 2</div>
+            <div class="col3 p-2">Col 3</div>
+        </div>
+        <div class="border border-primary d-flex mb-3">
+            <div class="col1 p-2">Col 1</div>
+            <div class="col2 p-2">Col 2</div>
+            <div class="col3 p-2 ml-auto">Col 3</div>
+        </div>
+
+        <hr />
+
+        <h3>with align-item</h3>
+        <div class="rowheight border border-primary d-flex mb-3 align-items-start flex-column">
+            <div class="col1 p-1 mb-auto">Col 1</div>
+            <div class="col2 p-1">Col 2</div>
+            <div class="col3 p-1">Col 3</div>
+        </div>
+        <div class="rowheight border border-primary d-flex mb-3 align-items-end flex-column">
+            <div class="col1 p-1">Col 1</div>
+            <div class="col2 p-1">Col 2</div>
+            <div class="col3 p-1 mt-auto">Col 3</div>
+        </div>
+
+        <h3>Wrap</h3>
+        <div class="border border-primary d-flex mb-3 flex-wrap">
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+        </div>
+
+        <div class="border border-primary d-flex mb-3 flex-wrap-reverse">
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+        </div>
+        <hr />
+
+        <h3>order</h3>
+        <div class="border border-primary d-flex mb-3">
+            <div class="col1 p-1 order-10">Col 1</div>
+            <div class="col2 p-1 order-12">Col 2</div>
+            <div class="col3 p-1 order-9">Col 3</div>
+        </div>
+        <hr />
+        <h3>align content</h3>
+        <div class="rowheight border border-primary d-flex mb-3 flex-wrap align-content-between">
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+            <div class="col1 p-2">item</div>
+            <div class="col2 p-2">item</div>
+            <div class="col3 p-2">item</div>
+        </div>
+
+        <hr />
+
+        <h3>grow and shrink</h3>
+        <div class="border border-primary d-flex mb-3">
+            <div class="col1 p-2 flex-grow-1">Col 1</div>
+            <div class="col2 p-2">Col 2</div>
+            <div class="col3 p-2 flex-grow-1">Col 3</div>
+        </div>
+
+
+        <div class="border border-primary d-flex mb-3">
+
+            <div class="col2 p-2 w-100">Col 2</div>
+            <div class="col3 p-2 flex-shrink-1">Col 3df dfdsf dasfdsf</div>
+        </div>
+
+
+    </div>
+
+
+
+</body>
+</html>

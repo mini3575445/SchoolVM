@@ -1,0 +1,20 @@
+﻿body {
+}
+caption {
+
+    color: #344aca;
+    text-align: center;
+    caption-side: top;
+    font-size:1.3rem;
+}
+
+
+.table-hover tbody tr:hover {
+    color: #ff0000;
+    font-size: 1.3rem;
+    background-color: #b6ff00;
+}
+
+.MyTable{
+    overflow:auto;
+}
