@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="01RWD_Page.html" />
+    <Content Include="16RWD_API.html" />
     <Content Include="15Content-table.html" />
     <Content Include="14Content-img.html" />
     <Content Include="13Utilities-Text2.html" />
