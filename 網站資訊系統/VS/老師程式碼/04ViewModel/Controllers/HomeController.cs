@@ -39,10 +39,13 @@ namespace _04ViewModel.Controllers
         [HttpPost]
         public ActionResult Create(tEmployee emp)
         {
-            db.tEmployee.Add(emp);
-            db.SaveChanges();
-
-            return RedirectToAction("Index", new { depId=emp.fDepId });
+            if (ModelState.IsValid)
+            {
+                db.tEmployee.Add(emp);
+                db.SaveChanges();
+                return RedirectToAction("Index", new { depId = emp.fDepId });
+            }
+            return View(emp);
         }
 
 

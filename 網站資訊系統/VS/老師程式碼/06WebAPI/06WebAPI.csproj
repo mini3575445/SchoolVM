@@ -166,10 +166,12 @@
     <Compile Include="Controllers\Covid19APIController.cs" />
     <Compile Include="Controllers\Covid19Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TRAStationController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\Categories.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
@@ -219,6 +221,7 @@
     <Compile Include="Models\Territories.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TRAStation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -395,6 +398,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Covid19\Index.cshtml" />
+    <Content Include="Views\TRAStation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
