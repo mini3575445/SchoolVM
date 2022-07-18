@@ -8,12 +8,16 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
 
+
+
 namespace Match
 {
     public class Global : HttpApplication
     {
         void Application_Start(object sender, EventArgs e)
         {
+           
+
             // 應用程式啟動時執行的程式碼
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
