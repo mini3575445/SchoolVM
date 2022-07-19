@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8dbb3b562bb04a44b96f9be6738a4b30" Name="Diagram1">
-        <EntityTypeShape EntityType="MatchModel.Activity" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+      <Diagram DiagramId="6e25cb5eb40b444e8cce0fbabbab72d8" Name="Diagram1">
+        <EntityTypeShape EntityType="MatchModel.Activity" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MatchModel.Activity_detail" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MatchModel.Activity_Type" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MatchModel.Friend" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.Friend" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MatchModel.Member" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MatchModel.Place" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="MatchModel.Place_type" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MatchModel.Right" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MatchModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7" IsExpanded="true" />
         <AssociationConnector Association="MatchModel.FK_Activity_Activity_Type" ManuallyRouted="false" />
         <AssociationConnector Association="MatchModel.FK_Activity_detail_Activity" ManuallyRouted="false" />
         <AssociationConnector Association="MatchModel.FK_Activity_Member" ManuallyRouted="false" />

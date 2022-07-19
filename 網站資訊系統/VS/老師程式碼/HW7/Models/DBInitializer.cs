@@ -18,7 +18,7 @@ namespace HW7Project.Models
                 new Members
                 {
                    MemberName="莊孝為",
-                   MemberBirdthday=Convert.ToDateTime("1981/7/9"),
+                   MemberBirthday=Convert.ToDateTime("1981/7/9"),
                    CreatedDate=DateTime.Today,
                    Account="shaio",
                    Password= "12345678"

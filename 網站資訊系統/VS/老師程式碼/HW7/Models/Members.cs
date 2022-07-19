@@ -25,7 +25,7 @@ namespace HW7Project.Models
 
         [DisplayName("生日")]
         [Required]
-        public DateTime MemberBirdthday { get; set; }
+        public DateTime MemberBirthday { get; set; }
 
         [DisplayName("建立日期")]
         [Required]

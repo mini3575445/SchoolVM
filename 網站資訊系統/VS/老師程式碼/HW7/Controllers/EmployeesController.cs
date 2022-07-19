@@ -46,7 +46,7 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeesID,EmployeeName,CreatedDate,Account,Password")] Employees employees)
+        public ActionResult Create([Bind(Include = "EmployeeID,EmployeeName,CreatedDate,Account,Password")] Employees employees)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeesID,EmployeeName,CreatedDate,Account,Password")] Employees employees)
+        public ActionResult Edit([Bind(Include = "EmployeeID,EmployeeName,CreatedDate,Account,Password")] Employees employees)
         {
             if (ModelState.IsValid)
             {

@@ -10,7 +10,7 @@ namespace HW7Project.Models
     public class Employees
     {
         [Key]
-        public int EmployeesID { get; set; }
+        public int EmployeeID { get; set; }
 
         [Required(ErrorMessage ="請填寫員工姓名")]
         [StringLength(100,ErrorMessage = "員工姓名不超過100字")]

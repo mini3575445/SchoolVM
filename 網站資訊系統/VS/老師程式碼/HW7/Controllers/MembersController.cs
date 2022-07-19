@@ -10,6 +10,7 @@ using HW7Project.Models;
 
 namespace HW7Project.Controllers
 {
+    [LoginCheck]
     public class MembersController : Controller
     {
         private HW7ProjectContext db = new HW7ProjectContext();
@@ -17,6 +18,7 @@ namespace HW7Project.Controllers
         // GET: Members
         public ActionResult Index()
         {
+
             return View(db.Members.ToList());
         }
 
@@ -38,6 +40,7 @@ namespace HW7Project.Controllers
         // GET: Members/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
@@ -46,7 +49,7 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirdthday,CreatedDate,Account,Password")] Members members)
+        public ActionResult Create([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirthday,CreatedDate,Account,Password")] Members members)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +81,7 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirdthday,CreatedDate,Account,Password")] Members members)
+        public ActionResult Edit([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirthday,CreatedDate,Account,Password")] Members members)
         {
             if (ModelState.IsValid)
             {

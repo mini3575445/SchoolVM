@@ -37,9 +37,12 @@ namespace HW7Project.Models
         public Nullable<DateTime> ShippedDate { get; set; }
 
         //Forign Key
+        [Required]
         public int ShipID { get; set; }
+        [Required]
         public int PayTypeID { get; set; }
         public int EmployeeID { get; set; }
+        [Required]
         public int MemberID { get; set; }
 
 

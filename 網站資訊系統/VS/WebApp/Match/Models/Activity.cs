@@ -23,8 +23,7 @@ namespace Match.Models
         public string activity_id { get; set; }
         public string activity_Type_id { get; set; }
         public string activity_name { get; set; }
-        public System.DateTime activity_date { get; set; }
-        public System.DateTime activity_time { get; set; }
+        public System.DateTime activity_datetime { get; set; }
         public string place_id { get; set; }
         public string member_id { get; set; }
     

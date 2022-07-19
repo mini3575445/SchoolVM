@@ -12,8 +12,7 @@
           <Property Name="activity_id" Type="char" MaxLength="6" Nullable="false" />
           <Property Name="activity_Type_id" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="activity_name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="activity_date" Type="datetime" Nullable="false" />
-          <Property Name="activity_time" Type="datetime" Nullable="false" />
+          <Property Name="activity_datetime" Type="datetime" Nullable="false" />
           <Property Name="place_id" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="member_id" Type="char" MaxLength="6" Nullable="false" />
         </EntityType>
@@ -256,8 +255,7 @@
           <Property Name="activity_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="activity_Type_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="activity_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="activity_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="activity_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="activity_datetime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="place_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="member_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Activity_Type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_Type" />
@@ -518,8 +516,7 @@
                 <ScalarProperty Name="activity_id" ColumnName="activity_id" />
                 <ScalarProperty Name="activity_Type_id" ColumnName="activity_Type_id" />
                 <ScalarProperty Name="activity_name" ColumnName="activity_name" />
-                <ScalarProperty Name="activity_date" ColumnName="activity_date" />
-                <ScalarProperty Name="activity_time" ColumnName="activity_time" />
+                <ScalarProperty Name="activity_datetime" ColumnName="activity_datetime" />
                 <ScalarProperty Name="place_id" ColumnName="place_id" />
                 <ScalarProperty Name="member_id" ColumnName="member_id" />
               </MappingFragment>
