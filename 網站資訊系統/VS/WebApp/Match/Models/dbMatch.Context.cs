@@ -13,10 +13,10 @@ namespace Match.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MatchEntities : DbContext
+    public partial class MatchEntities2 : DbContext
     {
-        public MatchEntities()
-            : base("name=MatchEntities")
+        public MatchEntities2()
+            : base("name=MatchEntities2")
         {
         }
     
@@ -27,10 +27,11 @@ namespace Match.Models
     
         public virtual DbSet<Activity> Activity { get; set; }
         public virtual DbSet<Activity_detail> Activity_detail { get; set; }
-        public virtual DbSet<Activity_Type> Activity_Type { get; set; }
+        public virtual DbSet<Activity_type> Activity_type { get; set; }
         public virtual DbSet<Friend> Friend { get; set; }
         public virtual DbSet<Member> Member { get; set; }
         public virtual DbSet<Place> Place { get; set; }
+        public virtual DbSet<Place_off_day> Place_off_day { get; set; }
         public virtual DbSet<Place_type> Place_type { get; set; }
         public virtual DbSet<Right> Right { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

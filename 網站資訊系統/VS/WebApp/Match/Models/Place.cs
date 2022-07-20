@@ -18,6 +18,7 @@ namespace Match.Models
         public Place()
         {
             this.Activity = new HashSet<Activity>();
+            this.Place_off_day = new HashSet<Place_off_day>();
         }
     
         public string place_id { get; set; }
@@ -25,10 +26,13 @@ namespace Match.Models
         public string shop_name { get; set; }
         public string place_address { get; set; }
         public string place_phone { get; set; }
-        public Nullable<System.DateTime> place_hours { get; set; }
+        public Nullable<System.TimeSpan> place_hours_start { get; set; }
+        public Nullable<System.TimeSpan> place_hours_end { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Place_off_day> Place_off_day { get; set; }
         public virtual Place_type Place_type { get; set; }
     }
 }

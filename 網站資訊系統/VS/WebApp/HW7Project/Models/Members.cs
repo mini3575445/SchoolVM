@@ -14,6 +14,7 @@ namespace HW7Project.Models
     {
         //若有ViewModel，就只要寫跟資料庫有關的驗證就好了。
         [Key]
+        [DisplayName("會員編號")]
         public int MemberID { get; set; }
 
         [DisplayName("姓名")]
@@ -28,10 +29,12 @@ namespace HW7Project.Models
 
         [DisplayName("生日")]
         [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime MemberBirdthday { get; set; }
 
         [DisplayName("建立日期")]
         [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime CreatedDate { get; set; }
 
 

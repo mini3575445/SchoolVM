@@ -11,13 +11,17 @@ using HW7Project.Models;
 namespace HW7Project.Controllers
 {
     //整個Controller都Check
-    [LoginCheck]
+    //[LoginCheck]
     public class MembersController : Controller
     {
         private HW7ProjectContext db = new HW7ProjectContext();
 
         // GET: Members
         public ActionResult Index()
+        {
+            return View(db.Members.ToList());
+        }
+        public ActionResult IndexModal()
         {
             return View(db.Members.ToList());
         }
@@ -34,6 +38,7 @@ namespace HW7Project.Controllers
             {
                 return HttpNotFound();
             }
+            //***若Detail使用Modal，就能回傳PartialView部分檢視(沒有Layout)
             return View(members);
         }
 
@@ -80,6 +85,7 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //Bind正向表列
         public ActionResult Edit([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirdthday,CreatedDate,Account,Password")] Members members)
         {
             if (ModelState.IsValid)
@@ -103,6 +109,7 @@ namespace HW7Project.Controllers
             {
                 return HttpNotFound();
             }
+            
             return View(members);
         }
 

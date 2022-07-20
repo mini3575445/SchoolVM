@@ -116,6 +116,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="MemberPhoto\defaultPhoto.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -277,6 +278,7 @@
     <Content Include="Views\HomeManager\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\HomeManager\Login.cshtml" />
+    <Content Include="Views\Members\IndexModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

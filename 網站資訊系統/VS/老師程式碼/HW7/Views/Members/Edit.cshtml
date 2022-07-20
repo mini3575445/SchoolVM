@@ -29,6 +29,13 @@
             @Html.LabelFor(model => model.MemberPhotoFile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MemberPhotoFile, new { htmlAttributes = new { @class = "form-control" } })
+                @{
+                    var photo = Model.MemberPhotoFile == null ? "defaultPhoto.png" : Model.MemberPhotoFile;
+
+                }
+
+                <img src="~/MemberPhoto/@photo" class="img-thumbnail" width="300" />
+
                 @Html.ValidationMessageFor(model => model.MemberPhotoFile, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,14 +64,14 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
-        </div>
-
+        </div>*@
+           @Html.HiddenFor(model => model.Password)
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

@@ -12,16 +12,16 @@ namespace Match.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Activity_Type
+    public partial class Activity_type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Activity_Type()
+        public Activity_type()
         {
             this.Activity = new HashSet<Activity>();
         }
     
-        public string activity_Type_id { get; set; }
-        public string activity_Type_name { get; set; }
+        public string activity_type_id { get; set; }
+        public string activity_type_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }

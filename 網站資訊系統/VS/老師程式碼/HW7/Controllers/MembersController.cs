@@ -10,7 +10,7 @@ using HW7Project.Models;
 
 namespace HW7Project.Controllers
 {
-    [LoginCheck]
+    //[LoginCheck]
     public class MembersController : Controller
     {
         private HW7ProjectContext db = new HW7ProjectContext();
@@ -34,7 +34,7 @@ namespace HW7Project.Controllers
             {
                 return HttpNotFound();
             }
-            return View(members);
+            return PartialView(members);
         }
 
         // GET: Members/Create
@@ -81,11 +81,28 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirthday,CreatedDate,Account,Password")] Members members)
+        public ActionResult Edit(Members members)
         {
+
+            var member = db.Members.Find(members.MemberID);
+            member.MemberName = members.MemberName;
+            member.MemberBirthday = members.MemberBirthday;
+            member.MemberID = members.MemberID;
+            member.CreatedDate = members.CreatedDate;
+            member.Account = members.Account;
+            member.Password = members.Password;
+
+
+            //db.SaveChanges();
+
+            //ModelState.Remove("MemberPhotoFile");
+            //ModelState.Remove("CreatedDate");
+            //ModelState.Remove("Account");
+            //ModelState.Remove("Password");
+
             if (ModelState.IsValid)
             {
-                db.Entry(members).State = EntityState.Modified;
+                db.Entry(member).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

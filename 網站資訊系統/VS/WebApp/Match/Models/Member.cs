@@ -30,6 +30,8 @@ namespace Match.Models
         public string member_id_name { get; set; }
         public bool member_gender { get; set; }
         public System.DateTime member_birthday { get; set; }
+        public string member_cellphone { get; set; }
+        public string member_email { get; set; }
         public string member_address { get; set; }
         public string right_id { get; set; }
     

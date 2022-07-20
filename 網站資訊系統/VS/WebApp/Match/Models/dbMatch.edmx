@@ -10,10 +10,10 @@
             <PropertyRef Name="activity_id" />
           </Key>
           <Property Name="activity_id" Type="char" MaxLength="6" Nullable="false" />
-          <Property Name="activity_Type_id" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="activity_type_id" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="activity_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="activity_datetime" Type="datetime" Nullable="false" />
-          <Property Name="place_id" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="place_id" Type="char" MaxLength="6" Nullable="false" />
           <Property Name="member_id" Type="char" MaxLength="6" Nullable="false" />
         </EntityType>
         <EntityType Name="Activity_detail">
@@ -24,12 +24,12 @@
           <Property Name="activity_id" Type="char" MaxLength="6" Nullable="false" />
           <Property Name="member_id" Type="char" MaxLength="6" Nullable="false" />
         </EntityType>
-        <EntityType Name="Activity_Type">
+        <EntityType Name="Activity_type">
           <Key>
-            <PropertyRef Name="activity_Type_id" />
+            <PropertyRef Name="activity_type_id" />
           </Key>
-          <Property Name="activity_Type_id" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="activity_Type_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="activity_type_id" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="activity_type_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Friend">
           <Key>
@@ -50,6 +50,8 @@
           <Property Name="member_id_name" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="member_gender" Type="bit" Nullable="false" />
           <Property Name="member_birthday" Type="datetime" Nullable="false" />
+          <Property Name="member_cellphone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="member_email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="member_address" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="right_id" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
@@ -57,12 +59,21 @@
           <Key>
             <PropertyRef Name="place_id" />
           </Key>
-          <Property Name="place_id" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="place_id" Type="char" MaxLength="6" Nullable="false" />
           <Property Name="place_type_id" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="shop_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="place_address" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="place_phone" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="place_hours" Type="datetime" />
+          <Property Name="place_phone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="place_hours_start" Type="time" Precision="7" />
+          <Property Name="place_hours_end" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Place_off_day">
+          <Key>
+            <PropertyRef Name="place_off_day_number" />
+          </Key>
+          <Property Name="place_off_day_number" Type="int" Nullable="false" />
+          <Property Name="place_id" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="place_off_day" Type="nchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Place_type">
           <Key>
@@ -89,14 +100,14 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Activity_Activity_Type">
-          <End Role="Activity_Type" Type="Self.Activity_Type" Multiplicity="1" />
+          <End Role="Activity_type" Type="Self.Activity_type" Multiplicity="1" />
           <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Activity_Type">
-              <PropertyRef Name="activity_Type_id" />
+            <Principal Role="Activity_type">
+              <PropertyRef Name="activity_type_id" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="activity_Type_id" />
+              <PropertyRef Name="activity_type_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -148,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Friend_Member1">
+        <Association Name="FK_Friend_Member">
           <End Role="Member" Type="Self.Member" Multiplicity="1" />
           <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
           <ReferentialConstraint>
@@ -160,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Friend_Member2">
+        <Association Name="FK_Friend_Member1">
           <End Role="Member" Type="Self.Member" Multiplicity="1" />
           <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,6 +195,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Place_off_day_Place">
+          <End Role="Place" Type="Self.Place" Multiplicity="1" />
+          <End Role="Place_off_day" Type="Self.Place_off_day" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="place_id" />
+            </Principal>
+            <Dependent Role="Place_off_day">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Place_Place_type">
           <End Role="Place_type" Type="Self.Place_type" Multiplicity="1" />
           <End Role="Place" Type="Self.Place" Multiplicity="*" />
@@ -199,15 +222,16 @@
         <EntityContainer Name="MatchModelStoreContainer">
           <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Activity_detail" EntityType="Self.Activity_detail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Activity_Type" EntityType="Self.Activity_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Activity_type" EntityType="Self.Activity_type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Friend" EntityType="Self.Friend" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Place_off_day" EntityType="Self.Place_off_day" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Place_type" EntityType="Self.Place_type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Right" EntityType="Self.Right" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Activity_Activity_Type" Association="Self.FK_Activity_Activity_Type">
-            <End Role="Activity_Type" EntitySet="Activity_Type" />
+            <End Role="Activity_type" EntitySet="Activity_type" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
           <AssociationSet Name="FK_Activity_detail_Activity" Association="Self.FK_Activity_detail_Activity">
@@ -226,17 +250,21 @@
             <End Role="Place" EntitySet="Place" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
-          <AssociationSet Name="FK_Friend_Member1" Association="Self.FK_Friend_Member1">
+          <AssociationSet Name="FK_Friend_Member" Association="Self.FK_Friend_Member">
             <End Role="Member" EntitySet="Member" />
             <End Role="Friend" EntitySet="Friend" />
           </AssociationSet>
-          <AssociationSet Name="FK_Friend_Member2" Association="Self.FK_Friend_Member2">
+          <AssociationSet Name="FK_Friend_Member1" Association="Self.FK_Friend_Member1">
             <End Role="Member" EntitySet="Member" />
             <End Role="Friend" EntitySet="Friend" />
           </AssociationSet>
           <AssociationSet Name="FK_Member_Right" Association="Self.FK_Member_Right">
             <End Role="Right" EntitySet="Right" />
             <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Place_off_day_Place" Association="Self.FK_Place_off_day_Place">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Place_off_day" EntitySet="Place_off_day" />
           </AssociationSet>
           <AssociationSet Name="FK_Place_Place_type" Association="Self.FK_Place_Place_type">
             <End Role="Place_type" EntitySet="Place_type" />
@@ -253,12 +281,12 @@
             <PropertyRef Name="activity_id" />
           </Key>
           <Property Name="activity_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="activity_Type_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="activity_type_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="activity_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="activity_datetime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="place_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="place_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="member_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Activity_Type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_Type" />
+          <NavigationProperty Name="Activity_type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_type" />
           <NavigationProperty Name="Activity_detail" Relationship="Self.FK_Activity_detail_Activity" FromRole="Activity" ToRole="Activity_detail" />
           <NavigationProperty Name="Member" Relationship="Self.FK_Activity_Member" FromRole="Activity" ToRole="Member" />
           <NavigationProperty Name="Place" Relationship="Self.FK_Activity_Place" FromRole="Activity" ToRole="Place" />
@@ -273,13 +301,13 @@
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_detail_Activity" FromRole="Activity_detail" ToRole="Activity" />
           <NavigationProperty Name="Member" Relationship="Self.FK_Activity_detail_Member" FromRole="Activity_detail" ToRole="Member" />
         </EntityType>
-        <EntityType Name="Activity_Type">
+        <EntityType Name="Activity_type">
           <Key>
-            <PropertyRef Name="activity_Type_id" />
+            <PropertyRef Name="activity_type_id" />
           </Key>
-          <Property Name="activity_Type_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="activity_Type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity_Type" ToRole="Activity" />
+          <Property Name="activity_type_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="activity_type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity_type" ToRole="Activity" />
         </EntityType>
         <EntityType Name="Friend">
           <Key>
@@ -288,8 +316,8 @@
           <Property Name="friend_number" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="friend_member1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="friend_member2" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Member" Relationship="Self.FK_Friend_Member1" FromRole="Friend" ToRole="Member" />
-          <NavigationProperty Name="Member1" Relationship="Self.FK_Friend_Member2" FromRole="Friend" ToRole="Member" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Friend_Member" FromRole="Friend" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="Self.FK_Friend_Member1" FromRole="Friend" ToRole="Member" />
         </EntityType>
         <EntityType Name="Member">
           <Key>
@@ -302,26 +330,39 @@
           <Property Name="member_id_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="member_gender" Type="Boolean" Nullable="false" />
           <Property Name="member_birthday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="member_cellphone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="member_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="member_address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="right_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Member" FromRole="Member" ToRole="Activity" />
           <NavigationProperty Name="Activity_detail" Relationship="Self.FK_Activity_detail_Member" FromRole="Member" ToRole="Activity_detail" />
-          <NavigationProperty Name="Friend" Relationship="Self.FK_Friend_Member1" FromRole="Member" ToRole="Friend" />
-          <NavigationProperty Name="Friend1" Relationship="Self.FK_Friend_Member2" FromRole="Member" ToRole="Friend" />
+          <NavigationProperty Name="Friend" Relationship="Self.FK_Friend_Member" FromRole="Member" ToRole="Friend" />
+          <NavigationProperty Name="Friend1" Relationship="Self.FK_Friend_Member1" FromRole="Member" ToRole="Friend" />
           <NavigationProperty Name="Right" Relationship="Self.FK_Member_Right" FromRole="Member" ToRole="Right" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
             <PropertyRef Name="place_id" />
           </Key>
-          <Property Name="place_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="place_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="place_type_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="shop_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="place_address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="place_phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="place_hours" Type="DateTime" Precision="3" />
+          <Property Name="place_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="place_hours_start" Type="Time" Precision="7" />
+          <Property Name="place_hours_end" Type="Time" Precision="7" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Place" FromRole="Place" ToRole="Activity" />
+          <NavigationProperty Name="Place_off_day" Relationship="Self.FK_Place_off_day_Place" FromRole="Place" ToRole="Place_off_day" />
           <NavigationProperty Name="Place_type" Relationship="Self.FK_Place_Place_type" FromRole="Place" ToRole="Place_type" />
+        </EntityType>
+        <EntityType Name="Place_off_day">
+          <Key>
+            <PropertyRef Name="place_off_day_number" />
+          </Key>
+          <Property Name="place_off_day_number" Type="Int32" Nullable="false" />
+          <Property Name="place_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="place_off_day1" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Place" Relationship="Self.FK_Place_off_day_Place" FromRole="Place_off_day" ToRole="Place" />
         </EntityType>
         <EntityType Name="Place_type">
           <Key>
@@ -350,14 +391,14 @@
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Activity_Activity_Type">
-          <End Role="Activity_Type" Type="Self.Activity_Type" Multiplicity="1" />
+          <End Role="Activity_type" Type="Self.Activity_type" Multiplicity="1" />
           <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Activity_Type">
-              <PropertyRef Name="activity_Type_id" />
+            <Principal Role="Activity_type">
+              <PropertyRef Name="activity_type_id" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="activity_Type_id" />
+              <PropertyRef Name="activity_type_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -409,7 +450,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Friend_Member1">
+        <Association Name="FK_Friend_Member">
           <End Role="Member" Type="Self.Member" Multiplicity="1" />
           <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
           <ReferentialConstraint>
@@ -421,7 +462,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Friend_Member2">
+        <Association Name="FK_Friend_Member1">
           <End Role="Member" Type="Self.Member" Multiplicity="1" />
           <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
           <ReferentialConstraint>
@@ -445,6 +486,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Place_off_day_Place">
+          <End Role="Place" Type="Self.Place" Multiplicity="1" />
+          <End Role="Place_off_day" Type="Self.Place_off_day" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="place_id" />
+            </Principal>
+            <Dependent Role="Place_off_day">
+              <PropertyRef Name="place_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Place_Place_type">
           <End Role="Place_type" Type="Self.Place_type" Multiplicity="1" />
           <End Role="Place" Type="Self.Place" Multiplicity="*" />
@@ -457,18 +510,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MatchEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MatchEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activity" EntityType="Self.Activity" />
           <EntitySet Name="Activity_detail" EntityType="Self.Activity_detail" />
-          <EntitySet Name="Activity_Type" EntityType="Self.Activity_Type" />
+          <EntitySet Name="Activity_type" EntityType="Self.Activity_type" />
           <EntitySet Name="Friend" EntityType="Self.Friend" />
           <EntitySet Name="Member" EntityType="Self.Member" />
           <EntitySet Name="Place" EntityType="Self.Place" />
+          <EntitySet Name="Place_off_day" EntityType="Self.Place_off_day" />
           <EntitySet Name="Place_type" EntityType="Self.Place_type" />
           <EntitySet Name="Right" EntityType="Self.Right" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_Activity_Activity_Type" Association="Self.FK_Activity_Activity_Type">
-            <End Role="Activity_Type" EntitySet="Activity_Type" />
+            <End Role="Activity_type" EntitySet="Activity_type" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
           <AssociationSet Name="FK_Activity_detail_Activity" Association="Self.FK_Activity_detail_Activity">
@@ -487,17 +541,21 @@
             <End Role="Member" EntitySet="Member" />
             <End Role="Activity_detail" EntitySet="Activity_detail" />
           </AssociationSet>
-          <AssociationSet Name="FK_Friend_Member1" Association="Self.FK_Friend_Member1">
+          <AssociationSet Name="FK_Friend_Member" Association="Self.FK_Friend_Member">
             <End Role="Member" EntitySet="Member" />
             <End Role="Friend" EntitySet="Friend" />
           </AssociationSet>
-          <AssociationSet Name="FK_Friend_Member2" Association="Self.FK_Friend_Member2">
+          <AssociationSet Name="FK_Friend_Member1" Association="Self.FK_Friend_Member1">
             <End Role="Member" EntitySet="Member" />
             <End Role="Friend" EntitySet="Friend" />
           </AssociationSet>
           <AssociationSet Name="FK_Member_Right" Association="Self.FK_Member_Right">
             <End Role="Right" EntitySet="Right" />
             <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Place_off_day_Place" Association="Self.FK_Place_off_day_Place">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Place_off_day" EntitySet="Place_off_day" />
           </AssociationSet>
           <AssociationSet Name="FK_Place_Place_type" Association="Self.FK_Place_Place_type">
             <End Role="Place_type" EntitySet="Place_type" />
@@ -509,12 +567,12 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MatchModelStoreContainer" CdmEntityContainer="MatchEntities">
+        <EntityContainerMapping StorageEntityContainer="MatchModelStoreContainer" CdmEntityContainer="MatchEntities2">
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="MatchModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
                 <ScalarProperty Name="activity_id" ColumnName="activity_id" />
-                <ScalarProperty Name="activity_Type_id" ColumnName="activity_Type_id" />
+                <ScalarProperty Name="activity_type_id" ColumnName="activity_type_id" />
                 <ScalarProperty Name="activity_name" ColumnName="activity_name" />
                 <ScalarProperty Name="activity_datetime" ColumnName="activity_datetime" />
                 <ScalarProperty Name="place_id" ColumnName="place_id" />
@@ -531,11 +589,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Activity_Type">
-            <EntityTypeMapping TypeName="MatchModel.Activity_Type">
-              <MappingFragment StoreEntitySet="Activity_Type">
-                <ScalarProperty Name="activity_Type_id" ColumnName="activity_Type_id" />
-                <ScalarProperty Name="activity_Type_name" ColumnName="activity_Type_name" />
+          <EntitySetMapping Name="Activity_type">
+            <EntityTypeMapping TypeName="MatchModel.Activity_type">
+              <MappingFragment StoreEntitySet="Activity_type">
+                <ScalarProperty Name="activity_type_id" ColumnName="activity_type_id" />
+                <ScalarProperty Name="activity_type_name" ColumnName="activity_type_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -558,6 +616,8 @@
                 <ScalarProperty Name="member_id_name" ColumnName="member_id_name" />
                 <ScalarProperty Name="member_gender" ColumnName="member_gender" />
                 <ScalarProperty Name="member_birthday" ColumnName="member_birthday" />
+                <ScalarProperty Name="member_cellphone" ColumnName="member_cellphone" />
+                <ScalarProperty Name="member_email" ColumnName="member_email" />
                 <ScalarProperty Name="member_address" ColumnName="member_address" />
                 <ScalarProperty Name="right_id" ColumnName="right_id" />
               </MappingFragment>
@@ -571,7 +631,17 @@
                 <ScalarProperty Name="shop_name" ColumnName="shop_name" />
                 <ScalarProperty Name="place_address" ColumnName="place_address" />
                 <ScalarProperty Name="place_phone" ColumnName="place_phone" />
-                <ScalarProperty Name="place_hours" ColumnName="place_hours" />
+                <ScalarProperty Name="place_hours_start" ColumnName="place_hours_start" />
+                <ScalarProperty Name="place_hours_end" ColumnName="place_hours_end" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Place_off_day">
+            <EntityTypeMapping TypeName="MatchModel.Place_off_day">
+              <MappingFragment StoreEntitySet="Place_off_day">
+                <ScalarProperty Name="place_off_day_number" ColumnName="place_off_day_number" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="place_off_day1" ColumnName="place_off_day" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

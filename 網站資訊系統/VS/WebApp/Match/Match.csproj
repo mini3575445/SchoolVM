@@ -112,8 +112,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\dbMatch.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>dbMatch.Context.cs</LastGenOutput>
       <DependentUpon>dbMatch.edmx</DependentUpon>
+      <LastGenOutput>dbMatch.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\dbMatch.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -134,7 +134,7 @@
     <Compile Include="Models\Activity_detail.cs">
       <DependentUpon>dbMatch.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Activity_Type.cs">
+    <Compile Include="Models\Activity_type.cs">
       <DependentUpon>dbMatch.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\dbMatch.Context.cs">
@@ -159,6 +159,9 @@
       <DependentUpon>dbMatch.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Place.cs">
+      <DependentUpon>dbMatch.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Place_off_day.cs">
       <DependentUpon>dbMatch.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Place_type.cs">
