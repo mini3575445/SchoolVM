@@ -11,7 +11,9 @@ namespace Match.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Member
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,11 +24,24 @@ namespace Match.Models
             this.Friend = new HashSet<Friend>();
             this.Friend1 = new HashSet<Friend>();
         }
-    
+
+        [DisplayName("會員編號")]
+        [Key]
+        [RegularExpression("[P][0-9]{5}")]
         public string member_id { get; set; }
+
+        [DisplayName("帳號")]
+        [RegularExpression("[A-Za-z0-9]{6,30}")]
         public string member_account { get; set; }
+
+        [DisplayName("密碼")]
+        [RegularExpression("[A-Za-z0-9]{6,30}")]
         public string member_password { get; set; }
+
+        [StringLength(50)]
         public string member_name { get; set; }
+
+        [StringLength(20)]
         public string member_id_name { get; set; }
         public bool member_gender { get; set; }
         public System.DateTime member_birthday { get; set; }

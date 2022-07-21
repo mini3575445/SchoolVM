@@ -11,7 +11,8 @@ namespace Match.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class Activity_type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,13 @@ namespace Match.Models
         {
             this.Activity = new HashSet<Activity>();
         }
-    
+        [DisplayName("類型編號")]
+        [Key]
+        [RegularExpression("[C][0-9]{2}")]
         public string activity_type_id { get; set; }
+
+        [DisplayName("類型名稱")]
+        [StringLength(50)]
         public string activity_type_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
