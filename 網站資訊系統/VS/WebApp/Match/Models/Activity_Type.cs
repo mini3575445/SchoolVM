@@ -22,7 +22,7 @@ namespace Match.Models
         }
         [DisplayName("類型編號")]
         [Key]
-        [RegularExpression("[C][0-9]{2}")]
+        [RegularExpression("^[C][0-9]{2}$")]
         public string activity_type_id { get; set; }
 
         [DisplayName("類型名稱")]

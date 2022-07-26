@@ -11,7 +11,9 @@ namespace Match.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Place
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,13 +22,37 @@ namespace Match.Models
             this.Activity = new HashSet<Activity>();
             this.Place_off_day = new HashSet<Place_off_day>();
         }
-    
+
+        [DisplayName("活動地點編號")]
+        [Key]
+        [RegularExpression("^[S][0-9]{5}$")]
         public string place_id { get; set; }
+
+        [DisplayName("活動地點分類編號")]
+        [RegularExpression("^[E][0-9]{2}$")]
         public string place_type_id { get; set; }
+
+        [DisplayName("店家名稱")]
+        [StringLength(50)]
+        [Required]
         public string shop_name { get; set; }
+
+        [DisplayName("地址")]
+        [StringLength(100)]
+        [Required]
         public string place_address { get; set; }
+
+        [DisplayName("聯絡電話")]
+        [StringLength(10)]
+        [Required]
         public string place_phone { get; set; }
+
+        [DisplayName("營業時間")]
+        [DataType(DataType.Time)]
         public Nullable<System.TimeSpan> place_hours_start { get; set; }
+
+        [DisplayName("結束時間")]
+        [DataType(DataType.Time)]
         public Nullable<System.TimeSpan> place_hours_end { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

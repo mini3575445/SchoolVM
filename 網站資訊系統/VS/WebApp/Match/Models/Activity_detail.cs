@@ -11,11 +11,21 @@ namespace Match.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class Activity_detail
     {
+        [DisplayName("流水號")]
+        [Key]
+        [RegularExpression("^[A][0-9]{12}$")]
         public string activity_detail_number { get; set; }
+
+        [DisplayName("活動編號")]
+        [RegularExpression("^[A][0-9]{5}$")]
         public string activity_id { get; set; }
+
+        [DisplayName("參加者")]
+        [RegularExpression("^[P][0-9]{5}$")]
         public string member_id { get; set; }
     
         public virtual Activity Activity { get; set; }
