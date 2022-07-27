@@ -11,8 +11,9 @@ namespace Match.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(MetaPlace_type))]
 
     public partial class Place_type
     {
@@ -21,15 +22,8 @@ namespace Match.Models
         {
             this.Place = new HashSet<Place>();
         }
-
-        [DisplayName("分類編號")]
-        [Key]
-        [RegularExpression("^[E][0-9]{2}$")]
-
+    
         public string place_type_id { get; set; }
-
-        [DisplayName("分類名稱")]
-        [StringLength(50)]
         public string place_type_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

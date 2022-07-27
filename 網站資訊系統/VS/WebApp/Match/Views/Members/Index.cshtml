@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Match.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_manager.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.member_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.member_account)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.member_name)
+        </th>
+        <th>           
+            @Html.DisplayNameFor(model => model.member_id_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.member_gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.member_birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.member_cellphone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.member_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.member_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Right.right_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_account)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.member_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_id_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_cellphone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Right.right_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.member_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.member_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.member_id })
+        </td>
+    </tr>
+}
+
+</table>

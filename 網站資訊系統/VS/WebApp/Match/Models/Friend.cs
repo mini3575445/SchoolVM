@@ -11,25 +11,16 @@ namespace Match.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(MetaFriend))]
 
     public partial class Friend
     {
-
-        [DisplayName("流水號")]
-        [Key]
-        [RegularExpression("^[E][0-9]{2}$")]
         public string friend_number { get; set; }
-
-        [DisplayName("使用者")]
-        [RegularExpression("^[P][0-9]{5}$")]
         public string friend_member1 { get; set; }
-
-        [DisplayName("好友")]
-        [RegularExpression("^[P][0-9]{5}$")]
         public string friend_member2 { get; set; }
-
+    
         public virtual Member Member { get; set; }
         public virtual Member Member1 { get; set; }
     }

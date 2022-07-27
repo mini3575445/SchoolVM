@@ -11,22 +11,14 @@ namespace Match.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(MetaPlace_off_day))]
 
     public partial class Place_off_day
     {
-        [DisplayName("流水號")]
-        [Key]
         public int place_off_day_number { get; set; }
-
-        [DisplayName("活動地點編號")]
-        [RegularExpression("^[S][0-9]{5}$")]
         public string place_id { get; set; }
-
-        [DisplayName("公休日")]
-        [RegularExpression("^[\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u65e5]$")]
-
         public string place_off_day1 { get; set; }
     
         public virtual Place Place { get; set; }

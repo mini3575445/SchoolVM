@@ -510,7 +510,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MatchEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MatchEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activity" EntityType="Self.Activity" />
           <EntitySet Name="Activity_detail" EntityType="Self.Activity_detail" />
           <EntitySet Name="Activity_type" EntityType="Self.Activity_type" />
@@ -567,7 +567,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MatchModelStoreContainer" CdmEntityContainer="MatchEntities2">
+        <EntityContainerMapping StorageEntityContainer="MatchModelStoreContainer" CdmEntityContainer="MatchEntities">
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="MatchModel.Activity">
               <MappingFragment StoreEntitySet="Activity">

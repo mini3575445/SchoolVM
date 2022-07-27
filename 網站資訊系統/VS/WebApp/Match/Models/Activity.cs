@@ -11,9 +11,9 @@ namespace Match.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
+    [MetadataType(typeof(MetaActivity))]
 
     public partial class Activity
     {
@@ -22,35 +22,12 @@ namespace Match.Models
         {
             this.Activity_detail = new HashSet<Activity_detail>();
         }
-
-        [DisplayName("活動編號")]
-        [Key]
-        [RegularExpression("^[A][0-9]{5}$")]
+    
         public string activity_id { get; set; }
-
-        [DisplayName("類型編號")]
-        [Required]
-        [RegularExpression("^[C][0-9]{2}$")]
         public string activity_type_id { get; set; }
-
-        [DisplayName("活動名稱")]
-        [Required]
-        [StringLength(50)]
         public string activity_name { get; set; }
-
-        [DisplayName("活動日期")]
-        [Required]
-        [DataType(DataType.DateTime)]
         public System.DateTime activity_datetime { get; set; }
-
-        [DisplayName("地點編號")]
-        [Required]
-        [RegularExpression("^[S][0-9]{5}$")]
         public string place_id { get; set; }
-
-        [DisplayName("發起人編號")]
-        [Required]
-        [RegularExpression("^[P][0-9]{5}$")]
         public string member_id { get; set; }
     
         public virtual Activity_type Activity_type { get; set; }
@@ -60,6 +37,3 @@ namespace Match.Models
         public virtual Place Place { get; set; }
     }
 }
-
-
-

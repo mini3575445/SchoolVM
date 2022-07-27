@@ -13,10 +13,10 @@ namespace Match.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MatchEntities2 : DbContext
+    public partial class MatchEntities : DbContext
     {
-        public MatchEntities2()
-            : base("name=MatchEntities2")
+        public MatchEntities()
+            : base("name=MatchEntities")
         {
         }
     

@@ -11,8 +11,9 @@ namespace Match.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(MetaRight))]
 
     public partial class Right
     {
@@ -21,14 +22,8 @@ namespace Match.Models
         {
             this.Member = new HashSet<Member>();
         }
-
-        [DisplayName("權限編號")]
-        [RegularExpression("^[A-Z]$")]
-        [Key]
+    
         public string right_id { get; set; }
-        [DisplayName("權限名稱")]
-        [StringLength(50)]
-        [Required]
         public string right_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

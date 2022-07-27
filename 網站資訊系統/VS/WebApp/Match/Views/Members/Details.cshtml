@@ -1,0 +1,99 @@
+﻿@model Match.Models.Member
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_manager.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Member</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.member_account)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_account)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_id_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_id_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_cellphone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_cellphone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Right.right_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Right.right_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.member_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
