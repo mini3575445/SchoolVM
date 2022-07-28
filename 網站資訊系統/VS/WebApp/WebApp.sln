@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW7Project", "HW7Project\HW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Match", "Match\Match.csproj", "{A95463AB-A4C9-4DFF-95FB-6E7B24B78AF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07ADOnet", "07ADOnet\07ADOnet.csproj", "{A438DBBF-A28C-4C33-BC48-8EBF31C9E9C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{A95463AB-A4C9-4DFF-95FB-6E7B24B78AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A95463AB-A4C9-4DFF-95FB-6E7B24B78AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A95463AB-A4C9-4DFF-95FB-6E7B24B78AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A438DBBF-A28C-4C33-BC48-8EBF31C9E9C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A438DBBF-A28C-4C33-BC48-8EBF31C9E9C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A438DBBF-A28C-4C33-BC48-8EBF31C9E9C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A438DBBF-A28C-4C33-BC48-8EBF31C9E9C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

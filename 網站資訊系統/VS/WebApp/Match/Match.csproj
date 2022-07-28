@@ -296,6 +296,7 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>dbMatch.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\VMLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -325,6 +326,7 @@
     <Content Include="Views\Members\Details.cshtml" />
     <Content Include="Views\Members\Edit.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\HomeManager\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
