@@ -4,6 +4,8 @@
 
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    using System.Security.Cryptography;
     public class MetaActivity
     {
         [DisplayName("活動編號")]
@@ -96,9 +98,31 @@
         [RegularExpression("^[A-Za-z0-9]{6,30}$")]
         public string member_account { get; set; }
 
+        //先HASH密碼再存進資料庫
+
         [DisplayName("密碼")]
-        [RegularExpression("^[A-Za-z0-9]{6,30}$")]
-        public string member_password { get; set; }
+        //[RegularExpression("^[A-Za-z0-9]{6,30}$")]
+        string password;
+        public string member_password         
+        {  get { return password; } 
+            
+           set 
+            {
+                byte[] hashValue;
+                string result = "";
+
+                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding;
+                byte[] pwBytes = ue.GetBytes(value);
+                SHA256 shHash = SHA256.Create();
+                hashValue = shHash.ComputeHash(pwBytes);
+                foreach (byte b in hashValue)
+                {
+                    result += b.ToString();
+                }
+                password = result;
+            } 
+        }
+
 
         [DisplayName("會員名稱")]
         [StringLength(50)]
