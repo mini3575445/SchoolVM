@@ -18,6 +18,7 @@ namespace _07ADOnet.Models
                                            //第二個參數是SqlConnection
         DataSet ds = new DataSet();//記憶體的資料集
         DataTable dt = new DataTable();
+        
 
 
         /// <summary>
@@ -47,11 +48,16 @@ namespace _07ADOnet.Models
             return dt;
         }
 
-        public DataTable querySql(string sql, CommandType cmt, string id, string name)
-        {
-            adp.SelectCommand.Parameters.AddWithValue("@id", id);
-            adp.SelectCommand.Parameters.AddWithValue("@name", name);
+        //把固定資料型態的參數改掉，才可以適用其他CONTROLLER
+        //不知道他要傳幾個參數就改成泛型
+        public DataTable querySql(string sql, CommandType cmt, List<SqlParameter> para)
+        {            
 
+            //只要使用泛型就要用陣列讀出來
+            foreach (SqlParameter p in para)
+            {
+                adp.SelectCommand.Parameters.Add(p);
+            }
 
             adp.SelectCommand.CommandType = cmt;
             adp.SelectCommand.CommandText = sql;

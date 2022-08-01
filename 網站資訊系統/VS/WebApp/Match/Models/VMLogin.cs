@@ -15,6 +15,7 @@ namespace Match.Models
 
         [DisplayName("密碼")]
         [RegularExpression("^[A-Za-z0-9]{6,30}$")]
+        [DataType(DataType.Password)]
         public string member_password { get; set; }
     }
 }

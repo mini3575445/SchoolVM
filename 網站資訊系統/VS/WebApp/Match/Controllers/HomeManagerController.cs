@@ -11,6 +11,7 @@ namespace Match.Controllers
     {
         MatchEntities db = new MatchEntities();
         // GET: HomeManager
+        [LoginCheck]
         public ActionResult Index()
         {
             return View();
@@ -20,9 +21,18 @@ namespace Match.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string _id)
+        public ActionResult Login(VMLogin vMLogin)
         {
-            return View();
+            var user = db.Member.Where(m => m.member_account == vMLogin.member_account && m.member_password == vMLogin.member_password).FirstOrDefault();
+
+            if (user == null)
+            {
+                ViewBag.ErrMsg = "帳號或密碼有錯!";
+                return View(vMLogin);
+            }
+
+            Session["user"] = user;
+            return RedirectToAction("Index");
         }
 
 

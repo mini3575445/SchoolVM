@@ -100,7 +100,7 @@
 
         //先HASH密碼再存進資料庫
 
-        [DisplayName("密碼")]
+        //[DisplayName("密碼")]
         //[RegularExpression("^[A-Za-z0-9]{6,30}$")]
         string password;
         public string member_password         
@@ -111,7 +111,7 @@
                 byte[] hashValue;
                 string result = "";
 
-                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding;
+                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
                 byte[] pwBytes = ue.GetBytes(value);
                 SHA256 shHash = SHA256.Create();
                 hashValue = shHash.ComputeHash(pwBytes);
@@ -135,7 +135,7 @@
         public string member_id_name { get; set; }
 
         [DisplayName("性別")]
-        [RegularExpression("^[01]$")]
+        //[RegularExpression("^[01]$")]
         public bool member_gender { get; set; }
 
         [DisplayName("生日")]

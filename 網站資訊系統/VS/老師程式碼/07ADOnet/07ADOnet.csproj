@@ -130,9 +130,11 @@
     <Content Include="Views\Home\GetEmployee.cshtml" />
     <Content Include="Views\Home\GetCoursePivot.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -184,6 +186,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>school.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SetData.cs" />
     <Compile Include="Models\View_1.cs">
       <DependentUpon>school.tt</DependentUpon>
     </Compile>

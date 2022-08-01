@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using _07ADOnet.Models;
+using System.Data.SqlClient;
 
 namespace _07ADOnet.Controllers
 {
@@ -22,11 +23,15 @@ namespace _07ADOnet.Controllers
 
 
             //string sql = "select * from 學生 where 學號= '"+id+"' and 姓名='"+ name+"'";
-
+            List<SqlParameter> list = new List<SqlParameter>
+            {
+                new SqlParameter("id", id),
+                new SqlParameter("name", name)
+            };
             
             string sql = "select * from 學生 where 學號=@id and 姓名=@name";
 
-            var dt = gd.querySql(sql, System.Data.CommandType.Text,id,name);
+            var dt = gd.querySql(sql, System.Data.CommandType.Text, list);
 
             if(dt.Rows.Count==0)
             {

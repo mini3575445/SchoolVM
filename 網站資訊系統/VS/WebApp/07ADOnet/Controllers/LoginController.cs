@@ -4,7 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 using _07ADOnet.Models;
+using System.Data.SqlClient;
+
 namespace _07ADOnet.Controllers
 {
     public class LoginController : Controller
@@ -24,8 +27,13 @@ namespace _07ADOnet.Controllers
             //  ***避免資料隱碼攻擊，SQL的字串不可以跟C#的變數、物件串在一起!!!
 
             //比較安全的寫法是把變數丟到SQL執行，使用sqlParameters
+            List<SqlParameter> list = new List<SqlParameter>
+            {
+                new SqlParameter("id", id),
+                new SqlParameter("name",name)
+            };
             string sql = "select * from 學生 where 學號 =@id and 姓名 =@name ";
-            var dt = gd.querySql(sql, System.Data.CommandType.Text,id,name);
+            var dt = gd.querySql(sql, System.Data.CommandType.Text, list);
 
             if (dt.Rows.Count == 0)
             {
