@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>全國休閒農業區旅遊資訊</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .hiddenWord {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            white-space: normal;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="alert alert-primary text-center"><strong>全國休閒農業區旅遊資訊</strong></h1>
+    <div class="container">
+        <div class="row"></div>
+    </div>
+
+    
+
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script>
+        $.ajax({
+            type: 'get',
+            url: 'https://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvAttractions.aspx',
+            success: function (data) {
+                console.log(data);
+                var item = "";
+
+                for (var i = 0; i < data.length; i++) {
+                    item = `
+                                        <div class="card col-12 col-sm-6 col-md-4 p-3  border-primary">
+                                        <div><img src="${data[i].Photo}" class="card-img-top"></div>
+                                        <div class="card-body text-center p-2">
+                                            <h2 class="card-title">${data[i].Name}</h2>
+                                            <h4 class="card-text">${data[i].Address}</h4>
+                                            <p class="card-text hiddenWord">${data[i].Introduction}</p>
+                                            <a href="https://www.google.com.tw/maps/search/${data[i].Address}" target="_blank"><button class="btn btn-primary" >點我看地圖</button></a>
+                                        </div>
+                                        </div>
+
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${i}">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal${i}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="${data[i].Photo}" class="card-img-top">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+                         `
+
+                    $(".row").append(item);
+                }
+
+
+            }
+
+
+        });
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+
+</body>
+</html>

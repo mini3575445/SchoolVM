@@ -10,7 +10,7 @@ using Match.Models;
 
 namespace Match.Controllers
 {
-    [RightCheck]
+    //[RightCheck]
     public class MembersController : Controller
     {
         private MatchEntities db = new MatchEntities();

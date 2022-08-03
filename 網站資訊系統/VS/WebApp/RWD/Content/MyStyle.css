@@ -11,3 +11,8 @@ caption {
 .MyTable {
 overflow:auto;
 }
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #ff0000;
+    content: ">";
+}

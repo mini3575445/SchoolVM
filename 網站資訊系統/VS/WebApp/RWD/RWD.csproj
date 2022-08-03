@@ -72,6 +72,11 @@
     <Content Include="16RWD_API.html" />
     <Content Include="18Form.html" />
     <Content Include="19Form-Validator.html" />
+    <Content Include="20Alert.html" />
+    <Content Include="21Badge.html" />
+    <Content Include="22BreadCrumb.html" />
+    <Content Include="23Button.html" />
+    <Content Include="24DropDown.html" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />

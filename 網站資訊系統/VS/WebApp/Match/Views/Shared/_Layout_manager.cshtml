@@ -17,7 +17,7 @@
             </button>
             <div class="collapse navbar-collapse" id="MynavbarMenu">
                 <div class="navbar-nav">
-                    @Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                    @Html.ActionLink("後台首頁", "Index", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("活動管理", "Index", "Activity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("活動類別管理", "Index", "Activity_type", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("地點管理", "Index", "Place", new { area = "" }, new { @class = "nav-link font-weight-bold" })
@@ -36,7 +36,7 @@
     </section>
     <hr />
     <footer class="bg-primary mt-5">
-        <p class="text-white text-center p-3">Copyright &copy; @DateTime.Now.Year - 專題 All Rights Reserved.</p>
+       <p class="text-white text-center p-3">Copyright &copy; @DateTime.Now.Year - 專題 All Rights Reserved.</p>
     </footer>
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>

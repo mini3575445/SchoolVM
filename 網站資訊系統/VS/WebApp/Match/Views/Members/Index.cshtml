@@ -44,7 +44,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.member_id)
@@ -59,7 +60,7 @@
             @Html.DisplayFor(modelItem => item.member_id_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.member_gender)
+            @Html.DisplayFor(modelItem => item.member_gender)       
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.member_birthday)
