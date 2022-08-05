@@ -23,7 +23,7 @@
         <th>           
             @Html.DisplayNameFor(model => model.member_id_name)
         </th>
-        <th>
+        <th>            
             @Html.DisplayNameFor(model => model.member_gender)
         </th>
         <th>
@@ -60,7 +60,14 @@
             @Html.DisplayFor(modelItem => item.member_id_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.member_gender)       
+            @if (item.member_gender == true)
+            {
+                <p>男</p>
+            }
+            else
+            {
+                <p>女</p>
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.member_birthday)
@@ -79,8 +86,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.member_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.member_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.member_id })
+            @Html.ActionLink("Details", "Details", new { id=item.member_id })
         </td>
     </tr>
 }

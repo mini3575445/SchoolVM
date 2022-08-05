@@ -35,12 +35,7 @@ namespace HW7Project.Controllers
                 ViewBag.ErrMsg = "帳號或密碼有錯!!";
                 return View(vMLogin);
             }
-            if (user == null)
-            {
-                ViewBag.ErrMsg = "帳號或密碼有錯!!";
-                return View(vMLogin);
-            }
-
+            
             Session["user"] = user;
             return RedirectToAction("Index");
 

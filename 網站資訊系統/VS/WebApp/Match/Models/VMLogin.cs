@@ -11,11 +11,13 @@ namespace Match.Models
     {
         [DisplayName("帳號")]
         [RegularExpression("^[A-Za-z0-9]{6,30}$")]
+        [Required]
         public string member_account { get; set; }
 
         [DisplayName("密碼")]
         [RegularExpression("^[A-Za-z0-9]{6,30}$")]
         [DataType(DataType.Password)]
+        [Required]
         public string member_password { get; set; }
     }
 }

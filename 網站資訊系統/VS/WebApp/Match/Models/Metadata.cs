@@ -48,10 +48,12 @@
 
         [DisplayName("活動編號")]
         [RegularExpression("^[A][0-9]{5}$")]
+        [Required]
         public string activity_id { get; set; }
 
         [DisplayName("參加者")]
         [RegularExpression("^[P][0-9]{5}$")]
+        [Required]
         public string member_id { get; set; }
 
         public virtual Activity Activity { get; set; }
@@ -79,10 +81,12 @@
 
         [DisplayName("使用者")]
         [RegularExpression("^[P][0-9]{5}$")]
+        [Required]
         public string friend_member1 { get; set; }
 
         [DisplayName("好友")]
         [RegularExpression("^[P][0-9]{5}$")]
+        [Required]
         public string friend_member2 { get; set; }
     }
 
@@ -96,13 +100,17 @@
 
         [DisplayName("帳號")]
         [RegularExpression("^[A-Za-z0-9]{6,30}$")]
+        [Required]
         public string member_account { get; set; }
 
         //先HASH密碼再存進資料庫
 
-        //[DisplayName("密碼")]
-        //[RegularExpression("^[A-Za-z0-9]{6,30}$")]
+        
         string password;
+        [DisplayName("密碼")]
+        [DataType(DataType.Password)]
+        [Required]
+        //[RegularExpression("^[A-Za-z0-9]{6,30}$")]
         public string member_password         
         {  get { return password; } 
             
@@ -135,17 +143,19 @@
         public string member_id_name { get; set; }
 
         [DisplayName("性別")]
+        [Required]
         //[RegularExpression("^[01]$")]
         public bool member_gender { get; set; }
 
         [DisplayName("生日")]
-        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         [Required]
         public System.DateTime member_birthday { get; set; }
 
 
         [DisplayName("手機號碼")]
         [RegularExpression("^[0][9][0-9]{8}$")]
+        [Required]
         public string member_cellphone { get; set; }
 
         [DisplayName("電子信箱")]
@@ -162,6 +172,7 @@
 
         [DisplayName("權限編號")]
         [RegularExpression("^[A-Z]$")]
+        [Required]
         public string right_id { get; set; }
     }
 
@@ -175,6 +186,7 @@
 
         [DisplayName("活動地點分類編號")]
         [RegularExpression("^[E][0-9]{2}$")]
+        [Required]
         public string place_type_id { get; set; }
 
         [DisplayName("店家名稱")]
@@ -209,6 +221,7 @@
 
         [DisplayName("活動地點編號")]
         [RegularExpression("^[S][0-9]{5}$")]
+        [Required]
         public string place_id { get; set; }
 
         [DisplayName("公休日")]

@@ -18,8 +18,14 @@
             <div class="collapse navbar-collapse" id="MynavbarMenu">
                 <div class="navbar-nav">
                     @Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
-                    @Html.ActionLink("登入", "Login", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
-                    @Html.ActionLink("登出", "Logout", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                    @if (Session["user"] != null)
+                    {
+                        @Html.ActionLink("登出", "Logout", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("登入", "Login", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                    }
                 </div>
             </div>
         </div>

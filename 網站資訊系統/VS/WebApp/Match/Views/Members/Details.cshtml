@@ -5,12 +5,19 @@
     Layout = "~/Views/Shared/_Layout_manager.cshtml";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.member_name)</h2>
 
 <div>
-    <h4>Member</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.member_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_id)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.member_account)
         </dt>
@@ -18,23 +25,7 @@
         <dd>
             @Html.DisplayFor(model => model.member_account)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.member_password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.member_name)
-        </dd>
-
+                            
         <dt>
             @Html.DisplayNameFor(model => model.member_id_name)
         </dt>
@@ -48,7 +39,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.member_gender)
+            @if (Model.member_gender == true)
+            {
+                <p>男</p>
+            }
+            else
+            {
+                <p>女</p>
+            }
         </dd>
 
         <dt>
