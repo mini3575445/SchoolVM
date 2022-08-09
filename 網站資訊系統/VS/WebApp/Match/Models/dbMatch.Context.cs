@@ -35,7 +35,5 @@ namespace Match.Models
         public virtual DbSet<Place_type> Place_type { get; set; }
         public virtual DbSet<Right> Right { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-
-        public System.Data.Entity.DbSet<Match.Models.VMMember> VMMembers { get; set; }
     }
 }

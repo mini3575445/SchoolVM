@@ -14,7 +14,6 @@ namespace Match.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(MetaFriend))]
-
     public partial class Friend
     {
         public string friend_number { get; set; }

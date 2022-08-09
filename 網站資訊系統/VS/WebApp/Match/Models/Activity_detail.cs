@@ -15,7 +15,6 @@ namespace Match.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(MetaActivity_detail))]
-
     public partial class Activity_detail
     {
         public string activity_detail_number { get; set; }

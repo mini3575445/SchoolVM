@@ -39,8 +39,8 @@ namespace Match.Controllers
 
         // GET: Members/Create
         public ActionResult Create()
-        {
-            ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name");
+        {           
+            //ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name");
             return View();
         }
 
@@ -49,10 +49,13 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "member_account,member_password,member_name,member_id_name,member_gender,member_birthday,member_cellphone,member_email,member_address,right_id")] Member member)
+        public ActionResult Create([Bind(Include = "member_id,member_account,member_password,member_name,member_id_name,member_gender,member_birthday,member_cellphone,member_email,member_address,right_id")] Member member)
         {
             if (ModelState.IsValid)
             {
+                //ChangeIDAuto text = new ChangeIDAuto();
+                //string str = text.ChangeIDNumber("A0001", "A");
+
                 db.Member.Add(member);
                 db.SaveChanges();
                 return RedirectToAction("Index");

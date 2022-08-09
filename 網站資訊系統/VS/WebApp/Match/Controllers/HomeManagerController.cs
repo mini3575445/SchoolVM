@@ -22,7 +22,7 @@ namespace Match.Controllers
         }
         [HttpPost]
         public ActionResult Login(VMLogin vMLogin)
-        {
+        {           
             var user = db.Member.Where(m => m.member_account == vMLogin.member_account && m.member_password == vMLogin.member_password).FirstOrDefault();
             var right = user.right_id;
             if (user == null)

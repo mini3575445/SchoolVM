@@ -38,16 +38,14 @@
             @Html.DisplayNameFor(model => model.member_gender)
         </dt>
 
-        <dd>
-            @if (Model.member_gender == true)
+        @if (Model.member_gender == true)
             {
-                <p>男</p>
+                <dd>男</dd>
             }
             else
             {
-                <p>女</p>
-            }
-        </dd>
+                <dd>女</dd>
+            }        
 
         <dt>
             @Html.DisplayNameFor(model => model.member_birthday)
