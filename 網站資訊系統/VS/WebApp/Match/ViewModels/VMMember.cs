@@ -20,31 +20,33 @@ namespace Match.Models
         [Required]
         public string member_account { get; set; }
 
-        
-        string password;
         [DisplayName("密碼")]
-        [DataType(DataType.Password)]
-        [Required]
-        //[RegularExpression("^[A-Za-z0-9]{6,30}$")]
-        public string member_password
-        {
-            get { return password; }
-            set
-            {
-                byte[] hashValue;
-                string result = "";
+        public string member_password { get; set; }
 
-                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
-                byte[] pwBytes = ue.GetBytes(value);
-                SHA256 shHash = SHA256.Create();
-                hashValue = shHash.ComputeHash(pwBytes);
-                foreach (byte b in hashValue)
-                {
-                    result += b.ToString();
-                }
-                password = result;
-            }
-        }
+        //string password;
+        //[DisplayName("密碼")]
+        //[DataType(DataType.Password)]
+        //[Required]
+        ////[RegularExpression("^[A-Za-z0-9]{6,30}$")]
+        //public string member_password
+        //{
+        //    get { return password; }
+        //    set
+        //    {
+        //        byte[] hashValue;
+        //        string result = "";
+
+        //        System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
+        //        byte[] pwBytes = ue.GetBytes(value);
+        //        SHA256 shHash = SHA256.Create();
+        //        hashValue = shHash.ComputeHash(pwBytes);
+        //        foreach (byte b in hashValue)
+        //        {
+        //            result += b.ToString();
+        //        }
+        //        password = result;
+        //    }
+        //}
 
         [DisplayName("確認密碼")]
         [RegularExpression("^[A-Za-z0-9]{6,30}$")]

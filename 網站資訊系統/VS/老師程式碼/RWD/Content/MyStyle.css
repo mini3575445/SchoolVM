@@ -18,3 +18,20 @@ caption {
 .MyTable{
     overflow:auto;
 }
+
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #ff0000;
+    content: ">";
+}
+
+
+.jumbotron {
+    background-image: url('../photo/00.jpg');
+    background-repeat:round;
+    
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 3px black;
+}

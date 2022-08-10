@@ -103,40 +103,42 @@
         [Required]
         public string member_account { get; set; }
 
-        //***member_password的get、set要貼到Member.cs運作
-        string password;
-        [DisplayName("密碼")]
-        [Required]
-        [DataType(DataType.Password)]
+        public string member_password { get; set; }
 
-        public string member_password
-        {
-            get
-            {
-                return password;
-            }
-            set
-            {
-                byte[] hashValue;
-                string result = "";
+        ////***member_password的get、set要貼到Member.cs運作
+        //string password;
+        //[DisplayName("密碼")]
+        //[Required]
+        //[DataType(DataType.Password)]
 
-                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
+        //public string member_password
+        //{
+        //    get
+        //    {
+        //        return password;
+        //    }
+        //    set
+        //    {
+        //        byte[] hashValue;
+        //        string result = "";
 
-                byte[] pwBytes = ue.GetBytes(value);
+        //        System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
 
-                SHA256 shHash = SHA256.Create();
+        //        byte[] pwBytes = ue.GetBytes(value);
 
-                hashValue = shHash.ComputeHash(pwBytes);
+        //        SHA256 shHash = SHA256.Create();
 
-                foreach (byte b in hashValue)
-                {
-                    result += b.ToString();
-                }
+        //        hashValue = shHash.ComputeHash(pwBytes);
 
-                password = result;
-            }
+        //        foreach (byte b in hashValue)
+        //        {
+        //            result += b.ToString();
+        //        }
 
-        }
+        //        password = result;
+        //    }
+
+        //}
 
 
         //string password;

@@ -5,5 +5,5 @@
 Members/create:使用vmmember OK
 Members/create:創帳號的權限
 Members/create:傳入權限下拉式選單	看影片13ViewModel:1:10:00
-Members/edit:修改資料沒有成功
+Members/edit:修改資料沒有成功 OK8/10
 /homeManager/login:加密完的密碼登不進去	*等老師做登入雜湊

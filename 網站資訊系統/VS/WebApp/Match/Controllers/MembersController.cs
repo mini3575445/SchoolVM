@@ -95,6 +95,7 @@ namespace Match.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name", member.right_id);
+            ViewBag.ErrMsg = "修改失敗";
             return View(member);
         }
 
