@@ -10,7 +10,7 @@ using Match.Models;
 
 namespace Match.Controllers
 {
-    //[RightCheck]
+    [RightCheck]
     public class MembersController : Controller
     {
         private MatchEntities db = new MatchEntities();
@@ -39,8 +39,9 @@ namespace Match.Controllers
 
         // GET: Members/Create
         public ActionResult Create()
-        {           
-            //ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name");
+        {                   
+            
+            ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name");  //傳入權限資料用於下拉式選單
             return View();
         }
 
@@ -52,7 +53,7 @@ namespace Match.Controllers
         public ActionResult Create([Bind(Include = "member_id,member_account,member_password,member_name,member_id_name,member_gender,member_birthday,member_cellphone,member_email,member_address,right_id")] Member member)
         {
             if (ModelState.IsValid)
-            {
+            {                
                 //ChangeIDAuto text = new ChangeIDAuto();
                 //string str = text.ChangeIDNumber("A0001", "A");
 
@@ -62,6 +63,7 @@ namespace Match.Controllers
             }
 
             ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name", member.right_id);
+            ViewBag.ErrMsg = "新增失敗";
             return View(member);
         }
 

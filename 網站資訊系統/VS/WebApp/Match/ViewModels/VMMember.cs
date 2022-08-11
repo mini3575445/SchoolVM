@@ -72,7 +72,7 @@ namespace Match.Models
         public bool member_gender { get; set; }
 
         [DisplayName("生日")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]        
         [Required]
         public System.DateTime member_birthday { get; set; }
 

@@ -24,7 +24,6 @@ namespace Match.Controllers
         public ActionResult Login(VMLogin vMLogin)
         {           
             var user = db.Member.Where(m => m.member_account == vMLogin.member_account && m.member_password == vMLogin.member_password).FirstOrDefault();
-            var right = user.right_id;
             if (user == null)
             {
                 ViewBag.ErrMsg = "帳號或密碼有錯!";
@@ -35,6 +34,8 @@ namespace Match.Controllers
                 ViewBag.ErrMsg = "您的帳號已被封鎖!";
                 return View(vMLogin);
             }
+
+            var right = user.right_id;
 
             Session["user"] = user;
             Session["right"] = right;
