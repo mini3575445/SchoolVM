@@ -9,3 +9,10 @@
     height: 60px;
     line-height: 60px;
 }
+.header{
+    background-image:url('../images/Banner.jpg');
+    background-position:center top;
+    background-size:cover;   /*背景大小維持比例*/
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}

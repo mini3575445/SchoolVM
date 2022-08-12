@@ -14,15 +14,7 @@
 <div class="form-horizontal">
     <h4>VMMember</h4>
     <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.member_id, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.member_id, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.member_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })    
     <div class="form-group">
         @Html.LabelFor(model => model.member_account, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -129,10 +121,10 @@
                 }
                 @foreach (var item in ViewBag.right_id)
                 {
-                       if(rightInt < rightData.IndexOf(item.Value))
-                        {
-                <option value="@item.Value">@item.Text</option>
-                        }
+                    if (rightInt < rightData.IndexOf(item.Value))
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
                 }
                 @Html.ValidationMessageFor(model => model.right_id, "", new { @class = "text-danger" })
             </select>

@@ -39,7 +39,7 @@ namespace Match.Controllers
 
         // GET: Members/Create
         public ActionResult Create()
-        {                   
+        {
             
             ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name");  //傳入權限資料用於下拉式選單
             return View();
@@ -52,11 +52,13 @@ namespace Match.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "member_id,member_account,member_password,member_name,member_id_name,member_gender,member_birthday,member_cellphone,member_email,member_address,right_id")] Member member)
         {
-            if (ModelState.IsValid)
-            {                
-                //ChangeIDAuto text = new ChangeIDAuto();
-                //string str = text.ChangeIDNumber("A0001", "A");
+            //自動編號
+            ChangeIDAuto changeIDAuto = new ChangeIDAuto();
+            var last_data = db.Member.OrderByDescending(m => m.member_id).FirstOrDefault();     //抓資料庫Member最後一筆資料
+            member.member_id = changeIDAuto.ChangeIDNumber(last_data.member_id, "P", 5);    //P00005
 
+            if (ModelState.IsValid)
+            {                                
                 db.Member.Add(member);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -1,19 +1,31 @@
-﻿<!DOCTYPE html>
+﻿<!--本課主題
+1.自訂CSS的class-->
+
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>響應式網頁設計-課程網站</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/style.css" rel="stylesheet" />
+	<meta charset="utf-8">
+	<title>響應式網頁設計-課程網站</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+	<link href="Content/style.css" rel="stylesheet" />
 </head>
 <body>
-
-<header>
-	<img src="images/Banner.jpg" alt="banner" class="img-fluid">
-</header>
-
+	<header class="header p-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-8 offset-2">
+					<div class="embed-responsive embed-responsive-16by9">
+						<!--embed-responsive-16by9影片解析度為16:9-->
+						<!--offset-2空兩隔-->
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_QbRXRnHMVY" allowfullscreen></iframe>	<!--iframe是HTML內建標籤:內嵌框架-->
+						<!--embed-responsive-item嵌入式物件-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 <section class="p-3 bg-dark">
 	<div class="container">
 		<div class="row">
@@ -29,33 +41,33 @@
 				<h2 class="text-warning">
 					<strong>DOWNLOAD</strong>
 				</h2>
-				<div>
-                    <button type="button">
+				<div class="btn-group mb-2">
+                    <button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
                         Material DOWNLOAD
                     </button>
-					<div>
-                        <h6>Mack a choice</h6>
-						<a href="#">All Courses</a>
-						<a href="#">HTML5</a>
-						<a href="#">CSS3</a>
-						<a href="#">JavaScript</a>
-						<a href="#">Bootstrap4</a>
+					<div class="dropdown-menu">
+                        <h6 class="dropdown-header">Mack a choice</h6>
+						<a href="#" class="dropdown-item">All Courses</a>
+						<a href="#" class="dropdown-item">HTML5</a>
+						<a href="#" class="dropdown-item">CSS3</a>
+						<a href="#" class="dropdown-item">JavaScript</a>
+						<a href="#" class="dropdown-item">Bootstrap4</a>
 					</div>
 				</div>
-				<div>
-                    <button type="button">
+				<div class="btn-group">
+                    <button type="button" class="btn btn-danger btn-lg">
                         Example DOWNLOAD
                     </button>
-					<button type="button">
+					<button type="button" class="btn btn-danger btn-lg dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
-                    <div>
-                        <a href="#">HTML5</a>
-                        <a href="#">CSS3</a>
-                        <a href="#">JavaScript</a>
-                        <a href="#">Bootstrap4</a>
-                        <div></div>
-                        <a href="#">Bootstrap3</a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#" class="dropdown-item">HTML5</a>
+                        <a href="#" class="dropdown-item">CSS3</a>
+                        <a href="#" class="dropdown-item">JavaScript</a>
+                        <a href="#" class="dropdown-item">Bootstrap4</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item disabled">Bootstrap3</a>
                     </div>
 				</div>
 			</div>
@@ -70,34 +82,38 @@
 		</h2>
 		<div class="row">
 			<div class="col-12 col-sm-6 col-md-3 mb-4">
-				<div class="p-1">
-					<img src="images/Scene1.jpg" alt="第一關：HTML5">
-					<div>
-                        <p class="text-center">第一關：HTML5</p>
+				<div class="p-1 card bg-light">
+					<img src="images/Scene1.jpg" alt="第一關：HTML5" class="card-img-top">
+					<div class="card-body">
+                        <p class="text-center text-danger">第一關：HTML5</p>
+						<a href="#"class="btn btn-danger btn-block">更新訊息</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-12 col-sm-6 col-md-3 mb-4">
-				<div class="p-1">
-					<img src="images/Scene2.jpg" alt="第二關：CSS3">
-					<div>
-                        <p class="text-center">第二關：CSS3</p>
+				<div class="p-1 card bg-light">
+					<img src="images/Scene2.jpg" alt="第二關：CSS3" class="card-img-top">
+					<div class="card-body">
+						<p class="text-center text-danger">第二關：CSS3</p>
+						<a href="#" class="btn btn-danger btn-block">更新訊息</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-12 col-sm-6 col-md-3 mb-4">
-				<div class="p-1">
-					<img src="images/Scene3.jpg" alt="第三關：JavaScript">
-					<div>
-                        <p class="text-center">第三關：JavaScript</p>
+				<div class="p-1 card bg-light">
+					<img src="images/Scene3.jpg" alt="第三關：JavaScript" class="card-img-top">
+					<div class="card-body">
+						<p class="text-center text-danger">第三關：JavaScript</p>
+						<a href="#" class="btn btn-danger btn-block">更新訊息</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-12 col-sm-6 col-md-3 mb-4">
-				<div class="p-1">
-					<img src="images/Scene4.jpg" alt="第四關：Bootstrap4">
-					<div>
-                        <p class="text-center">第四關：Bootstrap4</p>
+				<div class="p-1 card bg-light">
+					<img src="images/Scene4.jpg" alt="第四關：Bootstrap4" class="card-img-top">
+					<div class="card-body">
+						<p class="text-center text-danger">第四關：Bootstrap4</p>
+						<a href="#" class="btn btn-danger btn-block">更新訊息</a>
 					</div>
 				</div>
 			</div>
@@ -106,26 +122,26 @@
 		<div class="row mt-3">
 			<div class="col-12">
 				<nav>
-					<ul>
-						<li>
-							<a href="#">
+					<ul class="pagination justify-content-center">
+						<li class="page-item">
+							<a href="#" class="page-link">
 								<span>&laquo;</span>
-								<span>Previous</span>
+								<span class="sr-only">Previous</span>
 							</a>
 						</li>
-						<li>
-							<a href="#">1</a>
+						<li class="page-item">
+							<a href="#" class="page-link">1</a>
 						</li>
-						<li>
-							<a href="#">2</a>
+						<li class="page-item">
+							<a href="#" class="page-link">2</a>
 						</li>
-						<li>
-							<a href="#">3</a>
+						<li class="page-item">
+							<a href="#" class="page-link">3</a>
 						</li>
-						<li>
-							<a href="#">
+						<li class="page-item">
+							<a href="#" class="page-link">
 								<span>&raquo;</span>
-								<span>Next</span>
+								<span class="sr-only">Next</span>
 							</a>
 						</li>
 					</ul>
@@ -201,51 +217,51 @@
 		
 			<div class="col-12">
 				<form action="">
-					<div>
-						<div>
-							<h3>聯繫資料填寫</h3>
+					<div class="card border-success w-100">
+						<div class="card-header bg-success">
+							<h3 class="text-center text-white">聯繫資料填寫</h3>
 						</div>
-						<div>
-							<div>
-								<span>
-									<i></i>
+						<div class="card-body">
+							<div class="input-group mb-2">
+								<span class="input-group-prepend">
+									<i class="input-group-text bi bi-file-person-fill"></i>
 								</span>
 								<input type="text" class="form-control" placeholder="請輸入真實姓名">
 							</div>
-							<div>
-								<span>
-									<i></i>
+							<div class="input-group mb-2">
+								<span class="input-group-prepend">
+									<i class="input-group-text bi bi-mailbox2"></i>
 								</span>
 								<input type="text" class="form-control" placeholder="請輸入電子郵件">
 							</div>
-							<div>
-								<span>
-									<i></i>
+							<div class="input-group mb-2">
+								<span class="input-group-prepend">
+									<i class="input-group-text bi bi-phone-fill"></i>
 								</span>
 								<input type="text" class="form-control" placeholder="請輸入手機號碼">
 							</div>
 							<h3>從何處得知此課程(可複選)</h3>
-							<div>
+							<div class="form-check">
 								<label>
-									<input type="checkbox" name="options" value="option1">網路廣告
+									<input type="checkbox" name="options" value="option1" class="form-check-input">網路廣告
 								</label>
 							</div>
-							<div>
+							<div class="form-check">
 								<label>
-									<input type="checkbox" name="options" value="option2">招生簡章
+									<input type="checkbox" name="options" value="option2" class="form-check-input">招生簡章
 								</label>
 							</div>
-							<div>
+							<div class="form-check">
 								<label>
-									<input type="checkbox" name="options" value="option3">廣播廣告
+									<input type="checkbox" name="options" value="option3" class="form-check-input">廣播廣告
 								</label>
 							</div>
-							<div>
+							<div class="form-check">
 								<label>
-									<input type="checkbox" name="options" value="option4">其他
+									<input type="checkbox" name="options" value="option4" class="form-check-input">其他
 								</label>
 							</div>
-							<button type="submit">送出</button>
+							<button type="submit" class="btn btn-success btn-block btn-lg">送出</button>
 						</div>
 					</div>
 				</form>
@@ -258,6 +274,9 @@
 <footer class="mt-5 bg-dark footer-content">
     <p class="text-center text-white mb-0">Copyright © <span id="y"></span> KPPTR WDA</p>
 </footer>
+<script src="Scripts/jquery-3.0.0.min.js"></script>
+<script src="Scripts/bootstrap.bundle.min.js"></script>
+
 <script src="Scripts/script.js"></script>
 </body>
 </html>

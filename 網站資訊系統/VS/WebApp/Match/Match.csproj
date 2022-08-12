@@ -249,6 +249,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\Activity_typeController.cs" />
     <Compile Include="Controllers\ChangeIDAuto.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeManagerController.cs" />
@@ -337,6 +339,16 @@
     <Content Include="Views\Members\Edit.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\HomeManager\Login.cshtml" />
+    <Content Include="Views\Activities\Create.cshtml" />
+    <Content Include="Views\Activities\Delete.cshtml" />
+    <Content Include="Views\Activities\Details.cshtml" />
+    <Content Include="Views\Activities\Edit.cshtml" />
+    <Content Include="Views\Activities\Index.cshtml" />
+    <Content Include="Views\Activity_type\Create.cshtml" />
+    <Content Include="Views\Activity_type\Delete.cshtml" />
+    <Content Include="Views\Activity_type\Details.cshtml" />
+    <Content Include="Views\Activity_type\Edit.cshtml" />
+    <Content Include="Views\Activity_type\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

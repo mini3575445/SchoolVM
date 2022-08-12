@@ -6,7 +6,6 @@
 }
 
 <h2>Edit</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -17,7 +16,7 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.member_id)
     @Html.HiddenFor(model => model.member_account)
-    @Html.HiddenFor(model => model.member_password)
+    @Html.HiddenFor(model => model.member_password) @*在前端不顯示textbox，但值會從後端傳至前端!*@
     <div class="form-group">
         @Html.LabelFor(model => model.member_name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -113,14 +112,20 @@
                 {
                     if (rightInt < rightData.IndexOf(item.Value))
                     {
-                        <option value="@item.Value">@item.Text</option>
+                        if (Model.right_id == item.Value)
+                        {
+                            <option value="@item.Value" selected>@item.Text</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
                     }
                 }
                 @Html.ValidationMessageFor(model => model.right_id, "", new { @class = "text-danger" })
             </select>
         </div>
     </div>
-
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
