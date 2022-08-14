@@ -7,15 +7,15 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Activity_type</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-       
+
         <div class="form-group">
             @Html.LabelFor(model => model.activity_type_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -31,7 +31,7 @@
         </div>
     </div>
 }
-
+@ViewBag.ErrMsg
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

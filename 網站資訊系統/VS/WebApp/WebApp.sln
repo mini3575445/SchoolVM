@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Match", "Match\Match.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07ADOnet", "07ADOnet\07ADOnet.csproj", "{A438DBBF-A28C-4C33-BC48-8EBF31C9E9C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise", "Exercise\Exercise.csproj", "{615C1E77-FE6C-4C69-99F5-05762FC53520}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{A438DBBF-A28C-4C33-BC48-8EBF31C9E9C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A438DBBF-A28C-4C33-BC48-8EBF31C9E9C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A438DBBF-A28C-4C33-BC48-8EBF31C9E9C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615C1E77-FE6C-4C69-99F5-05762FC53520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615C1E77-FE6C-4C69-99F5-05762FC53520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615C1E77-FE6C-4C69-99F5-05762FC53520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615C1E77-FE6C-4C69-99F5-05762FC53520}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

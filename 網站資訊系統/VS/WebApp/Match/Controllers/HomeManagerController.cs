@@ -33,8 +33,8 @@ namespace Match.Controllers
             {
                 ViewBag.ErrMsg = "您的帳號已被封鎖!";
                 return View(vMLogin);
-            }
-
+            }          
+            
             var right = user.right_id;
 
             Session["user"] = user;
