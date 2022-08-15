@@ -4,7 +4,7 @@
 
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-
+    using System.Linq;
     using System.Security.Cryptography;
     public class MetaActivity
     {
@@ -69,7 +69,20 @@
 
         [DisplayName("類型名稱")]
         [StringLength(50)]
+        [CheckActivityTypeName(ErrorMessage ="已經有相同名稱")]
         public string activity_type_name { get; set; }
+
+        public class CheckActivityTypeName : ValidationAttribute
+        {
+            public override bool IsValid(object value)
+            {
+                MatchEntities db = new MatchEntities();
+
+                var ActivityTypeName = db.Activity_type.Where(m => m.activity_type_name == value.ToString()).FirstOrDefault();
+
+                return (ActivityTypeName == null) ? true : false;
+            }
+        }
     }
     public class MetaFriend
     {
@@ -88,6 +101,8 @@
         [RegularExpression("^[P][0-9]{5}$")]
         [Required]
         public string friend_member2 { get; set; }
+
+        
     }
 
     public class MetaMember
@@ -100,7 +115,10 @@
 
         [DisplayName("帳號")]
         [RegularExpression("^[A-Za-z0-9]{6,30}$")]
-        [Required]
+        [Required]        
+
+        [CheckAccount(ErrorMessage ="已經有相同帳號")] //驗證是否有相同帳號
+
         public string member_account { get; set; }
 
         [DisplayName("密碼")]
@@ -213,6 +231,21 @@
         [RegularExpression("^[A-Z]$")]
         [Required]
         public string right_id { get; set; }
+
+
+
+        //檢查重複帳號的自訂驗證
+        public class CheckAccount : ValidationAttribute
+        {
+            public override bool IsValid(object value)
+            {
+                MatchEntities db = new MatchEntities();
+
+                var account = db.Member.Where(m=>m.member_account == value.ToString()).FirstOrDefault();
+
+                return (account == null) ? true : false;
+            }
+        }
     }
 
     public class MetaPlace

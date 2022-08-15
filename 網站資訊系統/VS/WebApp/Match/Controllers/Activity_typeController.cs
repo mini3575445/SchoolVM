@@ -54,15 +54,7 @@ namespace Match.Controllers
             activity_type.activity_type_id = changeIDAuto.ChangeIDNumber(last_data.activity_type_id, "C", 2);    //C05
 
             if (ModelState.IsValid)
-            {
-                //活動類型不能有相同的名稱
-                var name = db.Activity_type.Where(at => at.activity_type_name == activity_type.activity_type_name).FirstOrDefault();
-                if (name != null) 
-                {
-                    ViewBag.ErrMsg = "活動類型名稱不能相同!";
-                    return View(activity_type);
-                }
-
+            {               
                 db.Activity_type.Add(activity_type);
                 db.SaveChanges();
                 return RedirectToAction("Index");

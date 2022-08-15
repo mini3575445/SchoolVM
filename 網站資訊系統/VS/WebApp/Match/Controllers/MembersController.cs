@@ -57,14 +57,16 @@ namespace Match.Controllers
             var last_data = db.Member.OrderByDescending(m => m.member_id).FirstOrDefault();     //抓資料庫Member最後一筆資料
             member.member_id = changeIDAuto.ChangeIDNumber(last_data.member_id, "P", 5);    //P00005
 
-             //帳號不能相同，需將member資料轉為VMmember return ((尚未解決
-            var account = db.Member.Where(m => m.member_account == member.member_account).FirstOrDefault();
-            if (account != null)
-            {
-                ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name", member.right_id);
-                ViewBag.ErrMsg = "此帳號已經註冊!";
-                return View();  //View()回傳原本的狀態
-            }
+
+            //***商業邏輯寫在Model比較好
+            //帳號不能相同，需將member資料轉為VMmember return 
+            //var account = db.Member.Where(m => m.member_account == member.member_account).FirstOrDefault();
+            //if (account != null)
+            //{
+            //    ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name", member.right_id);
+            //    ViewBag.ErrMsg = "此帳號已經註冊!";
+            //    return View();  //View()回傳原本的狀態
+            //}
 
             if (ModelState.IsValid)
             {               
@@ -75,7 +77,7 @@ namespace Match.Controllers
 
             ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name", member.right_id);
             ViewBag.ErrMsg = "新增失敗";
-            return View(member);
+            return View();
         }
 
         // GET: Members/Edit/5
