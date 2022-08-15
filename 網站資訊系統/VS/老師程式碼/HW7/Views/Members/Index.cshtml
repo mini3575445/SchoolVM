@@ -1,4 +1,9 @@
-﻿@model IEnumerable<HW7Project.Models.Members>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@*@model IEnumerable<HW7Project.Models.VMMember>*@
+
+@model IPagedList<HW7Project.Models.Members>
 
 @{
     ViewBag.Title = "Index";
@@ -14,17 +19,18 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MemberID)
+                @*@Html.DisplayNameFor(model => model.MemberID)*@
+                @Html.DisplayNameFor(model => model.FirstOrDefault().MemberID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MemberName)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().MemberName)
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.MemberBirthday)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().MemberBirthday)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedDate)
             </th>
 
             <th>資料管理</th>
@@ -59,6 +65,8 @@
 
 </table>
 
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
 
 
 <!-- Modal -->
@@ -80,10 +88,17 @@
 </div>
 @section scripts{
     <script>
+        $('.pagination-container').addClass("d-flex justify-content-center");
+        $('.pagination-container>ul>li').removeClass().addClass("page-item");
+        $('.pagination-container a').addClass("page-link");
+        
+
         $('.btnDetail').click(function (evt) {
             //console.log("/Members/Details/" + evt.target.title);
             $('#exampleModal .modal-body').load("/Members/Details/" + evt.target.title);
         });
+       
+     
 
     </script>
 }

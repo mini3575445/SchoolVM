@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HW7Project.Models;
+using PagedList;
 
 namespace HW7Project.Controllers
 {
@@ -16,10 +17,16 @@ namespace HW7Project.Controllers
         private HW7ProjectContext db = new HW7ProjectContext();
 
         // GET: Members
-        public ActionResult Index()
+        public ActionResult Index(int page=1)
         {
+            var members = db.Members.ToList();
 
-            return View(db.Members.ToList());
+            int pagesize = 15;
+
+
+            var pagedList = members.ToPagedList(page, pagesize);
+
+            return View(pagedList);
         }
 
         // GET: Members/Details/5
@@ -49,16 +56,25 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirthday,CreatedDate,Account,Password")] Members members)
+        public ActionResult Create([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirthday,CreatedDate,Account,Password")] Members members,HttpPostedFileBase photo)
         {
+            if (photo != null)
+            {
+                if(photo.ContentLength>0)
+                {
+                    photo.SaveAs(Server.MapPath("~/MemberPhotos/" + members.Account + ".jpg"));
+                }
+            }
+
             if (ModelState.IsValid)
             {
+                members.MemberPhotoFile = members.Account + ".jpg";
                 db.Members.Add(members);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(members);
+            return View();
         }
 
         // GET: Members/Edit/5

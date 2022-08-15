@@ -28,12 +28,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MemberPhotoFile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MemberPhotoFile, new { htmlAttributes = new { @class = "form-control", @readonly = "@readonly" } })
+                @*@Html.EditorFor(model => model.MemberPhotoFile, new { htmlAttributes = new { @class = "form-control", @readonly = "@readonly" } })*@
                 @{
                     var photo = Model.MemberPhotoFile == null ? "defaultPhoto.jpg" : Model.MemberPhotoFile;
 
                 }
-                <img src="~/MemberPhoto/@photo" class="img-thumbnail" width="300" />
+                @*<img src="~/MemberPhotos/@photo" class="img-thumbnail" width="300" />*@
                 @Html.ValidationMessageFor(model => model.MemberPhotoFile, "", new { @class = "text-danger" })
             </div>
         </div>

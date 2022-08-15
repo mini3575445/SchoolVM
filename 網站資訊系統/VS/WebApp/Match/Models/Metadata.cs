@@ -103,6 +103,9 @@
         [Required]
         public string member_account { get; set; }
 
+        [DisplayName("密碼")]
+        [Required]
+        [DataType(DataType.Password)]
         public string member_password { get; set; }
 
         ////***member_password的get、set要貼到Member.cs運作
@@ -186,7 +189,7 @@
         [DisplayName("生日")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         [Required]
-        public System.DateTime member_birthday { get; set; }
+        public DateTime member_birthday { get; set; }
 
 
         [DisplayName("手機號碼")]

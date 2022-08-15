@@ -23,12 +23,12 @@
 
                     @if (Model.MemberPhotoFile == null)
                     {
-                        <img src="~/MemberPhoto/defaultPhoto.jpg" class="img-thumbnail" />
+                        <img src="~/MemberPhotos/defaultPhoto.jpg" class="img-thumbnail" />
                     }
                     else
                     {
                         //<img src="~/MemberPhoto/@Html.DisplayFor(model => model.MemberPhotoFile)" class="img-thumbnail" />
-                        <img src="~/MemberPhoto/@Model.MemberPhotoFile" class="img-thumbnail" />
+                        <img src="~/MemberPhotos/@Model.MemberPhotoFile" class="img-thumbnail" />
                     }
                 </div>
 

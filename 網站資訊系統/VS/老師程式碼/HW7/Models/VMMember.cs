@@ -9,6 +9,7 @@ namespace HW7Project.Models
 {
     public class VMMember
     {
+        
         [Key]
         public int MemberID { get; set; }
 
@@ -52,5 +53,9 @@ namespace HW7Project.Models
         [MaxLength(20, ErrorMessage = "密碼最多20碼")]
         [Compare("Password",ErrorMessage ="兩次輸入不同")]
         public string ConfirmPassword { get; set; }
+
+        
+
+
     }
 }

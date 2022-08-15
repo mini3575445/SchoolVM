@@ -38,6 +38,7 @@ namespace HW7Project.Models
         [DisplayName("帳號")]
         [Required]
         [StringLength(20)]
+        [CheckAccount]
         public string Account { get; set; }
 
         //field
@@ -78,5 +79,23 @@ namespace HW7Project.Models
         }
 
 
-}
+        //自訂驗證規則的寫法
+        public class CheckAccount : ValidationAttribute
+        {
+            public CheckAccount()
+            {
+                ErrorMessage = "此帳號有人使用";
+            }
+            public override bool IsValid(object value)
+            {
+                HW7ProjectContext db = new HW7ProjectContext();
+
+                var account = db.Members.Where(m => m.Account == value.ToString()).FirstOrDefault();
+
+                return (account==null)?true:false;
+            }
+        }
+
+        
+    }
 }

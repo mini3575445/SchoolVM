@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using HW7Project.Models;
 
+using PagedList; //做分頁的套件
+
 namespace HW7Project.Controllers
 {
     //整個Controller都Check
@@ -17,9 +19,15 @@ namespace HW7Project.Controllers
         private HW7ProjectContext db = new HW7ProjectContext();
 
         // GET: Members
-        public ActionResult Index()
+        public ActionResult Index(int page=1)
         {
-            return View(db.Members.ToList());
+            //分頁功能
+            var members = db.Members.ToList();
+            int pagesize = 15;
+            var pagedList = members.ToPagedList(page, pagesize);    //ToPagedList(目前在第幾頁，每次顯示幾筆)
+
+
+            return View(pagedList);
         }
         public ActionResult IndexModal()
         {
@@ -53,16 +61,33 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirdthday,CreatedDate,Account,Password")] Members members)
+        public ActionResult Create([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirdthday,CreatedDate,Account,Password")] Members members, HttpPostedFileBase photo)
         {
+            if (photo != null)
+            { 
+                if(photo.ContentLength>0)
+                {
+                    members.MemberPhotoFile = members.Account + ".jpg";
+                    photo.SaveAs(Server.MapPath("~/MemberPhotos/" + members.Account + ".jpg"));
+                }             
+            }
+
+
+            //var account = db.Members.Where(m => m.Account == members.Account).FirstOrDefault();
+            //if (account != null)
+            //{
+            //    ViewBag.Error = "已經有相同帳號";
+            //    return View();
+            //}
+
             if (ModelState.IsValid)
             {
+                
                 db.Members.Add(members);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(members);
+            return View();
         }
 
         // GET: Members/Edit/5

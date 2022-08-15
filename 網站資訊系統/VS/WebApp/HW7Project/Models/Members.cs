@@ -41,6 +41,7 @@ namespace HW7Project.Models
         [DisplayName("帳號")]
         [Required]
         [StringLength(20)]
+        [CheckAccount(ErrorMessage ="已經有相同帳號")]
         public string Account { get; set; }
 
 
@@ -84,11 +85,29 @@ namespace HW7Project.Models
             }
         
         }
-              
+
 
         //新增會員的確認密碼怎麼做
         //1.直接在View上增加一個欄位，在前端驗證
         //2.建立ViweModel並新增一個確認密碼的屬性(實務上都這麼做)
+
+        //***自訂驗證
+
+        public class CheckAccount : ValidationAttribute
+        {
+            public override bool IsValid(object value)
+            {
+               HW7ProjectContext db = new HW7ProjectContext();
+
+               var account = db.Members.Where(m => m.Account == value.ToString()).FirstOrDefault();
+
+
+                return (account==null)? true : false;
+            }
+
+
+        }
+
 
 
     }
