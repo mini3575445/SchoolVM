@@ -10,11 +10,13 @@ using HW7Project.Models;
 
 namespace HW7Project.Controllers
 {
+   
     public class EmployeesController : Controller
     {
         private HW7ProjectContext db = new HW7ProjectContext();
 
         // GET: Employees
+       
         public ActionResult Index()
         {
             return View(db.Employees.ToList());

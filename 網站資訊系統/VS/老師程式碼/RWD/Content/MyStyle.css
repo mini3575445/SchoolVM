@@ -29,9 +29,13 @@ caption {
 .jumbotron {
     background-image: url('../photo/00.jpg');
     background-repeat:round;
-    
 }
 
 .text-shadow {
     text-shadow: 2px 2px 3px black;
+}
+
+.modal-content {
+    background-image: url('../photo/03.jpg');
+    background-repeat: round;
 }

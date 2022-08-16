@@ -82,12 +82,16 @@ namespace HW7Project.Models
         //自訂驗證規則的寫法
         public class CheckAccount : ValidationAttribute
         {
+
             public CheckAccount()
             {
                 ErrorMessage = "此帳號有人使用";
             }
             public override bool IsValid(object value)
             {
+                if (value == null)
+                    value = "aa";
+
                 HW7ProjectContext db = new HW7ProjectContext();
 
                 var account = db.Members.Where(m => m.Account == value.ToString()).FirstOrDefault();

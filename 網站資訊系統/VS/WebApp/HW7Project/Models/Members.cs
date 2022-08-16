@@ -97,12 +97,11 @@ namespace HW7Project.Models
         {
             public override bool IsValid(object value)
             {
+                if (value == null) value = "aa";                    
                HW7ProjectContext db = new HW7ProjectContext();
-
                var account = db.Members.Where(m => m.Account == value.ToString()).FirstOrDefault();
 
-
-                return (account==null)? true : false;
+               return (account==null)? true : false;
             }
 
 

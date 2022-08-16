@@ -68,6 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="01RWD_Page.html" />
+    <Content Include="33Navbar.html" />
+    <Content Include="32Modal.html" />
+    <Content Include="31Carousel.html" />
+    <Content Include="30MediaObject.html" />
     <Content Include="29Jumbotron2.html" />
     <Content Include="28Jumbotron.html" />
     <Content Include="27Collapse.html" />

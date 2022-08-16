@@ -86,6 +86,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\MyStyle.css" />
     <Content Include="17Card.html" />
+    <Content Include="RWD_Homework.html" />
     <Content Include="Photo\00.jpg" />
     <Content Include="Photo\01.jpg" />
     <Content Include="Photo\02.jpg" />

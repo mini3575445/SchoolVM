@@ -16,3 +16,23 @@ overflow:auto;
     color: #ff0000;
     content: ">";
 }
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-image: url('../photo/00.jpg');
+    background-repeat:round;    /*預設為repeat*/
+    border-radius: 0.3rem;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 3px black;
+}
+
+.modal-content {
+    background-image: url(../photo/03.jpg);
+    background-repeat: round;
+}
+.bg-01 {
+    background-color: #a1bd43 !important;
+}

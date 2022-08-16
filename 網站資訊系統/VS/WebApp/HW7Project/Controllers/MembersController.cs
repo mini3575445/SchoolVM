@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -67,8 +69,12 @@ namespace HW7Project.Controllers
             { 
                 if(photo.ContentLength>0)
                 {
-                    members.MemberPhotoFile = members.Account + ".jpg";
-                    photo.SaveAs(Server.MapPath("~/MemberPhotos/" + members.Account + ".jpg"));
+                    string extensionName = System.IO.Path.GetExtension(photo.FileName); //抓副檔名
+                    if(extensionName == ".jpg"|| extensionName == ".png")
+                    {
+                        photo.SaveAs(Server.MapPath("~/MemberPhotos/" + members.Account + extensionName));
+                        members.MemberPhotoFile = members.Account + extensionName;                        
+                    }
                 }             
             }
 
@@ -87,7 +93,7 @@ namespace HW7Project.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View();
+            return View();      //***為甚麼沒有return View(members)，表單不會被清空
         }
 
         // GET: Members/Edit/5
@@ -102,7 +108,7 @@ namespace HW7Project.Controllers
             {
                 return HttpNotFound();
             }
-            return View(members);
+            return View(members);   //需要帶值至View，所以View頁面不能用VM
         }
 
         // POST: Members/Edit/5
@@ -111,15 +117,39 @@ namespace HW7Project.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //Bind正向表列
-        public ActionResult Edit([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirdthday,CreatedDate,Account,Password")] Members members)
+        public ActionResult Edit(Members members)
         {
-            if (ModelState.IsValid)
+            //利用ADO.NET的寫法
+            string sql = "update members set MemberName=@MemberName,MemberBirdthday=@MemberBirdthday where MemberID=@MemberID";
+                       
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["HW7ProjectConnection"].ConnectionString);  //裡面的參數是Web.config的連線資訊
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@MemberName", members.MemberName);
+            cmd.Parameters.AddWithValue("@MemberBirdthday", members.MemberBirdthday);
+            cmd.Parameters.AddWithValue("@MemberID", members.MemberID);
+
+            conn.Open();
+            try
             {
-                db.Entry(members).State = EntityState.Modified;
-                db.SaveChanges();
+                cmd.ExecuteNonQuery();
                 return RedirectToAction("Index");
             }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+            }
+
+            conn.Close();
+
             return View(members);
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(members).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
         }
 
         // GET: Members/Delete/5
