@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Match.Models;
+using Match.ViewModels;
 
 namespace Match.Controllers
 {
@@ -15,10 +16,18 @@ namespace Match.Controllers
         private MatchEntities db = new MatchEntities();
 
         // GET: Place
-        public ActionResult Index()
+        public ActionResult Index(string place_type_id="E01")
         {
-            var place = db.Place.Include(p => p.Place_type);
-            return View(place.ToList());
+            //將db資料帶入vm
+            VMPlace vmplace = new VMPlace(){                
+                place = db.Place.Where(p=>p.place_type_id == place_type_id).ToList(),
+                place_off_day = (from pod in db.Place_off_day
+                                 join p in db.Place on pod.place_id equals p.place_id
+                                 where p.place_type_id == place_type_id
+                                 select pod).ToList(),  //選出參數類別的公休日
+                place_type = db.Place_type.ToList()
+            };
+            return View(vmplace);
         }
 
         // GET: Place/Details/5

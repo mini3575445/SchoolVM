@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Match.Models.Place>
-
+﻿@*@model IEnumerable<Match.Models.Place>*@
+@model Match.ViewModels.VMPlace
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_manager.cshtml";
@@ -10,61 +10,52 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<table class="table">   
+    <tr>
+        <th>類別名稱</th>
+    </tr>
+    <tr>
+        @foreach (var pt in Model.place_type)
+        {
+            <td>@pt.place_type_name</td>
+        }        
+    </tr>
+</table>
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.shop_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.place_address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.place_phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.place_hours_start)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.place_hours_end)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.place_create_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Place_type.place_type_name)
-        </th>
-        <th></th>
-    </tr>
+        <th>編號</th>
+        <th>分類編號</th>
+        <th>店家名稱</th>
+        <th>地址</th>
+        <th>聯絡電話</th>
+        <th>營業時間</th>
+        <th>結束時間</th>
+        <th>公休日</th>
+        <th>建立日期</th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.shop_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.place_address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.place_phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.place_hours_start)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.place_hours_end)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.place_create_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Place_type.place_type_name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.place_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.place_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.place_id })
-        </td>
-    </tr>
-}
 
+        @foreach (var p in Model.place)
+        {
+            <td>@p.place_id</td>
+            <td>@p.place_type_id</td>
+            <td>@p.shop_name</td>
+            <td>@p.place_address</td>
+            <td>@p.place_phone</td>
+            <td>@p.place_hours_start</td>
+            <td>@p.place_hours_end</td>
+            <td>@p.place_create_date</td>
+        }
+        @foreach (var pod in Model.place_off_day)
+        {
+            <td>@pod.place_off_day1</td>
+        }
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.place_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.place_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.place_id })*@
+        </td>
+
+
+    </tr>
 </table>

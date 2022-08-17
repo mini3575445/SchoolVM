@@ -313,6 +313,7 @@
     <Compile Include="ViewModels\VMLogin.cs" />
     <Compile Include="ViewModels\VMMember.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\VMPlace.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
