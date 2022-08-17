@@ -30,6 +30,7 @@ namespace Match.Models
         public string place_phone { get; set; }
         public Nullable<System.TimeSpan> place_hours_start { get; set; }
         public Nullable<System.TimeSpan> place_hours_end { get; set; }
+        public System.DateTime place_create_date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }

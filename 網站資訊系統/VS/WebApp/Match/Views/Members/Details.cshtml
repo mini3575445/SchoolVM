@@ -25,7 +25,7 @@
         <dd>
             @Html.DisplayFor(model => model.member_account)
         </dd>
-                            
+
         <dt>
             @Html.DisplayNameFor(model => model.member_id_name)
         </dt>
@@ -39,13 +39,13 @@
         </dt>
 
         @if (Model.member_gender == true)
-            {
-                <dd>男</dd>
-            }
-            else
-            {
-                <dd>女</dd>
-            }        
+        {
+            <dd>男</dd>
+        }
+        else
+        {
+            <dd>女</dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.member_birthday)
@@ -87,6 +87,28 @@
             @Html.DisplayFor(model => model.Right.right_name)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.member_photo_file)
+        </dt>
+
+        <dd>
+            @if (@Model.member_photo_file == null)
+            {
+                <img src="~/MemberPhotos/defaultPhoto.png">
+            }
+            else
+            {
+                <img src="~/MemberPhotos/@Model.member_photo_file">
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_create_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_create_date)
+        </dd>
     </dl>
 </div>
 <p>

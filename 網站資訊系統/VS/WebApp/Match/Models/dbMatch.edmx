@@ -15,6 +15,7 @@
           <Property Name="activity_datetime" Type="datetime" Nullable="false" />
           <Property Name="place_id" Type="char" MaxLength="6" Nullable="false" />
           <Property Name="member_id" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="activity_create_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Activity_detail">
           <Key>
@@ -54,6 +55,8 @@
           <Property Name="member_email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="member_address" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="right_id" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="member_photo_file" Type="nvarchar(max)" />
+          <Property Name="member_create_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -66,6 +69,7 @@
           <Property Name="place_phone" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="place_hours_start" Type="time" Precision="7" />
           <Property Name="place_hours_end" Type="time" Precision="7" />
+          <Property Name="place_create_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Place_off_day">
           <Key>
@@ -286,6 +290,7 @@
           <Property Name="activity_datetime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="place_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="member_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="activity_create_date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Activity_type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_type" />
           <NavigationProperty Name="Activity_detail" Relationship="Self.FK_Activity_detail_Activity" FromRole="Activity" ToRole="Activity_detail" />
           <NavigationProperty Name="Member" Relationship="Self.FK_Activity_Member" FromRole="Activity" ToRole="Member" />
@@ -334,6 +339,8 @@
           <Property Name="member_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="member_address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="right_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="member_photo_file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="member_create_date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Member" FromRole="Member" ToRole="Activity" />
           <NavigationProperty Name="Activity_detail" Relationship="Self.FK_Activity_detail_Member" FromRole="Member" ToRole="Activity_detail" />
           <NavigationProperty Name="Friend" Relationship="Self.FK_Friend_Member" FromRole="Member" ToRole="Friend" />
@@ -351,6 +358,7 @@
           <Property Name="place_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="place_hours_start" Type="Time" Precision="7" />
           <Property Name="place_hours_end" Type="Time" Precision="7" />
+          <Property Name="place_create_date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Place" FromRole="Place" ToRole="Activity" />
           <NavigationProperty Name="Place_off_day" Relationship="Self.FK_Place_off_day_Place" FromRole="Place" ToRole="Place_off_day" />
           <NavigationProperty Name="Place_type" Relationship="Self.FK_Place_Place_type" FromRole="Place" ToRole="Place_type" />
@@ -577,6 +585,7 @@
                 <ScalarProperty Name="activity_datetime" ColumnName="activity_datetime" />
                 <ScalarProperty Name="place_id" ColumnName="place_id" />
                 <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="activity_create_date" ColumnName="activity_create_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -620,6 +629,8 @@
                 <ScalarProperty Name="member_email" ColumnName="member_email" />
                 <ScalarProperty Name="member_address" ColumnName="member_address" />
                 <ScalarProperty Name="right_id" ColumnName="right_id" />
+                <ScalarProperty Name="member_photo_file" ColumnName="member_photo_file" />
+                <ScalarProperty Name="member_create_date" ColumnName="member_create_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -633,6 +644,7 @@
                 <ScalarProperty Name="place_phone" ColumnName="place_phone" />
                 <ScalarProperty Name="place_hours_start" ColumnName="place_hours_start" />
                 <ScalarProperty Name="place_hours_end" ColumnName="place_hours_end" />
+                <ScalarProperty Name="place_create_date" ColumnName="place_create_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

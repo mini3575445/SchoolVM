@@ -50,12 +50,29 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "member_id,member_account,member_password,member_name,member_id_name,member_gender,member_birthday,member_cellphone,member_email,member_address,right_id")] Member member)
+        public ActionResult Create([Bind(Include = "member_id,member_account,member_password,member_name,member_id_name,member_gender,member_birthday,member_cellphone,member_email,member_address,right_id,member_photo_file,member_create_date")] Member member, HttpPostedFileBase photo)
         {
+            //照片上傳
+            if (photo != null) 
+            {
+                if (photo.ContentLength>0)   //上傳檔案大小
+                { 
+                    string extensionName = System.IO.Path.GetExtension(photo.FileName); //抓副檔名
+                    if (extensionName == ".jpg" || extensionName == ".png")
+                    {
+                        photo.SaveAs(Server.MapPath("~/MemberPhotos/" + member.member_account + extensionName));    //會員帳號為照片檔名
+                        member.member_photo_file = member.member_account + extensionName;
+                    }
+                }
+            }
+
             //自動編號
             ChangeIDAuto changeIDAuto = new ChangeIDAuto();
             var last_data = db.Member.OrderByDescending(m => m.member_id).FirstOrDefault();     //抓資料庫Member最後一筆資料
             member.member_id = changeIDAuto.ChangeIDNumber(last_data.member_id, "P", 5);    //P00005
+
+            //建立日期
+            member.member_create_date = DateTime.Now;
 
 
             //***商業邏輯寫在Model比較好

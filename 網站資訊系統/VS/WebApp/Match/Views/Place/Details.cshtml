@@ -1,0 +1,75 @@
+﻿@model Match.Models.Place
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_manager.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Place</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.shop_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.shop_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_hours_start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_hours_start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_hours_end)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_hours_end)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place_create_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place_create_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Place_type.place_type_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place_type.place_type_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.place_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

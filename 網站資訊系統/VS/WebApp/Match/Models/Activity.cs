@@ -14,7 +14,6 @@ namespace Match.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(MetaActivity))]
-
     public partial class Activity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,6 +28,7 @@ namespace Match.Models
         public System.DateTime activity_datetime { get; set; }
         public string place_id { get; set; }
         public string member_id { get; set; }
+        public System.DateTime activity_create_date { get; set; }
     
         public virtual Activity_type Activity_type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

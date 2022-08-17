@@ -17,6 +17,7 @@ namespace Match.Controllers
     /// <returns></returns>
     public class ChangeIDAuto
     {
+        
         public string ChangeIDNumber(string idIn, string data, int conut) 
         {
             int id = Int32.Parse(idIn.Substring(2)) + 1;

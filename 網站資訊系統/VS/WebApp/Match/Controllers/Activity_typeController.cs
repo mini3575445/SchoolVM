@@ -50,11 +50,11 @@ namespace Match.Controllers
         {
             //自動編號
             ChangeIDAuto changeIDAuto = new ChangeIDAuto();
-            var last_data = db.Activity_type.OrderByDescending(at => at.activity_type_id).FirstOrDefault();     //抓資料庫Member最後一筆資料
+            var last_data = db.Activity_type.OrderByDescending(at => at.activity_type_id).FirstOrDefault();     
             activity_type.activity_type_id = changeIDAuto.ChangeIDNumber(last_data.activity_type_id, "C", 2);    //C05
 
             if (ModelState.IsValid)
-            {               
+            {
                 db.Activity_type.Add(activity_type);
                 db.SaveChanges();
                 return RedirectToAction("Index");

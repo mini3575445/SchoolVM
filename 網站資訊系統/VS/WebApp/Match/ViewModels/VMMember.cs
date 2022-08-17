@@ -99,5 +99,7 @@ namespace Match.Models
         [Required]
         public string right_id { get; set; }
 
+        [DisplayName("會員照片")]
+        public string member_photo_file { get; set; }
     }
 }

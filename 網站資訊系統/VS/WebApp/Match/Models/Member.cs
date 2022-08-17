@@ -12,7 +12,6 @@ namespace Match.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Security.Cryptography;
 
     [MetadataType(typeof(MetaMember))]
     public partial class Member
@@ -28,31 +27,7 @@ namespace Match.Models
     
         public string member_id { get; set; }
         public string member_account { get; set; }
-
         public string member_password { get; set; }
-
-        //string password;
-        //public string member_password
-        //***雜湊
-        //{
-        //    get { return password; }
-
-        //    set
-        //    {
-        //        byte[] hashValue;
-        //        string result = "";
-
-        //        System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
-        //        byte[] pwBytes = ue.GetBytes(value);
-        //        SHA256 shHash = SHA256.Create();
-        //        hashValue = shHash.ComputeHash(pwBytes);
-        //        foreach (byte b in hashValue)
-        //        {
-        //            result += b.ToString();
-        //        }
-        //        password = result;
-        //    }
-        //}
         public string member_name { get; set; }
         public string member_id_name { get; set; }
         public bool member_gender { get; set; }
@@ -61,6 +36,8 @@ namespace Match.Models
         public string member_email { get; set; }
         public string member_address { get; set; }
         public string right_id { get; set; }
+        public string member_photo_file { get; set; }
+        public System.DateTime member_create_date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }

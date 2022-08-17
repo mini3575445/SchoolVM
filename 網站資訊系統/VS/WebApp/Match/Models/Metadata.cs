@@ -37,6 +37,11 @@
         [Required]
         [RegularExpression("^[P][0-9]{5}$")]
         public string member_id { get; set; }
+
+        [DisplayName("建立日期")]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public System.DateTime activity_create_date { get; set; }
     }
 
     public class MetaActivity_detail
@@ -232,6 +237,14 @@
         [Required]
         public string right_id { get; set; }
 
+        [DisplayName("會員照片")]
+        public string member_photo_file { get; set; }
+
+        [DisplayName("建立日期")]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public System.DateTime member_create_date { get; set; }
+
 
 
         //檢查重複帳號的自訂驗證
@@ -283,6 +296,11 @@
         [DisplayName("結束時間")]
         [DataType(DataType.Time)]
         public Nullable<System.TimeSpan> place_hours_end { get; set; }
+
+        [DisplayName("建立日期")]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public System.DateTime place_create_date { get; set; }
     }
 
     public class MetaPlace_off_day

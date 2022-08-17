@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Match.Models.Place>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_manager.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.shop_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.place_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.place_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.place_hours_start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.place_hours_end)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.place_create_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place_type.place_type_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.shop_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.place_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.place_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.place_hours_start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.place_hours_end)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.place_create_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place_type.place_type_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.place_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.place_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.place_id })
+        </td>
+    </tr>
+}
+
+</table>

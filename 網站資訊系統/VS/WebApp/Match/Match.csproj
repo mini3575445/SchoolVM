@@ -120,8 +120,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\dbMatch.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>dbMatch.Context.cs</LastGenOutput>
       <DependentUpon>dbMatch.edmx</DependentUpon>
+      <LastGenOutput>dbMatch.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\dbMatch.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -249,11 +249,14 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\Activity_typeController.cs" />
     <Compile Include="Controllers\ChangeIDAuto.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeManagerController.cs" />
+    <Compile Include="Controllers\PlaceController.cs" />
+    <Compile Include="Controllers\Place_off_dayController.cs" />
+    <Compile Include="Controllers\Place_typeController.cs" />
     <Compile Include="Controllers\RightCheck.cs" />
     <Compile Include="Controllers\LoginCheck.cs" />
     <Compile Include="Controllers\MembersController.cs" />
@@ -334,21 +337,35 @@
     <Content Include="Views\HomeManager\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_manager.cshtml" />
     <Content Include="Views\Members\Create.cshtml" />
-    <Content Include="Views\Members\Delete.cshtml" />
     <Content Include="Views\Members\Details.cshtml" />
     <Content Include="Views\Members\Edit.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\HomeManager\Login.cshtml" />
-    <Content Include="Views\Activities\Create.cshtml" />
-    <Content Include="Views\Activities\Delete.cshtml" />
-    <Content Include="Views\Activities\Details.cshtml" />
-    <Content Include="Views\Activities\Edit.cshtml" />
-    <Content Include="Views\Activities\Index.cshtml" />
     <Content Include="Views\Activity_type\Create.cshtml" />
     <Content Include="Views\Activity_type\Delete.cshtml" />
     <Content Include="Views\Activity_type\Details.cshtml" />
     <Content Include="Views\Activity_type\Edit.cshtml" />
     <Content Include="Views\Activity_type\Index.cshtml" />
+    <Content Include="Views\Place_type\Create.cshtml" />
+    <Content Include="Views\Place_type\Delete.cshtml" />
+    <Content Include="Views\Place_type\Details.cshtml" />
+    <Content Include="Views\Place_type\Edit.cshtml" />
+    <Content Include="Views\Place_type\Index.cshtml" />
+    <Content Include="Views\Activity\Create.cshtml" />
+    <Content Include="Views\Activity\Delete.cshtml" />
+    <Content Include="Views\Activity\Details.cshtml" />
+    <Content Include="Views\Activity\Edit.cshtml" />
+    <Content Include="Views\Activity\Index.cshtml" />
+    <Content Include="Views\Place_off_day\Create.cshtml" />
+    <Content Include="Views\Place_off_day\Delete.cshtml" />
+    <Content Include="Views\Place_off_day\Details.cshtml" />
+    <Content Include="Views\Place_off_day\Edit.cshtml" />
+    <Content Include="Views\Place_off_day\Index.cshtml" />
+    <Content Include="Views\Place\Create.cshtml" />
+    <Content Include="Views\Place\Delete.cshtml" />
+    <Content Include="Views\Place\Details.cshtml" />
+    <Content Include="Views\Place\Edit.cshtml" />
+    <Content Include="Views\Place\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -358,6 +375,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Activities\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
