@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_manager.cshtml";
+    var intTypeID = Convert.ToInt16((ViewBag.strTypeID).Substring(1, 2));
 }
 
 <h2>Index</h2>
@@ -10,52 +11,78 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">   
-    <tr>
-        <th>類別名稱</th>
-    </tr>
-    <tr>
-        @foreach (var pt in Model.place_type)
-        {
-            <td>@pt.place_type_name</td>
-        }        
-    </tr>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <p class="alert alert-success text-center">類別名稱</p>
+            <ul class="list-group text-center">
+            @foreach (var pt in Model.place_type)
+            {
+                <li class="list-group-item">
+                    @Html.ActionLink(@pt.place_type_name,"Index",new { place_type_id= @pt.place_type_id })
+                </li>
+            }
+            </ul>
+        </div>
+        <div class="col-9">
+            <p class="alert alert-info text-center">@Model.place_type[intTypeID-1].place_type_name</p>
 
-<table class="table">
-    <tr>
-        <th>編號</th>
-        <th>分類編號</th>
-        <th>店家名稱</th>
-        <th>地址</th>
-        <th>聯絡電話</th>
-        <th>營業時間</th>
-        <th>結束時間</th>
-        <th>公休日</th>
-        <th>建立日期</th>
+            <table class="table">
+                <tr>
+                    <th>編號</th>
+                    <th>店家名稱</th>
+                    <th>地址</th>
+                    <th>聯絡電話</th>
+                    <th>營業時間</th>
+                    <th>結束時間</th>
+                    <th>公休日</th>
+                    <th>建立日期</th>
+                    <th></th>
+                </tr>
+                @if (Model.place.Count != 0)
+                {
+                    foreach (var p in Model.place)
+                    {
+                        <tr>
+                            <td>@p.place_id</td>
+                            <td>@p.shop_name</td>
+                            <td>@p.place_address</td>
+                            <td>@p.place_phone</td>
+                            <td>@p.place_hours_start</td>
+                            <td>@p.place_hours_end</td>
+                            <td>
+                                @foreach (var pod in Model.place_off_day)
+                                {
+                                    if (p.place_id == pod.place_id)
+                                    {
+                                        @pod.place_off_day1
+                                    }
+                                }
+                            </td>
+
+                            <td>@p.place_create_date</td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = p.place_id }) |
+                                @Html.ActionLink("Details", "Details", new { id = p.place_id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = p.place_id })
+                            </td>
+
+                        </tr>
+                    }
+                }
+                else
+                {
+                <tr>
+                    <td colspan="9">
+                        <div class="alert alert-danger text-center">沒東西哦呵呵</div>
+                    </td>
+                </tr>
+                }
+                </table>
+        </div>
+    </div>
+</div>
 
 
-        @foreach (var p in Model.place)
-        {
-            <td>@p.place_id</td>
-            <td>@p.place_type_id</td>
-            <td>@p.shop_name</td>
-            <td>@p.place_address</td>
-            <td>@p.place_phone</td>
-            <td>@p.place_hours_start</td>
-            <td>@p.place_hours_end</td>
-            <td>@p.place_create_date</td>
-        }
-        @foreach (var pod in Model.place_off_day)
-        {
-            <td>@pod.place_off_day1</td>
-        }
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.place_id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.place_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.place_id })*@
-        </td>
 
-
-    </tr>
-</table>

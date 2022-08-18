@@ -18,12 +18,15 @@ namespace Match.Controllers
         // GET: Place
         public ActionResult Index(string place_type_id="E01")
         {
+            ViewBag.strTypeID = place_type_id;
+
             //將db資料帶入vm
             VMPlace vmplace = new VMPlace(){                
                 place = db.Place.Where(p=>p.place_type_id == place_type_id).ToList(),
                 place_off_day = (from pod in db.Place_off_day
                                  join p in db.Place on pod.place_id equals p.place_id
                                  where p.place_type_id == place_type_id
+                                 orderby pod.place_id,pod.place_off_day1
                                  select pod).ToList(),  //選出參數類別的公休日
                 place_type = db.Place_type.ToList()
             };
@@ -57,8 +60,20 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "place_id,place_type_id,shop_name,place_address,place_phone,place_hours_start,place_hours_end,place_create_date")] Place place)
+        public ActionResult Create([Bind(Include = "place_id,place_type_id,shop_name,place_address,place_phone,place_hours_start,place_hours_end,place_create_date")] Place place,Place_off_day place_off_day)
         {
+            //自動編號
+            ChangeIDAuto changeIDAuto = new ChangeIDAuto();
+            var last_data = db.Place.OrderByDescending(p => p.place_id).FirstOrDefault();
+            place.place_id = changeIDAuto.ChangeIDNumber(last_data.place_id, "S", 5);    //S00005
+
+            //建立日期
+            place.place_create_date = DateTime.Now;
+
+            //Place_off_day
+            place_off_day.place_off_day_number = 10;
+            place_off_day.place_id = "S00006";
+            place_off_day.place_off_day1 = "一";
             if (ModelState.IsValid)
             {
                 db.Place.Add(place);
