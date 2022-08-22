@@ -40,7 +40,7 @@
 
         [DisplayName("建立日期")]
         [Required]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime activity_create_date { get; set; }
     }
 
@@ -242,7 +242,7 @@
 
         [DisplayName("建立日期")]
         [Required]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime member_create_date { get; set; }
 
 
@@ -299,8 +299,8 @@
 
         [DisplayName("建立日期")]
         [Required]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        public System.DateTime place_create_date { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public System.DateTime place_create_date { get; set; }        
     }
 
     public class MetaPlace_off_day

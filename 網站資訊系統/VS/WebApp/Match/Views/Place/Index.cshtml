@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_manager.cshtml";
     var intTypeID = Convert.ToInt16((ViewBag.strTypeID).Substring(1, 2));
+
 }
 
 <h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { place_type_id=ViewBag.strTypeID })
 </p>
 <div class="container">
     <div class="row">

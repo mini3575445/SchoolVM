@@ -18,6 +18,9 @@ namespace Match.Controllers
         // GET: Place
         public ActionResult Index(string place_type_id="E01")
         {
+
+            //1.顯示index選擇的類別名稱
+            //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
             ViewBag.strTypeID = place_type_id;
 
             //將db資料帶入vm
@@ -50,7 +53,7 @@ namespace Match.Controllers
 
         // GET: Place/Create
         public ActionResult Create()
-        {
+        {            
             ViewBag.place_type_id = new SelectList(db.Place_type, "place_type_id", "place_type_name");
             return View();
         }
@@ -60,27 +63,51 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "place_id,place_type_id,shop_name,place_address,place_phone,place_hours_start,place_hours_end,place_create_date")] Place place,Place_off_day place_off_day)
-        {
+        public ActionResult Create(Place place)
+        {            
             //自動編號
             ChangeIDAuto changeIDAuto = new ChangeIDAuto();
             var last_data = db.Place.OrderByDescending(p => p.place_id).FirstOrDefault();
             place.place_id = changeIDAuto.ChangeIDNumber(last_data.place_id, "S", 5);    //S00005
-
+            
             //建立日期
             place.place_create_date = DateTime.Now;
 
-            //Place_off_day
-            place_off_day.place_off_day_number = 10;
-            place_off_day.place_id = "S00006";
-            place_off_day.place_off_day1 = "一";
-            if (ModelState.IsValid)
+            //找驗證錯誤
+            //if (!ModelState.IsValid)
+            //{
+            //    var msg = string.Empty;
+            //    foreach (var value in ModelState.Values)
+            //    {
+            //        if (value.Errors.Count > 0)
+            //        {
+            //            foreach (var error in value.Errors)
+            //            { 
+            //                msg = msg + error.ErrorMessage;
+            //            }
+            //        }
+            //    }
+            //}
+                       
+            var result = (from pt in db.Place_type
+                          join p in db.Place on pt.place_type_id equals p.place_type_id
+                          where pt.place_type_id == place.place_type_id && p.shop_name == place.shop_name
+                          select pt).ToList();  //同類別中有相同名稱
+            if (result.Count != 0) 
             {
-                db.Place.Add(place);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.ErrMsg = "同樣類型中不可有相同地點名稱";
+                ViewBag.place_type_id = new SelectList(db.Place_type, "place_type_id", "place_type_name", place.place_type_id);
+                return View(place);
             }
 
+                if (ModelState.IsValid)
+                {
+                db.Place.Add(place);
+                db.SaveChanges();
+                return RedirectToAction("Index", new { place_type_id=place.place_type_id});    //完成新增後，到新增的類別
+                }
+
+            ViewBag.ErrMsg = "新增失敗";
             ViewBag.place_type_id = new SelectList(db.Place_type, "place_type_id", "place_type_name", place.place_type_id);
             return View(place);
         }
@@ -112,7 +139,7 @@ namespace Match.Controllers
             {
                 db.Entry(place).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { place_type_id = place.place_type_id });
             }
             ViewBag.place_type_id = new SelectList(db.Place_type, "place_type_id", "place_type_name", place.place_type_id);
             return View(place);
