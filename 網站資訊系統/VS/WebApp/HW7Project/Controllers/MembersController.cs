@@ -63,7 +63,7 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirdthday,CreatedDate,Account,Password")] Members members, HttpPostedFileBase photo)
+        public ActionResult Create([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirthday,CreatedDate,Account,Password")] Members members, HttpPostedFileBase photo)
         {
             if (photo != null)
             { 
@@ -120,13 +120,13 @@ namespace HW7Project.Controllers
         public ActionResult Edit(Members members)
         {
             //利用ADO.NET的寫法
-            string sql = "update members set MemberName=@MemberName,MemberBirdthday=@MemberBirdthday where MemberID=@MemberID";
+            string sql = "update members set MemberName=@MemberName,MemberBirthday=@MemberBirthday where MemberID=@MemberID";
                        
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["HW7ProjectConnection"].ConnectionString);  //裡面的參數是Web.config的連線資訊
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             cmd.Parameters.AddWithValue("@MemberName", members.MemberName);
-            cmd.Parameters.AddWithValue("@MemberBirdthday", members.MemberBirdthday);
+            cmd.Parameters.AddWithValue("@MemberBirthday", members.MemberBirthday);
             cmd.Parameters.AddWithValue("@MemberID", members.MemberID);
 
             conn.Open();

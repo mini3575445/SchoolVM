@@ -30,7 +30,7 @@ namespace HW7Project.Models
         [DisplayName("生日")]
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        public DateTime MemberBirdthday { get; set; }
+        public DateTime MemberBirthday { get; set; }
 
         [DisplayName("建立日期")]
         [Required]

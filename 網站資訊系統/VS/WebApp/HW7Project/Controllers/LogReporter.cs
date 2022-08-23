@@ -14,7 +14,8 @@ namespace HW7Project.Controllers
 {
     public class LogReporter:ActionFilterAttribute
     {
-        HttpContext context; 
+        HttpContext context;
+        public bool recordFlag = true;
 
         void LogValues(RouteData routeData, HttpContext context)
         {
@@ -53,14 +54,21 @@ namespace HW7Project.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            context = HttpContext.Current;  // HttpContext.Current取得HttpContext
-            LogValues(filterContext.RouteData, context);
+            if (recordFlag) 
+            {
+                context = HttpContext.Current;  // HttpContext.Current取得HttpContext
+                LogValues(filterContext.RouteData, context);
+            }
+            
         }
 
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {
-            context = HttpContext.Current;
-            RequestLog(context);
+            if (recordFlag)
+            {
+                context = HttpContext.Current;
+                RequestLog(context);
+            }
         }
 
     }
