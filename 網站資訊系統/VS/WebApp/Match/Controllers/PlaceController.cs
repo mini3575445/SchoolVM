@@ -92,7 +92,7 @@ namespace Match.Controllers
             var result = (from pt in db.Place_type
                           join p in db.Place on pt.place_type_id equals p.place_type_id
                           where pt.place_type_id == place.place_type_id && p.shop_name == place.shop_name
-                          select pt).ToList();  //同類別中有相同名稱
+                          select pt).ToList();  //檢查同類別中不能有相同名稱
             if (result.Count != 0) 
             {
                 ViewBag.ErrMsg = "同樣類型中不可有相同地點名稱";

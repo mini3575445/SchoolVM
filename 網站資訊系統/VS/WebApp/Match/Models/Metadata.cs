@@ -246,7 +246,6 @@
         public System.DateTime member_create_date { get; set; }
 
 
-
         //檢查重複帳號的自訂驗證
         public class CheckAccount : ValidationAttribute
         {
@@ -300,7 +299,8 @@
         [DisplayName("建立日期")]
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
-        public System.DateTime place_create_date { get; set; }        
+        public System.DateTime place_create_date { get; set; }
+        
     }
 
     public class MetaPlace_off_day
@@ -329,7 +329,21 @@
 
         [DisplayName("分類名稱")]
         [StringLength(50)]
+        [CheckPlaceTypeName(ErrorMessage = "已經有相同名稱")]
         public string place_type_name { get; set; }
+
+        //檢查重複名稱的自訂驗證
+        public class CheckPlaceTypeName : ValidationAttribute
+        {
+            public override bool IsValid(object value)
+            {
+                MatchEntities db = new MatchEntities();
+
+                var placeTypeName = db.Place_type.Where(m => m.place_type_name == value.ToString()).FirstOrDefault();
+
+                return (placeTypeName == null) ? true : false;
+            }
+        }
     }
 
     public class MetaRight

@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.activity_id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.activity_name)
         </th>
         <th>
@@ -36,6 +39,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.activity_id)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.activity_name)
         </td>
         <td>
@@ -54,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.Place.place_type_id)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.activity_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.activity_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.activity_id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.activity_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.activity_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.activity_id })
         </td>
     </tr>
 }
