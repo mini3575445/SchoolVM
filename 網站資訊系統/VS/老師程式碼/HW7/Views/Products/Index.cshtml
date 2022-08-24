@@ -3,12 +3,17 @@
 @{
     ViewBag.Title = "商品管理";
     Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+    string a = "";
 }
 
 <h2>商品管理</h2>
 
 <p>
-    @Html.ActionLink("新增商品", "Create")
+    @*@Html.ActionLink("新增商品", "Create")*@
+
+    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal" id="btnCreate">
+        管理
+    </button>
 </p>
 <table class="table">
     <tr>
@@ -69,10 +74,12 @@
                 @if (item.Discontinued)
                 {
                     <i class="bi bi-bag-x text-danger"></i>
+                    a = "上";
                 }
                 else
                 {
                     <i class="bi bi-bag-check text-success"></i>
+                    a = "下";
                 }
 
                 @*@Html.DisplayFor(modelItem => item.Discontinued)*@
@@ -81,7 +88,8 @@
                     @Html.DisplayFor(modelItem => item.CreatedDate)
                 </td>*@
         <td>
-           
+        
+           @Html.ActionLink("商品" + a + "架", "ProductStatusChange", new {id=item.ProductID })
             <button type="button" class="btn btn-link myBtn" id="@item.ProductID" data-toggle="modal" data-target="#exampleModal">
                 管理
             </button>
@@ -96,7 +104,6 @@
 
 
 <!-- Button trigger modal -->
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -111,19 +118,32 @@
                 ...
             </div>
             @*<div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>*@
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
         </div>
     </div>
 </div>
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script>
 
-    $('.myBtn').click(function (evt) {
-        console.log(evt.target.id);
-        $('#exampleModal .modal-body').load("Products/Details/" + evt.target.id);
-    });
 
-   
-</script>
+
+@section scripts{
+    
+    <script>
+
+        $('.myBtn').click(function (evt) {
+            console.log(evt.target.id);
+            $('#exampleModalLabel').text("詳細資料");
+            $('#exampleModal .modal-body').load("/Products/Details/" + evt.target.id);
+        });
+
+        $('#btnCreate').click(function () {
+            //console.log(evt.target.id);
+            $('#exampleModalLabel').text("新增商品資料");
+            $('#exampleModal .modal-body').load("/Products/Create");
+            @* $('#exampleModal .modal-body').text(`@Html.Action("Create")`);*@
+        });
+  
+      
+    </script>
+}
