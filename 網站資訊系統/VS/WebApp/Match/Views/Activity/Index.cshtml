@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Match.Models.Activity>
-
+﻿@*@model IEnumerable<Match.Models.Activity>*@
+@model Match.ViewModels.VMActivity
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_manager.cshtml";
@@ -13,34 +13,40 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.activity_id)
+            @Html.DisplayNameFor(model => model.activity.First().activity_datetime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.activity_name)
+            @Html.DisplayNameFor(model => model.activity.First().activity_datetime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.activity_datetime)
+            @Html.DisplayNameFor(model => model.activity.First().activity_create_date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.activity_create_date)
+            @Html.DisplayNameFor(model => model.activity.First().activity_join_deadline)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Activity_type.activity_type_name)
+            @Html.DisplayNameFor(model => model.activity.First().activity_lower)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Member.member_account)
+            @Html.DisplayNameFor(model => model.activity.First().activity_upper)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Place.place_type_id)
+            @Html.DisplayNameFor(model => model.activity.First().Activity_type.activity_type_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.activity.First().Member.member_account)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.activity.First().Place.place_type_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.activity.First().State.state_name)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.activity) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.activity_id)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.activity_name)
         </td>
@@ -49,6 +55,15 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.activity_create_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.activity_join_deadline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.activity_lower)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.activity_upper)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Activity_type.activity_type_name)
@@ -60,9 +75,12 @@
             @Html.DisplayFor(modelItem => item.Place.place_type_id)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.activity_id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.activity_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.activity_id })
+            @Html.DisplayFor(modelItem => item.State.state_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.activity_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.activity_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.activity_id })
         </td>
     </tr>
 }

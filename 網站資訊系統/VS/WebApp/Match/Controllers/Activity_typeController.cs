@@ -19,21 +19,7 @@ namespace Match.Controllers
         {
             return View(db.Activity_type.ToList());
         }
-
-        // GET: Activity_type/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Activity_type activity_type = db.Activity_type.Find(id);
-            if (activity_type == null)
-            {
-                return HttpNotFound();
-            }
-            return View(activity_type);
-        }
+               
 
         // GET: Activity_type/Create
         public ActionResult Create()

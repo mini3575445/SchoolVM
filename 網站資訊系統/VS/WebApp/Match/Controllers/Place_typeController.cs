@@ -19,21 +19,7 @@ namespace Match.Controllers
         {
             return View(db.Place_type.ToList());
         }
-
-        // GET: Place_type/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Place_type place_type = db.Place_type.Find(id);
-            if (place_type == null)
-            {
-                return HttpNotFound();
-            }
-            return View(place_type);
-        }
+                
 
         // GET: Place_type/Create
         public ActionResult Create()

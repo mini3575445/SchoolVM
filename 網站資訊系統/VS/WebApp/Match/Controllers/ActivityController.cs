@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Match.Models;
+using Match.ViewModels;
+
 
 namespace Match.Controllers
 {
@@ -17,8 +19,12 @@ namespace Match.Controllers
         // GET: Activity
         public ActionResult Index()
         {
-            var activity = db.Activity.Include(a => a.Activity_type).Include(a => a.Member).Include(a => a.Place);
-            return View(activity.ToList());
+            VMActivity vmactivity = new VMActivity()
+            {
+                activity = db.Activity.ToList(),
+                activity_detail = db.Activity_detail.ToList()
+            };   
+            return View(vmactivity);
         }
 
         // GET: Activity/Details/5
@@ -42,6 +48,7 @@ namespace Match.Controllers
             ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name");
             ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account");
             ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id");
+            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name");
             return View();
         }
 
@@ -50,7 +57,7 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "activity_id,activity_type_id,activity_name,activity_datetime,place_id,member_id,activity_create_date")] Activity activity)
+        public ActionResult Create([Bind(Include = "activity_id,activity_type_id,activity_name,activity_datetime,place_id,member_id,activity_create_date,activity_join_deadline,activity_lower,activity_upper,state_id")] Activity activity)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +69,7 @@ namespace Match.Controllers
             ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name", activity.activity_type_id);
             ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account", activity.member_id);
             ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
+            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
             return View(activity);
         }
 
@@ -80,6 +88,7 @@ namespace Match.Controllers
             ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name", activity.activity_type_id);
             ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account", activity.member_id);
             ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
+            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
             return View(activity);
         }
 
@@ -88,7 +97,7 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "activity_id,activity_type_id,activity_name,activity_datetime,place_id,member_id,activity_create_date")] Activity activity)
+        public ActionResult Edit([Bind(Include = "activity_id,activity_type_id,activity_name,activity_datetime,place_id,member_id,activity_create_date,activity_join_deadline,activity_lower,activity_upper,state_id")] Activity activity)
         {
             if (ModelState.IsValid)
             {
@@ -99,6 +108,7 @@ namespace Match.Controllers
             ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name", activity.activity_type_id);
             ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account", activity.member_id);
             ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
+            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
             return View(activity);
         }
 
