@@ -118,15 +118,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Models\dbMatch.Context.tt">
+    <Content Include="Models\Match.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbMatch.edmx</DependentUpon>
-      <LastGenOutput>dbMatch.Context.cs</LastGenOutput>
+      <DependentUpon>Match.edmx</DependentUpon>
+      <LastGenOutput>Match.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\dbMatch.tt">
+    <Content Include="Models\Match.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbMatch.edmx</DependentUpon>
-      <LastGenOutput>dbMatch.cs</LastGenOutput>
+      <DependentUpon>Match.edmx</DependentUpon>
+      <LastGenOutput>Match.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -151,12 +151,12 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\dbMatch.edmx">
+    <EntityDeploy Include="Models\Match.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbMatch.Designer.cs</LastGenOutput>
+      <LastGenOutput>Match.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\dbMatch.edmx.diagram">
-      <DependentUpon>dbMatch.edmx</DependentUpon>
+    <Content Include="Models\Match.edmx.diagram">
+      <DependentUpon>Match.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -266,50 +266,53 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Activity.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Activity_detail.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Activity_type.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\dbMatch.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbMatch.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\dbMatch.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbMatch.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\dbMatch.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbMatch.edmx</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Friend.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Match.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Match.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Match.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Match.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Match.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Match.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Member.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Metadata.cs" />
     <Compile Include="Models\Place.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Place_off_day.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Place_type.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Right.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\State.cs">
+      <DependentUpon>Match.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>dbMatch.tt</DependentUpon>
+      <DependentUpon>Match.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\VMLogin.cs" />
     <Compile Include="ViewModels\VMMember.cs" />

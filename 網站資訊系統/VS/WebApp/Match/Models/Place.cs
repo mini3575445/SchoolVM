@@ -31,6 +31,8 @@ namespace Match.Models
         public Nullable<System.TimeSpan> place_hours_start { get; set; }
         public Nullable<System.TimeSpan> place_hours_end { get; set; }
         public System.DateTime place_create_date { get; set; }
+        public string place_photo_file { get; set; }
+        public bool place_shutdown { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }

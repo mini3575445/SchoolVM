@@ -16,9 +16,10 @@ namespace Match.Models
     [MetadataType(typeof(MetaFriend))]
     public partial class Friend
     {
-        public string friend_number { get; set; }
+        public int friend_number { get; set; }
         public string friend_member1 { get; set; }
         public string friend_member2 { get; set; }
+        public System.DateTime friend_create_date { get; set; }
     
         public virtual Member Member { get; set; }
         public virtual Member Member1 { get; set; }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a60cbcdb88ba48d9b304cc7c4acbfa9b" Name="Diagram1">
+        <EntityTypeShape EntityType="MatchModel.Activity" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.Activity_detail" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.Activity_type" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.Friend" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.Member" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.Place" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.Place_off_day" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.Place_type" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.Right" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.State" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MatchModel.FK_Activity_Activity_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Activity_detail_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Activity_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Activity_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Activity_State" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Activity_detail_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Friend_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Friend_Member1" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Member_Right" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Place_off_day_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchModel.FK_Place_Place_type" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

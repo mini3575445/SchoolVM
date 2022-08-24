@@ -25,7 +25,7 @@
 
         [DisplayName("活動日期")]
         [Required]
-        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime activity_datetime { get; set; }
 
         [DisplayName("地點編號")]
@@ -42,14 +42,32 @@
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime activity_create_date { get; set; }
+
+        [DisplayName("報名截止時間")]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public System.DateTime activity_join_deadline { get; set; }
+
+        [DisplayName("人數下限")]
+        [StringLength(4)]
+        [Required]
+        public int activity_lower { get; set; }
+
+        [DisplayName("人數上限")]
+        [StringLength(4)]
+        [Required]
+        public int activity_upper { get; set; }
+        [DisplayName("狀態編號")]
+        [StringLength(1)]
+        [Required]
+        public int state_id { get; set; }
     }
 
     public class MetaActivity_detail
     {
         [DisplayName("流水號")]
         [Key]
-        [RegularExpression("^[A][0-9]{12}$")]
-        public string activity_detail_number { get; set; }
+        public int activity_detail_number { get; set; }
 
         [DisplayName("活動編號")]
         [RegularExpression("^[A][0-9]{5}$")]
@@ -61,8 +79,10 @@
         [Required]
         public string member_id { get; set; }
 
-        public virtual Activity Activity { get; set; }
-        public virtual Member Member { get; set; }
+        [DisplayName("參加日期")]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public System.DateTime join_date { get; set; }
     }
 
     public class MetaActivity_type
@@ -94,8 +114,7 @@
 
         [DisplayName("流水號")]
         [Key]
-        [RegularExpression("^[E][0-9]{2}$")]
-        public string friend_number { get; set; }
+        public int friend_number { get; set; }
 
         [DisplayName("使用者")]
         [RegularExpression("^[P][0-9]{5}$")]
@@ -107,7 +126,12 @@
         [Required]
         public string friend_member2 { get; set; }
 
-        
+        [DisplayName("建立日期")]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public System.DateTime friend_create_date { get; set; }
+
+
     }
 
     public class MetaMember
@@ -300,7 +324,15 @@
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime place_create_date { get; set; }
-        
+
+        [DisplayName("地點照片")]
+        public string place_photo_file { get; set; }
+
+        [DisplayName("是否停業")]
+        [Required]
+        public bool place_shutdown { get; set; }
+
+
     }
 
     public class MetaPlace_off_day
@@ -356,5 +388,19 @@
         [StringLength(50)]
         [Required]
         public string right_name { get; set; }
+    }
+
+    public class MetaState
+    {
+        [DisplayName("狀態編號")]
+        [RegularExpression("^[1-9]$")]
+        [StringLength(1)]
+        [Key]
+        public int state_id { get; set; }
+
+        [DisplayName("狀態編號")]
+        [StringLength(20)]
+        [Required]
+        public string state_name { get; set; }
     }
 }

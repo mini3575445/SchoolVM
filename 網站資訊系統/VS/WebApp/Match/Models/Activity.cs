@@ -29,11 +29,16 @@ namespace Match.Models
         public string place_id { get; set; }
         public string member_id { get; set; }
         public System.DateTime activity_create_date { get; set; }
+        public System.DateTime activity_join_deadline { get; set; }
+        public int activity_lower { get; set; }
+        public int activity_upper { get; set; }
+        public int state_id { get; set; }
     
         public virtual Activity_type Activity_type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity_detail> Activity_detail { get; set; }
         public virtual Member Member { get; set; }
         public virtual Place Place { get; set; }
+        public virtual State State { get; set; }
     }
 }

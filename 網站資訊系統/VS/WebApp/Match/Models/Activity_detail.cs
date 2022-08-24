@@ -19,6 +19,7 @@ namespace Match.Models
         public string activity_detail_number { get; set; }
         public string activity_id { get; set; }
         public string member_id { get; set; }
+        public System.DateTime join_date { get; set; }
     
         public virtual Activity Activity { get; set; }
         public virtual Member Member { get; set; }
