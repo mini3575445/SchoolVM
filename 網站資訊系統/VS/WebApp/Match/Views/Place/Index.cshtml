@@ -37,6 +37,7 @@
                     <th>結束時間</th>
                     <th>公休日</th>
                     <th>建立日期</th>
+                    <th>是否停業</th>
                     <th></th>
                 </tr>
                 @if (Model.place.Count != 0)
@@ -59,8 +60,10 @@
                                     }
                                 }
                             </td>
-
                             <td>@p.place_create_date</td>
+                            <td>@p.place_shutdown</td>
+                            
+                            
 
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = p.place_id }) |
