@@ -49,16 +49,14 @@
         public System.DateTime activity_join_deadline { get; set; }
 
         [DisplayName("人數下限")]
-        [StringLength(4)]
         [Required]
         public int activity_lower { get; set; }
 
         [DisplayName("人數上限")]
-        [StringLength(4)]
         [Required]
         public int activity_upper { get; set; }
         [DisplayName("狀態編號")]
-        [StringLength(1)]
+        [RegularExpression("^[1-9]{1}$")]
         [Required]
         public int state_id { get; set; }
     }

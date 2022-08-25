@@ -40,38 +40,9 @@ namespace Match.Controllers
                 return HttpNotFound();
             }
             return View(activity);
-        }
+        }       
 
-        // GET: Activity/Create
-        public ActionResult Create()
-        {
-            ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name");
-            ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account");
-            ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id");
-            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name");
-            return View();
-        }
 
-        // POST: Activity/Create
-        // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
-        // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "activity_id,activity_type_id,activity_name,activity_datetime,place_id,member_id,activity_create_date,activity_join_deadline,activity_lower,activity_upper,state_id")] Activity activity)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Activity.Add(activity);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name", activity.activity_type_id);
-            ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account", activity.member_id);
-            ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
-            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
-            return View(activity);
-        }
 
         // GET: Activity/Edit/5
         public ActionResult Edit(string id)
@@ -97,8 +68,8 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "activity_id,activity_type_id,activity_name,activity_datetime,place_id,member_id,activity_create_date,activity_join_deadline,activity_lower,activity_upper,state_id")] Activity activity)
-        {
+        public ActionResult Edit(Activity activity)
+        {            
             if (ModelState.IsValid)
             {
                 db.Entry(activity).State = EntityState.Modified;
@@ -110,33 +81,7 @@ namespace Match.Controllers
             ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
             ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
             return View(activity);
-        }
-
-        // GET: Activity/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Activity activity = db.Activity.Find(id);
-            if (activity == null)
-            {
-                return HttpNotFound();
-            }
-            return View(activity);
-        }
-
-        // POST: Activity/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            Activity activity = db.Activity.Find(id);
-            db.Activity.Remove(activity);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        }                
 
         protected override void Dispose(bool disposing)
         {

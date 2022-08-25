@@ -35,6 +35,8 @@ namespace HW7Project.Models
         [DisplayName("商品單價")]
         [Required(ErrorMessage = "請輸入商品單價")]
         [Range(0, short.MaxValue, ErrorMessage = "單價不可小於0")]
+        [DisplayFormat(DataFormatString = "{0:C0}", ApplyFormatInEditMode = true)]  //只影響VIEW顯示，不改變本身的型別
+        //DataFormatString = "{0:C0}"C0表示小數第0位
         public short UnitPrice { get; set; }
 
         [DisplayName("商品說明")]

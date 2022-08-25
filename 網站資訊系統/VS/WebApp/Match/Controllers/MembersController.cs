@@ -65,6 +65,7 @@ namespace Match.Controllers
                     }
                 }
             }
+           
 
             //自動編號
             ChangeIDAuto changeIDAuto = new ChangeIDAuto();

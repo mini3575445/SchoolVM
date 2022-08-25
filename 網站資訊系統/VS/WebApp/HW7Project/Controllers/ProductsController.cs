@@ -13,10 +13,12 @@ namespace HW7Project.Controllers
     public class ProductsController : Controller
     {
         private HW7ProjectContext db = new HW7ProjectContext();
-
+        
+        
+        
         // GET: Products
         public ActionResult Index()
-        {
+        {            
             return View(db.Products.ToList());
         }
 
