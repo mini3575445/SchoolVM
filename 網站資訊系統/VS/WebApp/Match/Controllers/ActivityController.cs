@@ -56,11 +56,13 @@ namespace Match.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name", activity.activity_type_id);
-            ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account", activity.member_id);
-            ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
-            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
-            return View(activity);
+
+            VMActivity vmactivity = new VMActivity()
+            {
+                activity = db.Activity.Where(a=>a.activity_id ==id).FirstOrDefault().ToList(),
+                activity_detail = db.Activity_detail.ToList()
+            };
+            return View(vmactivity);
         }
 
         // POST: Activity/Edit/5
@@ -68,7 +70,7 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Activity activity)
+        public ActionResult Edit([Bind(Include = "state_id")] Activity activity)
         {            
             if (ModelState.IsValid)
             {
