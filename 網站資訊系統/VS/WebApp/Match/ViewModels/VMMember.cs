@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 
-namespace Match.Models
+namespace Match.ViewModels
 {
     public class VMMember
     {

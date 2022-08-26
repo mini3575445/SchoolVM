@@ -26,7 +26,7 @@ namespace Match.Controllers
             };   
             return View(vmactivity);
         }
-
+       
         // GET: Activity/Details/5
         public ActionResult Details(string id)
         {
@@ -40,9 +40,9 @@ namespace Match.Controllers
                 return HttpNotFound();
             }
             return View(activity);
-        }       
+        }
 
-
+        List<string> test = new List<string>();
 
         // GET: Activity/Edit/5
         public ActionResult Edit(string id)
@@ -59,9 +59,11 @@ namespace Match.Controllers
 
             VMActivity vmactivity = new VMActivity()
             {
-                activity = db.Activity.Where(a=>a.activity_id ==id).FirstOrDefault().ToList(),
-                activity_detail = db.Activity_detail.ToList()
+                activity = db.Activity.Where(a => a.activity_id == id).ToList(),
+                activity_detail = db.Activity_detail.Where(ad => ad.activity_id == id).ToList()
             };
+
+            ViewBag.state = db.State.ToList();
             return View(vmactivity);
         }
 
@@ -70,19 +72,22 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "state_id")] Activity activity)
-        {            
+        public ActionResult Edit(Activity activity)
+        {
+            //activity.Activity_type.activity_type_name = "A0002";
+            ModelState.Remove("Activity_type.activity_type_name");
+            ModelState.Remove("activity_type_name");
             if (ModelState.IsValid)
             {
                 db.Entry(activity).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name", activity.activity_type_id);
-            ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account", activity.member_id);
-            ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
-            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
-            return View(activity);
+            //ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name", activity.activity_type_id);
+            //ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account", activity.member_id);
+            //ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
+            //ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
+            return View();
         }                
 
         protected override void Dispose(bool disposing)

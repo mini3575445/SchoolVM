@@ -15,6 +15,9 @@
             @Html.DisplayNameFor(model => model.activity.First().activity_id)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.activity.First().Activity_type.activity_type_name)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.activity.First().activity_name)
         </th>
         <th>
@@ -22,7 +25,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.activity.First().activity_datetime)
-        </th>       
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.activity.First().activity_join_deadline)
         </th>
@@ -31,9 +34,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.activity.First().activity_upper)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.activity.First().Activity_type.activity_type_name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.activity_detail.First().member_id)
@@ -55,6 +55,9 @@
             @Html.DisplayFor(modelItem => a.activity_id)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => a.Activity_type.activity_type_name)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => a.activity_name)
         </td>
          <td>
@@ -71,10 +74,7 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => a.activity_upper)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => a.Activity_type.activity_type_name)
-        </td>
+        </td>        
         <td>
             @{peopleCount = 0;}
             @foreach (var ad in Model.activity_detail)

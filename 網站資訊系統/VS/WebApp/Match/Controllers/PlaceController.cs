@@ -148,6 +148,7 @@ namespace Match.Controllers
                 return View(place);
             }
 
+            ModelState.Remove("activity_type_name");    //容許相同類別名稱
             if (ModelState.IsValid)
             {
                 db.Entry(place).State = EntityState.Modified;
