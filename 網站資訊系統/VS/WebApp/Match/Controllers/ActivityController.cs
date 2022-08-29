@@ -156,41 +156,35 @@ namespace Match.Controllers
             //1.顯示index選擇的類別名稱
             //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
             ViewBag.strTypeID = activity_type_id;
+            VMActivity vmactivity = new VMActivity()
+            {
+                activity_type = db.Activity_type.ToList()
+            };
+
 
             if (place_address == "全部")
             {
-                VMActivity vmactivity = new VMActivity()
-                {
-                    activity = (from a in db.Activity
-                                join p in db.Place on a.place_id equals p.place_id
-                                where a.activity_type_id == activity_type_id
-                                select a).ToList(),
+                vmactivity.activity = db.Activity.Where(a => a.activity_type_id == activity_type_id).ToList();
 
-                    activity_detail = (from ad in db.Activity_detail
-                                       join a in db.Activity on ad.activity_id equals a.activity_id
-                                       join p in db.Place on a.place_id equals p.place_id
-                                       where a.activity_type_id == activity_type_id
-                                       select ad).ToList(),
-                    activity_type = db.Activity_type.ToList()
-                };
-
+                vmactivity.activity_detail = (from ad in db.Activity_detail
+                                              join a in db.Activity on ad.activity_id equals a.activity_id
+                                              join p in db.Place on a.place_id equals p.place_id
+                                              where a.activity_type_id == activity_type_id
+                                              select ad).ToList();             
             }
             else    //篩選縣市
             {
-                VMActivity vmactivity = new VMActivity()
-                {
-                    activity = (from a in db.Activity
-                                join p in db.Place on a.place_id equals p.place_id
-                                where p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
-                                select a).ToList(),
+                
+                vmactivity.activity = (from a in db.Activity
+                                        join p in db.Place on a.place_id equals p.place_id
+                                        where p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
+                                        select a).ToList();
 
-                    activity_detail = (from ad in db.Activity_detail
-                                       join a in db.Activity on ad.activity_id equals a.activity_id
-                                       join p in db.Place on a.place_id equals p.place_id
-                                       where p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id 
-                                       select ad).ToList(),
-                    activity_type = db.Activity_type.ToList()
-                };
+                vmactivity.activity_detail = (from ad in db.Activity_detail
+                                                join a in db.Activity on ad.activity_id equals a.activity_id
+                                                join p in db.Place on a.place_id equals p.place_id
+                                                where p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
+                                                select ad).ToList();
             }           
             
             return View(vmactivity);

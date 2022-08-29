@@ -2,14 +2,108 @@
 @model Match.ViewModels.VMActivity
 @{
     ViewBag.Title = "活動管理";
-    Layout = "~/Views/Shared/_Layout_manager.cshtml";
 
     var peopleCount = 0;    //包含主辦人的參加人數
     var intTypeID = Convert.ToInt16((ViewBag.strTypeID).Substring(1, 2));
-}
 
+
+}
 <h2>活動管理</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <div class="container">
+
+    <div class="row">
+
+        <div class="col-3">
+            @if (Request.Url.Query.IndexOf("place_address=") != -1)  //1
+            {
+                <p class="alert alert-danger text-center">
+                    @*取得URL參數後，將中文編碼解碼為中文：%E9%AB%98%E9%9B%84%E5%B8%82 ==>"高雄市"*@
+                    @HttpUtility.UrlDecode(
+                    Request.Url.Query.Substring(
+                        Request.Url.Query.IndexOf("place_address=") + 14,
+                        (Request.Url.Query.IndexOf("%E5%B8%82")/*市*/+ 9) - (Request.Url.Query.IndexOf("place_address=") + 14)
+                    ))
+                </p>
+            }
+            else
+            {
+                <p class="alert alert-danger text-center">所有縣市</p>
+            }
+        </div>
+
+        <div class="btn-group col">
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    北部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("台北市", "UserIndex", new { place_address = "台北市", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("新北市", "UserIndex", new { place_address = "新北市", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("基隆", "UserIndex", new { place_address = "基隆", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("桃園", "UserIndex", new { place_address = "桃園", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("新竹", "UserIndex", new { place_address = "新竹", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("宜蘭", "UserIndex", new { place_address = "宜蘭", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    中部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("苗栗", "UserIndex", new { place_address = "苗栗", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("台中", "UserIndex", new { place_address = "台中", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("彰化", "UserIndex", new { place_address = "彰化", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("南投", "UserIndex", new { place_address = "南投", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("雲林", "UserIndex", new { place_address = "雲林", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    南部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("嘉義", "UserIndex", new { place_address = "嘉義", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("台南", "UserIndex", new { place_address = "台南", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("高雄", "UserIndex", new { place_address = "高雄", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("屏東", "UserIndex", new { place_address = "屏東", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    東部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("花蓮", "UserIndex", new { place_address = "花蓮", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("台東", "UserIndex", new { place_address = "台東", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    離島區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("澎湖", "UserIndex", new { place_address = "澎湖", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("金門", "UserIndex", new { place_address = "金門", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("馬祖", "UserIndex", new { place_address = "馬祖", activity_type_id = @ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
     <div class="row">
         <div class="col-3">
             <p class="alert alert-success text-center">類別名稱</p>
@@ -17,11 +111,12 @@
                 @foreach (var at in Model.activity_type)
                 {
                     <li class="list-group-item">
-                        @Html.ActionLink(@at.activity_type_name, "Index", new { activity_type_id = @at.activity_type_id })
+                        @Html.ActionLink(@at.activity_type_name, "UserIndex", new { activity_type_id = @at.activity_type_id })
                     </li>
                 }
             </ul>
         </div>
+        
         <div class="col-9">
             <p class="alert alert-info text-center">@Model.activity_type[intTypeID - 1].activity_type_name</p>
             <table class="table">
@@ -66,65 +161,65 @@
                 {
                     foreach (var a in Model.activity)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => a.activity_id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => a.Activity_type.activity_type_name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => a.activity_name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => a.Place.shop_name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => a.activity_datetime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => a.activity_join_deadline)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => a.activity_lower)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => a.activity_upper)
-                        </td>
-                        <td>
-                            @{peopleCount = 0;}
-                            @foreach (var ad in Model.activity_detail)
-                            {
-
-                                if (ad.activity_id == a.activity_id)
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.activity_id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.Activity_type.activity_type_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.activity_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.Place.shop_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.activity_datetime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.activity_join_deadline)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.activity_lower)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.activity_upper)
+                            </td>
+                            <td>
+                                @{peopleCount = 0;}
+                                @foreach (var ad in Model.activity_detail)
                                 {
-                                    <p>@Html.DisplayFor(modelItem => ad.Member.member_name)</p>
-                                    peopleCount += 1;
-                                }
-                            }
-                        </td>
-                        <td>
-                            @peopleCount
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => a.State.state_name)
-                        </td>
 
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = a.activity_id }) |
-                            @Html.ActionLink("Details", "Details", new { id = a.activity_id }) |
-                        </td>
-                    </tr>
+                                    if (ad.activity_id == a.activity_id)
+                                    {
+                                        <p>@Html.DisplayFor(modelItem => ad.Member.member_name)</p>
+                                        peopleCount += 1;
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @peopleCount
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.State.state_name)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = a.activity_id }) |
+                                @Html.ActionLink("Details", "Details", new { id = a.activity_id }) |
+                            </td>
+                        </tr>
                     }
-                 }
-                 else
-                 {
+                }
+                else
+                {
                     <tr>
                         <td colspan="11">
                             <div class="alert alert-danger text-center">沒東西哦呵呵</div>
                         </td>
                     </tr>
-                 }
+                }
             </table>
         </div>
     </div>
