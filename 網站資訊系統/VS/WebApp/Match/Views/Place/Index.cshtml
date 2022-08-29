@@ -1,13 +1,13 @@
 ﻿@*@model IEnumerable<Match.Models.Place>*@
 @model Match.ViewModels.VMPlace
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "地點管理";
     Layout = "~/Views/Shared/_Layout_manager.cshtml";
     var intTypeID = Convert.ToInt16((ViewBag.strTypeID).Substring(1, 2));
 
 }
 
-<h2>Index</h2>
+<h2>地點管理</h2>
 <p>
     @Html.ActionLink("Create New", "Create", new { place_type_id=ViewBag.strTypeID })
 </p>
@@ -16,16 +16,16 @@
         <div class="col-3">
             <p class="alert alert-success text-center">類別名稱</p>
             <ul class="list-group text-center">
-            @foreach (var pt in Model.place_type)
-            {
-                <li class="list-group-item">
-                    @Html.ActionLink(@pt.place_type_name,"Index",new { place_type_id= @pt.place_type_id })
-                </li>
-            }
+                @foreach (var pt in Model.place_type)
+                {
+                    <li class="list-group-item">
+                        @Html.ActionLink(@pt.place_type_name, "Index", new { place_type_id = @pt.place_type_id })
+                    </li>
+                }
             </ul>
         </div>
         <div class="col-9">
-            <p class="alert alert-info text-center">@Model.place_type[intTypeID-1].place_type_name</p>
+            <p class="alert alert-info text-center">@Model.place_type[intTypeID - 1].place_type_name</p>
 
             <table class="table">
                 <tr>
@@ -38,6 +38,7 @@
                     <th>公休日</th>
                     <th>建立日期</th>
                     <th>是否停業</th>
+                    <th>地圖</th>
                     <th></th>
                 </tr>
                 @if (Model.place.Count != 0)
@@ -62,29 +63,28 @@
                             </td>
                             <td>@p.place_create_date</td>
                             <td>@p.place_shutdown</td>
-                            
-                            
+
+                            <td><a href="https://www.google.com.tw/maps/search/@p.place_address">點我看地圖</a></td>
 
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = p.place_id }) |
                                 @Html.ActionLink("Details", "Details", new { id = p.place_id }) |
                                 @Html.ActionLink("Delete", "Delete", new { id = p.place_id })
                             </td>
-
                         </tr>
                     }
                 }
                 else
                 {
-                <tr>
-                    <td colspan="9">
-                        <div class="alert alert-danger text-center">沒東西哦呵呵</div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td colspan="11">
+                            <div class="alert alert-danger text-center">沒東西哦呵呵</div>
+                        </td>
+                    </tr>
                 }
-                </table>
+            </table>
         </div>
-    </div>
+        </div>
 </div>
 
 

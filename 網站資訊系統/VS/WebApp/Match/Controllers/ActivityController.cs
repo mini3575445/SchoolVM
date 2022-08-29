@@ -17,16 +17,27 @@ namespace Match.Controllers
         private MatchEntities db = new MatchEntities();
 
         // GET: Activity
-        public ActionResult Index()
+        
+        public ActionResult Index(string activity_type_id = "C01")
         {
+
+            //1.顯示index選擇的類別名稱
+            ViewBag.strTypeID = activity_type_id;
+
+            //將db資料帶入vm
             VMActivity vmactivity = new VMActivity()
             {
-                activity = db.Activity.ToList(),
-                activity_detail = db.Activity_detail.ToList()
-            };   
+                activity = db.Activity.Where(a => a.activity_type_id == activity_type_id).ToList(),
+                activity_detail = (from ad in db.Activity_detail
+                                   join a in db.Activity on ad.activity_id equals a.activity_id
+                                   where a.activity_type_id == activity_type_id
+                                   select ad).ToList(),  
+                activity_type = db.Activity_type.ToList()
+            };
             return View(vmactivity);
         }
-       
+
+
         // GET: Activity/Details/5
         public ActionResult Details(string id)
         {
@@ -42,7 +53,32 @@ namespace Match.Controllers
             return View(activity);
         }
 
-        List<string> test = new List<string>();
+        //給前台會員新增活動
+        public ActionResult Create()
+        {
+            ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name");
+            ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account");
+            ViewBag.place_id = new SelectList(db.Place, "place_id", "shop_name");
+            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "activity_id,activity_type_id,activity_name,activity_datetime,place_id,member_id,activity_create_date,activity_join_deadline,activity_lower,activity_upper,state_id")] Activity activity)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Activity.Add(activity);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name", activity.activity_type_id);
+            ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account", activity.member_id);
+            ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
+            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
+            return View(activity);
+        }
 
         // GET: Activity/Edit/5
         public ActionResult Edit(string id)
@@ -88,7 +124,78 @@ namespace Match.Controllers
             //ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
             //ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
             return View();
-        }                
+        }
+
+
+        //前台
+
+        //前台無法看到已完成的活動
+        //可透過縣市篩選
+        //public ActionResult UserIndex(string activity_type_id="C01")
+        //{
+
+        //    //1.顯示index選擇的類別名稱
+        //    //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
+        //    ViewBag.strTypeID = activity_type_id;
+
+
+        //    VMActivity vmactivity = new VMActivity()
+        //    {
+        //        activity = db.Activity.Where(a => a.activity_type_id == activity_type_id).ToList(),
+        //        activity_detail = (from ad in db.Activity_detail
+        //                           join a in db.Activity on ad.activity_id equals a.activity_id
+        //                           where a.activity_type_id == activity_type_id
+        //                           select ad).ToList(),
+        //        activity_type = db.Activity_type.ToList()
+        //    };
+        //    return View(vmactivity);
+        //}
+        public ActionResult UserIndex(string activity_type_id="C01",string place_address="全部")
+        {
+
+            //1.顯示index選擇的類別名稱
+            //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
+            ViewBag.strTypeID = activity_type_id;
+
+            if (place_address == "全部")
+            {
+                VMActivity vmactivity = new VMActivity()
+                {
+                    activity = (from a in db.Activity
+                                join p in db.Place on a.place_id equals p.place_id
+                                where a.activity_type_id == activity_type_id
+                                select a).ToList(),
+
+                    activity_detail = (from ad in db.Activity_detail
+                                       join a in db.Activity on ad.activity_id equals a.activity_id
+                                       join p in db.Place on a.place_id equals p.place_id
+                                       where a.activity_type_id == activity_type_id
+                                       select ad).ToList(),
+                    activity_type = db.Activity_type.ToList()
+                };
+
+            }
+            else    //篩選縣市
+            {
+                VMActivity vmactivity = new VMActivity()
+                {
+                    activity = (from a in db.Activity
+                                join p in db.Place on a.place_id equals p.place_id
+                                where p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
+                                select a).ToList(),
+
+                    activity_detail = (from ad in db.Activity_detail
+                                       join a in db.Activity on ad.activity_id equals a.activity_id
+                                       join p in db.Place on a.place_id equals p.place_id
+                                       where p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id 
+                                       select ad).ToList(),
+                    activity_type = db.Activity_type.ToList()
+                };
+            }           
+            
+            return View(vmactivity);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

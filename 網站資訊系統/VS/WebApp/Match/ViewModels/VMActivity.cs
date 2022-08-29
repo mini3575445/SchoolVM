@@ -12,6 +12,6 @@ namespace Match.ViewModels
     {
         public List<Activity> activity { get; set; }
         public List<Activity_detail> activity_detail { get; set; }
-        
+        public List<Activity_type> activity_type { get; set; }
     }
 }

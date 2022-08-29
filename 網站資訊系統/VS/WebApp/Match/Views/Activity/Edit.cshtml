@@ -119,22 +119,30 @@
 
     <div class="row">
         @*可以用card顯示*@
-    @Html.DisplayNameFor(model => model.activity_detail.First().member_id)
-    @foreach (var ad in Model.activity_detail)
-    {
-        <div class="form-group col-3">
-            <div class="col-md-10">
-                @Html.EditorFor(modelItem => ad.member_id, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
-                @Html.ValidationMessageFor(modelItem => ad.member_id, "", new { @class = "text-danger" })
+        @Html.DisplayNameFor(model => model.activity_detail.First().member_id)
+        @foreach (var ad in Model.activity_detail)
+        {
+            <div class="form-group col-3">
+                <div class="col-md-10">
+                    @Html.EditorFor(modelItem => ad.member_id, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                    @Html.ValidationMessageFor(modelItem => ad.member_id, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-    }
-</div>
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Save" class="btn btn-default" />
+        }
     </div>
-</div>
+
+    <div class="form-group">
+        <label>參加人數</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" value="@Model.activity_detail.Count()" readonly />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
 </div>
         }
 
