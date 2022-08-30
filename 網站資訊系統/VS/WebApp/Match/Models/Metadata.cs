@@ -300,6 +300,7 @@
         [Required]
         public string shop_name { get; set; }
 
+        //***格式為:高雄市前鎮區博愛一路147號
         [DisplayName("地址")]
         [StringLength(100)]
         [Required]

@@ -1,13 +1,14 @@
 ﻿@model Match.Models.Place
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout_manager.cshtml";
 
     var IndexID = Request.QueryString["place_type_id"];
     var selected = "";
 }
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Place", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -19,11 +20,11 @@
             @Html.LabelFor(model => model.place_type_id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                <select class="form-control">
+                <select class="form-control" id="place_type_id" name="place_type_id">
                     @foreach (var item in ViewBag.place_type_id)
                     {
                         selected = item.Value == Convert.ToString(IndexID) ? "selected" : "";
-                        <option id="place_type_id" name="place_type_id" value="@item.Value" @selected>@item.Text</option>
+                        <option value="@item.Value" @selected>@item.Text</option>
                     }
                 </select>
                 @*@Html.DropDownList("place_type_id", null, htmlAttributes: new { @class = "form-control" })*@
@@ -42,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.place_photo_file, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="place_photo_file" id="place_photo_file"/>
+                <input type="file" name="photo" id="photo"/>
                 @Html.ValidationMessageFor(model => model.place_photo_file, "", new { @class = "text-danger" })
             </div>
         </div>

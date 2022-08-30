@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="MynavbarMenu">
                 <div class="navbar-nav">
                     @Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
-                    @Html.ActionLink("活動", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                    @Html.ActionLink("活動", "UserIndex", "Activity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("個人檔案", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @if (Session["user"] != null)
                     {
