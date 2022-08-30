@@ -36,6 +36,8 @@
             {
                 <img src="~/MemberPhotos/@Model.member_photo_file">
             }
+            <input id="photo" name="photo" type="file" class="form-control" />
+            <span class="field-validation-valid text-danger">@ViewBag.ErrMessage</span>
         </div>
     </div>
 
