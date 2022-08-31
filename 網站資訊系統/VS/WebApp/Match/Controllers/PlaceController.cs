@@ -16,26 +16,85 @@ namespace Match.Controllers
         private MatchEntities db = new MatchEntities();
 
         // GET: Place
-        public ActionResult Index(string place_type_id="E01")
-        {
+        //public ActionResult Index(string place_type_id = "E01")
+        //{
 
+        //    //1.顯示index選擇的類別名稱
+        //    //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
+        //    ViewBag.strTypeID = place_type_id;
+
+        //    //將db資料帶入vm
+        //    VMPlace vmplace = new VMPlace()
+        //    {
+        //        place = db.Place.Where(p => p.place_type_id == place_type_id).ToList(),
+        //        place_off_day = (from pod in db.Place_off_day
+        //                         join p in db.Place on pod.place_id equals p.place_id
+        //                         where p.place_type_id == place_type_id
+        //                         orderby pod.place_id, pod.place_off_day1
+        //                         select pod).ToList(),  //選出參數類別的公休日
+        //        place_type = db.Place_type.ToList()
+        //    };
+        //    return View(vmplace);
+        //}
+
+        public ActionResult Index(string place_type_id = "所有類別", string place_address = "所有縣市")
+        {
             //1.顯示index選擇的類別名稱
             //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
             ViewBag.strTypeID = place_type_id;
+            ViewBag.city = place_address;
 
-            //將db資料帶入vm
-            VMPlace vmplace = new VMPlace(){                
-                place = db.Place.Where(p=>p.place_type_id == place_type_id).ToList(),
+            //參數篩選條件不同(無法where="所有縣市")，可分為四種情形:
+            //一、預設：place_type_id="所有類別"；place_address="所有縣市"
+            //二、place_type_id="C01"；place_address="所有縣市"
+            //三、place_type_id="所有類別"；place_address="高雄"
+            //四、place_type_id="C01"；place_address="高雄"
+
+            VMPlace vmplace = new VMPlace()      //一、預設：place_type_id="所有類別"；place_address="所有縣市"
+            {
+                place_type = db.Place_type.ToList(),
+                place = db.Place.ToList(),
                 place_off_day = (from pod in db.Place_off_day
                                  join p in db.Place on pod.place_id equals p.place_id
-                                 where p.place_type_id == place_type_id
-                                 orderby pod.place_id,pod.place_off_day1
-                                 select pod).ToList(),  //選出參數類別的公休日
-                place_type = db.Place_type.ToList()
-            };
-            return View(vmplace);
+                                 orderby p.place_id, pod.place_off_day1
+                                 select pod).ToList()
+        };
+
+            if (place_type_id != "所有類別" && place_address == "所有縣市")   //二、place_type_id="C01"；place_address="所有縣市"
+            {
+                vmplace.place = db.Place.Where(p => p.place_type_id == place_type_id).ToList();
+                vmplace.place_off_day = (from pod in db.Place_off_day
+                                         join p in db.Place on pod.place_id equals p.place_id
+                                         where p.place_type_id == place_type_id
+                                         orderby p.place_id, pod.place_off_day1
+                                         select pod).ToList();
+            }
+            else if (place_type_id == "所有類別" && place_address != "所有縣市")     //三、place_type_id="所有類別"；place_address="高雄"
+            {
+                vmplace.place = db.Place.Where(p => p.place_address.StartsWith(place_address)).ToList();
+                vmplace.place_off_day = (from pod in db.Place_off_day
+                                         join p in db.Place on pod.place_id equals p.place_id
+                                         where p.place_address.StartsWith(place_address)
+                                         orderby p.place_id, pod.place_off_day1
+                                         select pod).ToList();
+            }
+            else if (place_type_id != "所有類別" && place_address != "所有縣市")   //四、place_type_id="C01"；place_address="高雄"
+            {
+                vmplace.place = (from p in db.Place
+                                 where p.place_type_id == place_type_id && p.place_address.StartsWith(place_address)
+                                 select p).ToList();
+                vmplace.place_off_day = (from pod in db.Place_off_day
+                                         join p in db.Place on pod.place_id equals p.place_id
+                                         where p.place_address.StartsWith(place_address) && p.place_type_id == place_type_id
+                                         orderby p.place_id, pod.place_off_day1
+                                         select pod).ToList();
+            }
+                return View(vmplace);
         }
-        
+
+
+
+
         // GET: Place/Details/5
         public ActionResult Details(string id)
         {
@@ -79,21 +138,7 @@ namespace Match.Controllers
             //            }
             //        }
             //    }
-            //}
-
-            //照片上傳
-            if (photo != null)
-            {
-                if (photo.ContentLength > 0)   //上傳檔案大小
-                {
-                    string extensionName = System.IO.Path.GetExtension(photo.FileName); //抓副檔名
-                    if (extensionName == ".jpg" || extensionName == ".png")
-                    {
-                        photo.SaveAs(Server.MapPath("~/PlacePhotos/" + place.place_id + extensionName));    //地點ID為照片檔名
-                        place.place_photo_file = place.place_id + extensionName;
-                    }
-                }
-            }
+            //}                        
 
             //檢查同類別中不能有相同名稱
             var result = (from pt in db.Place_type
@@ -115,8 +160,20 @@ namespace Match.Controllers
             place.place_create_date = DateTime.Now; //建立日期
             place.place_shutdown = false;
 
-            
-            
+            //照片上傳
+            if (photo != null)
+            {
+                if (photo.ContentLength > 0)   //上傳檔案大小
+                {
+                    string extensionName = System.IO.Path.GetExtension(photo.FileName); //抓副檔名
+                    if (extensionName == ".jpg" || extensionName == ".png")
+                    {
+                        photo.SaveAs(Server.MapPath("~/PlacePhotos/" + place.place_id + extensionName));    //地點ID為照片檔名
+                        place.place_photo_file = place.place_id + extensionName;
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {           
                 db.Place.Add(place);

@@ -50,7 +50,7 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "member_id,member_account,member_password,member_name,member_id_name,member_gender,member_birthday,member_cellphone,member_email,member_address,right_id,member_photo_file,member_create_date")] Member member, HttpPostedFileBase photo)
+        public ActionResult Create(Member member, HttpPostedFileBase photo)
         {
             //照片上傳
             if (photo != null) 
@@ -64,8 +64,7 @@ namespace Match.Controllers
                         member.member_photo_file = member.member_account + extensionName;
                     }
                 }
-            }
-           
+            }           
 
             //自動編號
             ChangeIDAuto changeIDAuto = new ChangeIDAuto();
@@ -94,7 +93,7 @@ namespace Match.Controllers
             }
 
             ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name", member.right_id);
-            ViewBag.ErrMsg = "新增失敗";
+            ViewBag.ErrMsg = "照片檔案類型必須為jpg或png";
             return View();
         }
 
@@ -110,6 +109,17 @@ namespace Match.Controllers
             {
                 return HttpNotFound();
             }
+
+            //檢查登入者權限>被修改會員
+            const string rank = "ABCDE";
+            int userRight = rank.IndexOf(Session["right"].ToString());
+            int memberRight = rank.IndexOf(member.right_id.ToString());            
+            if (userRight>memberRight)  //權限越高，數值越小
+            {
+                return HttpNotFound();
+            }
+
+
             ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name", member.right_id);
             return View(member);
         }
@@ -119,8 +129,22 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "member_id,member_account,member_password,member_name,member_id_name,member_gender,member_birthday,member_cellphone,member_email,member_address,right_id")] Member member)
+        public ActionResult Edit(Member member, HttpPostedFileBase photo)
         {
+            //照片上傳
+            if (photo != null)
+            {
+                if (photo.ContentLength > 0)   //上傳檔案大小
+                {
+                    string extensionName = System.IO.Path.GetExtension(photo.FileName); //抓副檔名
+                    if (extensionName == ".jpg" || extensionName == ".png")
+                    {
+                        photo.SaveAs(Server.MapPath("~/MemberPhotos/" + member.member_account + extensionName));    //會員帳號為照片檔名
+                        member.member_photo_file = member.member_account + extensionName;
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(member).State = EntityState.Modified;
@@ -128,7 +152,7 @@ namespace Match.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name", member.right_id);
-            ViewBag.ErrMsg = "修改失敗";
+            ViewBag.ErrMsg = "照片檔案類型必須為jpg或png";
             return View(member);
         }
 

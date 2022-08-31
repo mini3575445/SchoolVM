@@ -14,12 +14,12 @@ namespace Match.Controllers
     {
         private MatchEntities db = new MatchEntities();
 
-        // GET: Activity_type
         public ActionResult Index()
         {
             return View(db.Activity_type.ToList());
         }
-               
+
+
 
         // GET: Activity_type/Create
         public ActionResult Create()

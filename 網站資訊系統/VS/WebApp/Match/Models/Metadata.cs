@@ -144,7 +144,7 @@
         [RegularExpression("^[A-Za-z0-9]{6,30}$")]
         [Required]        
 
-        [CheckAccount(ErrorMessage ="已經有相同帳號")] //驗證是否有相同帳號
+        [CheckAccount(ErrorMessage ="已經有相同帳號",flag =false)] //驗證是否有相同帳號
 
         public string member_account { get; set; }
 
@@ -268,16 +268,22 @@
         public System.DateTime member_create_date { get; set; }
 
 
-        //檢查重複帳號的自訂驗證
+        //檢查重複帳號的自訂驗證        
         public class CheckAccount : ValidationAttribute
         {
+            public bool flag = true;
+
             public override bool IsValid(object value)
             {
-                MatchEntities db = new MatchEntities();
+                if (flag) 
+                { 
+                    MatchEntities db = new MatchEntities();
 
-                var account = db.Member.Where(m=>m.member_account == value.ToString()).FirstOrDefault();
+                    var account = db.Member.Where(m=>m.member_account == value.ToString()).FirstOrDefault();
 
-                return (account == null) ? true : false;
+                    return (account == null) ? true : false;
+                }
+                return true;
             }
         }
     }

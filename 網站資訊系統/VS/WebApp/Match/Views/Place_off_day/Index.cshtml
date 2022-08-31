@@ -1,50 +1,155 @@
-﻿@model IEnumerable<Match.Models.Place_off_day>
-
+﻿@*@model IEnumerable<Match.Models.Activity>*@
+@model Match.ViewModels.VMPlace
 @{
     ViewBag.Title = "地點公休日管理";
     Layout = "~/Views/Shared/_Layout_manager.cshtml";
+
+
+    int intTypeID = 0;
+    if (ViewBag.strTypeID != "所有類別")
+    {
+        intTypeID = Convert.ToInt16((ViewBag.strTypeID).Substring(1, 2));   //用於顯示類別名稱
+    }
+
 }
-
 <h2>地點公休日管理</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.place_off_day_number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.place_off_day1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Place.shop_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Place.place_type_id)
-        </th>
-        <th></th>
-    </tr>
+<div class="container">
+    <div class="row">        
+        <div class="col-3">
+            <p class="alert alert-success text-center">類別名稱</p>
+            <ul class="list-group text-center">
+                <li class="list-group-item">
+                    @Html.ActionLink("所有類別", "Index", new { place_address = ViewBag.city, place_type_id = "所有類別" })
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.place_off_day_number)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.place_off_day1)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Place.shop_name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Place.place_type_id)
-    </td>
-    <td>
-        @Html.ActionLink("Delete", "Delete", new { id = item.place_off_day_number })
-    </td>
-</tr>
-}
+                </li>
+                @foreach (var pt in Model.place_type)
+                {
+                    <li class="list-group-item">
+                        @Html.ActionLink(pt.place_type_name, "Index", new { place_address = ViewBag.city, place_type_id = pt.place_type_id })
+                    </li>
+                }
+            </ul>
+        </div>
 
-</table>
+        <div class="col-9">
+            @if (ViewBag.strTypeID != "所有類別")   //顯示類別名稱
+            {
+                <p class="alert alert-info text-center">@Model.place_type[intTypeID - 1].place_type_name</p>
+            }
+            else
+            {
+                <p class="alert alert-info text-center">@ViewBag.strTypeID</p>
+            }
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_photo_file)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_type_id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().shop_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_hours_start)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_hours_end)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place_off_day.First().place_off_day1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_create_date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_shutdown)
+                    </th>
+                    <th></th>
+                </tr>
+                @if (Model.place.Count != 0)
+                {
+                    foreach (var p in Model.place)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_id)
+                            </td>
+                            <td>
+                                @*路徑為空顯示預設圖片*@
+                                @if (p.place_photo_file != null)
+                                {
+                                    <img src="~/PlacePhotos/@p.place_photo_file" width="100">
+                                }
+                                else
+                                {
+                                    <img src="~/PlacePhotos/defaultPhoto.png" width="100">
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_type_id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.shop_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_hours_start)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_hours_end)
+                            </td>                                                        
+                            <td>
+                                @foreach (var pod in Model.place_off_day)
+                                {
+
+                                    if (p.place_id == pod.place_id)
+                                    {
+                                        <p>@Html.DisplayFor(modelItem => pod.place_off_day1)</p>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_create_date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_shutdown)
+                            </td>                            
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = p.place_id }) |
+                                @Html.ActionLink("Details", "Details", new { id = p.place_id }) |
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="11">
+                            <div class="alert alert-danger text-center">沒東西哦呵呵</div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

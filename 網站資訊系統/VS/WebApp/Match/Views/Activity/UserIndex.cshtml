@@ -130,6 +130,9 @@
                         @Html.DisplayNameFor(model => model.activity.First().Place.shop_name)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.activity.First().Place.place_address)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.activity.First().activity_datetime)
                     </th>
                     <th>
@@ -169,6 +172,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => a.Place.shop_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.Place.place_address)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => a.activity_datetime)

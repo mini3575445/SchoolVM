@@ -1,44 +1,156 @@
-﻿@*@model IEnumerable<Match.Models.Place>*@
+﻿@*@model IEnumerable<Match.Models.Activity>*@
 @model Match.ViewModels.VMPlace
 @{
     ViewBag.Title = "地點管理";
     Layout = "~/Views/Shared/_Layout_manager.cshtml";
-    var intTypeID = Convert.ToInt16((ViewBag.strTypeID).Substring(1, 2));
+
+
+    int intTypeID = 0;
+    if (ViewBag.strTypeID != "所有類別")
+    {
+        intTypeID = Convert.ToInt16((ViewBag.strTypeID).Substring(1, 2));   //用於顯示類別名稱
+    }
 
 }
-
 <h2>地點管理</h2>
 <p>
-    @Html.ActionLink("Create New", "Create", new { place_type_id=ViewBag.strTypeID })
+    @Html.ActionLink("Create New", "Create")
 </p>
 <div class="container">
+
+
     <div class="row">
+        <div class="btn-group col-7 pb-3">
+            <button type="button" class="btn btn-danger p-2">
+                @Html.ActionLink("所有縣市", "Index", new { place_address = "所有縣市", place_type_id = ViewBag.strTypeID }, new { @class = "text-white text-decoration-none" })
+            </button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    北部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("台北", "Index", new { place_address = "台北", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("新北", "Index", new { place_address = "新北", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("基隆", "Index", new { place_address = "基隆", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("桃園", "Index", new { place_address = "桃園", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("新竹", "Index", new { place_address = "新竹", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("宜蘭", "Index", new { place_address = "宜蘭", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    中部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("苗栗", "Index", new { place_address = "苗栗", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("台中", "Index", new { place_address = "台中", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("彰化", "Index", new { place_address = "彰化", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("南投", "Index", new { place_address = "南投", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("雲林", "Index", new { place_address = "雲林", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    南部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("嘉義", "Index", new { place_address = "嘉義", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("台南", "Index", new { place_address = "台南", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("高雄", "Index", new { place_address = "高雄", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("屏東", "Index", new { place_address = "屏東", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    東部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("花蓮", "Index", new { place_address = "花蓮", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("台東", "Index", new { place_address = "台東", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    離島區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("澎湖", "Index", new { place_address = "澎湖", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("金門", "Index", new { place_address = "金門", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("馬祖", "Index", new { place_address = "馬祖", place_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-5">
+            <p class="alert alert-danger text-center">
+                @ViewBag.city
+            </p>
+        </div>
+
         <div class="col-3">
             <p class="alert alert-success text-center">類別名稱</p>
             <ul class="list-group text-center">
+                <li class="list-group-item">
+                    @Html.ActionLink("所有類別", "Index", new { place_address = ViewBag.city, place_type_id = "所有類別" })
+
+                </li>
                 @foreach (var pt in Model.place_type)
                 {
                     <li class="list-group-item">
-                        @Html.ActionLink(@pt.place_type_name, "Index", new { place_type_id = @pt.place_type_id })
+                        @Html.ActionLink(pt.place_type_name, "Index", new { place_address = ViewBag.city, place_type_id = pt.place_type_id })
                     </li>
                 }
             </ul>
         </div>
-        <div class="col-9">
-            <p class="alert alert-info text-center">@Model.place_type[intTypeID - 1].place_type_name</p>
 
+        <div class="col-9">
+            @if (ViewBag.strTypeID != "所有類別")   //顯示類別名稱
+            {
+                <p class="alert alert-info text-center">@Model.place_type[intTypeID - 1].place_type_name</p>
+            }
+            else
+            {
+                <p class="alert alert-info text-center">@ViewBag.strTypeID</p>
+            }
             <table class="table">
                 <tr>
-                    <th>編號</th>
-                    <th>店家名稱</th>
-                    <th>地址</th>
-                    <th>聯絡電話</th>
-                    <th>營業時間</th>
-                    <th>結束時間</th>
-                    <th>公休日</th>
-                    <th>建立日期</th>
-                    <th>是否停業</th>
-                    <th>地圖</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_photo_file)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_type_id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().shop_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_hours_start)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_hours_end)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place_off_day.First().place_off_day1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_create_date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.place.First().place_shutdown)
+                    </th>
                     <th></th>
                 </tr>
                 @if (Model.place.Count != 0)
@@ -46,30 +158,58 @@
                     foreach (var p in Model.place)
                     {
                         <tr>
-                            <td>@p.place_id</td>
-                            <td>@p.shop_name</td>
-                            <td>@p.place_address</td>
-                            <td>@p.place_phone</td>
-                            <td>@p.place_hours_start</td>
-                            <td>@p.place_hours_end</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_id)
+                            </td>
+                            <td>
+                                @*路徑為空顯示預設圖片*@
+                                @if (p.place_photo_file != null)
+                                {
+                                    <img src="~/PlacePhotos/@p.place_photo_file" width="100">
+                                }
+                                else
+                                {
+                                    <img src="~/PlacePhotos/defaultPhoto.png" width="100">
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_type_id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.shop_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_hours_start)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_hours_end)
+                            </td>                                                        
                             <td>
                                 @foreach (var pod in Model.place_off_day)
                                 {
+
                                     if (p.place_id == pod.place_id)
                                     {
-                                        @pod.place_off_day1
+                                        <p>@Html.DisplayFor(modelItem => pod.place_off_day1)</p>
                                     }
                                 }
                             </td>
-                            <td>@p.place_create_date</td>
-                            <td>@p.place_shutdown</td>
-
-                            <td><a href="https://www.google.com.tw/maps/search/@p.place_address">點我看地圖</a></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_create_date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => p.place_shutdown)
+                            </td>                            
 
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = p.place_id }) |
                                 @Html.ActionLink("Details", "Details", new { id = p.place_id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = p.place_id })
                             </td>
                         </tr>
                     }
@@ -84,8 +224,5 @@
                 }
             </table>
         </div>
-        </div>
+    </div>
 </div>
-
-
-

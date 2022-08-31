@@ -17,25 +17,81 @@ namespace Match.Controllers
         private MatchEntities db = new MatchEntities();
 
         // GET: Activity
-        
-        public ActionResult Index(string activity_type_id = "C01")
+        public ActionResult Index(string activity_type_id = "所有類別", string place_address = "所有縣市")
         {
-
             //1.顯示index選擇的類別名稱
+            //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
             ViewBag.strTypeID = activity_type_id;
+            ViewBag.city = place_address;
 
-            //將db資料帶入vm
-            VMActivity vmactivity = new VMActivity()
+            //參數篩選條件不同(無法where="所有縣市")，可分為四種情形:
+            //一、預設：activity_type_id="所有類別"；place_address="所有縣市"
+            //二、activity_type_id="C01"；place_address="所有縣市"
+            //三、activity_type_id="所有類別"；place_address="高雄"
+            //四、activity_type_id="C01"；place_address="高雄"
+
+            VMActivity vmactivity = new VMActivity()    //一、預設：activity_type_id="所有類別"；place_address="所有縣市"
             {
-                activity = db.Activity.Where(a => a.activity_type_id == activity_type_id).ToList(),
-                activity_detail = (from ad in db.Activity_detail
-                                   join a in db.Activity on ad.activity_id equals a.activity_id
-                                   where a.activity_type_id == activity_type_id
-                                   select ad).ToList(),  
-                activity_type = db.Activity_type.ToList()
+                activity_type = db.Activity_type.ToList(),
+                activity = db.Activity.ToList(),
+                activity_detail = db.Activity_detail.ToList()
             };
+
+            if (activity_type_id != "所有類別" && place_address == "所有縣市")   //二、activity_type_id="C01"；place_address="所有縣市"
+            {
+                vmactivity.activity = db.Activity.Where(a => a.activity_type_id == activity_type_id).ToList();
+                vmactivity.activity_detail = (from ad in db.Activity_detail
+                                              join a in db.Activity on ad.activity_id equals a.activity_id
+                                              join p in db.Place on a.place_id equals p.place_id
+                                              where a.activity_type_id == activity_type_id
+                                              select ad).ToList();
+            }
+            else if (activity_type_id == "所有類別" && place_address != "所有縣市")     //三、activity_type_id="所有類別"；place_address="高雄"
+            {
+                vmactivity.activity = (from a in db.Activity
+                                       join p in db.Place on a.place_id equals p.place_id
+                                       where p.place_address.StartsWith(place_address)
+                                       select a).ToList();
+                vmactivity.activity_detail = (from ad in db.Activity_detail
+                                              join a in db.Activity on ad.activity_id equals a.activity_id
+                                              join p in db.Place on a.place_id equals p.place_id
+                                              where p.place_address.StartsWith(place_address)
+                                              select ad).ToList();
+            }
+            else if (activity_type_id != "所有類別" && place_address != "所有縣市")   //四、activity_type_id="C01"；place_address="高雄"
+            {
+                vmactivity.activity = (from a in db.Activity
+                                       join p in db.Place on a.place_id equals p.place_id
+                                       where p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
+                                       select a).ToList();
+                vmactivity.activity_detail = (from ad in db.Activity_detail
+                                              join a in db.Activity on ad.activity_id equals a.activity_id
+                                              join p in db.Place on a.place_id equals p.place_id
+                                              where p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
+                                              select ad).ToList();
+            }
             return View(vmactivity);
         }
+
+
+        //public ActionResult Index(string activity_type_id = "C01")
+        //{
+
+        //    //1.顯示index選擇的類別名稱
+        //    ViewBag.strTypeID = activity_type_id;
+
+        //    //將db資料帶入vm
+        //    VMActivity vmactivity = new VMActivity()
+        //    {
+        //        activity = db.Activity.Where(a => a.activity_type_id == activity_type_id).ToList(),
+        //        activity_detail = (from ad in db.Activity_detail
+        //                           join a in db.Activity on ad.activity_id equals a.activity_id
+        //                           where a.activity_type_id == activity_type_id
+        //                           select ad).ToList(),  
+        //        activity_type = db.Activity_type.ToList()
+        //    };
+        //    return View(vmactivity);
+        //}
 
 
         // GET: Activity/Details/5

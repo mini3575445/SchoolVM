@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Match.Models;
+using Match.ViewModels;
 
 namespace Match.Controllers
 {
@@ -14,12 +15,40 @@ namespace Match.Controllers
     {
         private MatchEntities db = new MatchEntities();
 
-        // GET: Place_off_day
-        public ActionResult Index()
+       
+        public ActionResult Index(string place_type_id = "所有類別")
         {
-            var place_off_day = db.Place_off_day.Include(p => p.Place);
-            return View(place_off_day.ToList());
+            //1.顯示index選擇的類別名稱
+            //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
+            ViewBag.strTypeID = place_type_id;
+
+            //參數篩選條件不同(無法where="所有縣市")，可分為二種情形:
+            //一、預設：place_type_id="所有類別"
+            //二、place_type_id="C01"
+
+            VMPlace vmplace = new VMPlace()      //一、預設：place_type_id="所有類別"
+            {
+                place_type = db.Place_type.ToList(),
+                place = db.Place.ToList(),
+                place_off_day = (from pod in db.Place_off_day
+                                 join p in db.Place on pod.place_id equals p.place_id
+                                 orderby p.place_id, pod.place_off_day1
+                                 select pod).ToList()
+            };
+
+            if (place_type_id != "所有類別")   //二、place_type_id="C01"
+            {
+                vmplace.place = db.Place.Where(p => p.place_type_id == place_type_id).ToList();
+                vmplace.place_off_day = (from pod in db.Place_off_day
+                                         join p in db.Place on pod.place_id equals p.place_id
+                                         where p.place_type_id == place_type_id
+                                         orderby p.place_id, pod.place_off_day1
+                                         select pod).ToList();            }
+            return View(vmplace);
         }
+
+
+
 
         // GET: Place_off_day/Details/5
         public ActionResult Details(int? id)
