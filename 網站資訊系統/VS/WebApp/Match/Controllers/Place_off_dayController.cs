@@ -48,23 +48,6 @@ namespace Match.Controllers
         }
 
 
-
-
-        // GET: Place_off_day/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Place_off_day place_off_day = db.Place_off_day.Find(id);
-            if (place_off_day == null)
-            {
-                return HttpNotFound();
-            }
-            return View(place_off_day);
-        }
-
         // GET: Place_off_day/Create
         public ActionResult Create()
         {
@@ -88,7 +71,7 @@ namespace Match.Controllers
             {
                 db.Place_off_day.Add(place_off_day);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Place",null);
             }
 
             //ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", place_off_day.place_id);
@@ -128,31 +111,70 @@ namespace Match.Controllers
             return View(place_off_day);
         }
 
-        // GET: Place_off_day/Delete/5
-        public ActionResult Delete(int? id)
+
+
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Place_off_day place_off_day = db.Place_off_day.Find(id);
-            if (place_off_day == null)
+            Place place = db.Place.Find(id);
+            if (place == null)
             {
                 return HttpNotFound();
             }
-            return View(place_off_day);
+            return View(place);
         }
 
         // POST: Place_off_day/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Place_off_day place_off_day = db.Place_off_day.Find(id);
-            db.Place_off_day.Remove(place_off_day);
+            List<Place_off_day> place_off_day = (from pod in db.Place_off_day
+                                           join p in db.Place on pod.place_id equals p.place_id
+                                           where p.place_id == id
+                                           select pod).ToList();
+            foreach (var item in place_off_day) 
+            {
+                db.Place_off_day.Remove(item);
+            }
+            
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Place",null);
         }
+
+
+
+
+        // GET: Place_off_day/Delete/5
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Place_off_day place_off_day = db.Place_off_day.Find(id);
+        //    if (place_off_day == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(place_off_day);
+        //}
+
+        //// POST: Place_off_day/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Place_off_day place_off_day = db.Place_off_day.Find(id);
+        //    db.Place_off_day.Remove(place_off_day);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
+
+
 
         protected override void Dispose(bool disposing)
         {

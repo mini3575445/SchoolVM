@@ -15,6 +15,7 @@
 <h2>地點管理</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增公休日", "Create","Place_off_day",null,null)
 </p>
 <div class="container">
 
@@ -210,6 +211,7 @@
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = p.place_id }) |
                                 @Html.ActionLink("Details", "Details", new { id = p.place_id }) |
+                                @Html.ActionLink("刪除此地點的全部公休日", "Delete","Place_off_day",new { id = p.place_id },null)
                             </td>
                         </tr>
                     }

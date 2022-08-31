@@ -44,9 +44,9 @@
                 <p class="alert alert-info text-center">@ViewBag.strTypeID</p>
             }
             <table class="table">
-                <tr>
+                <tr>                   
                     <th>
-                        @Html.DisplayNameFor(model => model.place.First().place_id)
+                        @Html.DisplayNameFor(model => model.place_off_day.First().place_id)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.place.First().place_photo_file)
@@ -58,85 +58,43 @@
                         @Html.DisplayNameFor(model => model.place.First().shop_name)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.place.First().place_address)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.place.First().place_phone)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.place.First().place_hours_start)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.place.First().place_hours_end)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.place_off_day.First().place_off_day1)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.place.First().place_create_date)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.place.First().place_shutdown)
-                    </th>
+                    </th>                    
                     <th></th>
                 </tr>
                 @if (Model.place.Count != 0)
                 {
-                    foreach (var p in Model.place)
+                    foreach (var pod in Model.place_off_day)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => p.place_id)
+                                @Html.DisplayFor(modelItem => pod.place_id)
                             </td>
                             <td>
-                                @*路徑為空顯示預設圖片*@
-                                @if (p.place_photo_file != null)
+                                @foreach (var p in Model.place)
                                 {
-                                    <img src="~/PlacePhotos/@p.place_photo_file" width="100">
-                                }
-                                else
-                                {
-                                    <img src="~/PlacePhotos/defaultPhoto.png" width="100">
-                                }
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => p.place_type_id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => p.shop_name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => p.place_address)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => p.place_phone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => p.place_hours_start)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => p.place_hours_end)
-                            </td>                                                        
-                            <td>
-                                @foreach (var pod in Model.place_off_day)
-                                {
-
-                                    if (p.place_id == pod.place_id)
+                                    if (pod.place_id == p.place_id)
                                     {
-                                        <p>@Html.DisplayFor(modelItem => pod.place_off_day1)</p>
+                                        <img src="~/PlacePhotos/@p.place_photo_file" width="100"/>
                                     }
                                 }
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => p.place_create_date)
+                                @Html.DisplayFor(modelItem => pod.place_off_day1)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => p.place_shutdown)
-                            </td>                            
+                                @foreach (var p in Model.place)
+                                {
+                                    if (pod.place_id == p.place_id)
+                                    {
+                                        @Html.DisplayFor(modelItem => p.shop_name)
+                                    }
+                                }
+                            </td>
+
 
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = p.place_id }) |
-                                @Html.ActionLink("Details", "Details", new { id = p.place_id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = pod.place_off_day_number }) |
                             </td>
                         </tr>
                     }
