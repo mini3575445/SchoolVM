@@ -55,10 +55,29 @@
         [DisplayName("人數上限")]
         [Required]
         public int activity_upper { get; set; }
+
+        [DisplayName("活動明細")]
+        public string activity_description { get; set; }
+
         [DisplayName("狀態編號")]
         //[Range(1,9)]
         [Required]
         public int state_id { get; set; }
+
+        ////檢查Upper>=Lower    
+        //public class CheckUpper : ValidationAttribute
+        //{
+        //    public override bool IsValid(object value)
+        //    {
+                
+        //            MatchEntities db = new MatchEntities();
+
+        //            var account = db.Member.Where(m => m.member_account == value.ToString()).FirstOrDefault();
+
+        //            return (account == null) ? true : false;                
+        //    }
+        //}
+
     }
 
     public class MetaActivity_detail
@@ -332,6 +351,9 @@
 
         [DisplayName("地點照片")]
         public string place_photo_file { get; set; }
+
+        [DisplayName("地點明細")]
+        public string place_description { get; set; }
 
         [DisplayName("是否停業")]
         [Required]

@@ -19,13 +19,14 @@
           <Property Name="activity_join_deadline" Type="datetime" Nullable="false" />
           <Property Name="activity_lower" Type="int" Nullable="false" />
           <Property Name="activity_upper" Type="int" Nullable="false" />
+          <Property Name="activity_description" Type="nvarchar(max)" />
           <Property Name="state_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Activity_detail">
           <Key>
             <PropertyRef Name="activity_detail_number" />
           </Key>
-          <Property Name="activity_detail_number" Type="char" MaxLength="13" Nullable="false" />
+          <Property Name="activity_detail_number" Type="int" Nullable="false" />
           <Property Name="activity_id" Type="char" MaxLength="6" Nullable="false" />
           <Property Name="member_id" Type="char" MaxLength="6" Nullable="false" />
           <Property Name="join_date" Type="datetime" Nullable="false" />
@@ -77,6 +78,7 @@
           <Property Name="place_hours_end" Type="time" Precision="7" />
           <Property Name="place_create_date" Type="datetime" Nullable="false" />
           <Property Name="place_photo_file" Type="nvarchar(max)" />
+          <Property Name="place_description" Type="nvarchar(max)" />
           <Property Name="place_shutdown" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Place_off_day">
@@ -326,6 +328,7 @@
           <Property Name="activity_join_deadline" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="activity_lower" Type="Int32" Nullable="false" />
           <Property Name="activity_upper" Type="Int32" Nullable="false" />
+          <Property Name="activity_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="state_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Activity_type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_type" />
           <NavigationProperty Name="Activity_detail" Relationship="Self.FK_Activity_detail_Activity" FromRole="Activity" ToRole="Activity_detail" />
@@ -337,7 +340,7 @@
           <Key>
             <PropertyRef Name="activity_detail_number" />
           </Key>
-          <Property Name="activity_detail_number" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="activity_detail_number" Type="Int32" Nullable="false" />
           <Property Name="activity_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="member_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="join_date" Type="DateTime" Nullable="false" Precision="3" />
@@ -399,6 +402,7 @@
           <Property Name="place_hours_end" Type="Time" Precision="7" />
           <Property Name="place_create_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="place_photo_file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="place_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="place_shutdown" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Place" FromRole="Place" ToRole="Activity" />
           <NavigationProperty Name="Place_off_day" Relationship="Self.FK_Place_off_day_Place" FromRole="Place" ToRole="Place_off_day" />
@@ -655,6 +659,7 @@
                 <ScalarProperty Name="activity_join_deadline" ColumnName="activity_join_deadline" />
                 <ScalarProperty Name="activity_lower" ColumnName="activity_lower" />
                 <ScalarProperty Name="activity_upper" ColumnName="activity_upper" />
+                <ScalarProperty Name="activity_description" ColumnName="activity_description" />
                 <ScalarProperty Name="state_id" ColumnName="state_id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -718,6 +723,7 @@
                 <ScalarProperty Name="place_hours_end" ColumnName="place_hours_end" />
                 <ScalarProperty Name="place_create_date" ColumnName="place_create_date" />
                 <ScalarProperty Name="place_photo_file" ColumnName="place_photo_file" />
+                <ScalarProperty Name="place_description" ColumnName="place_description" />
                 <ScalarProperty Name="place_shutdown" ColumnName="place_shutdown" />
               </MappingFragment>
             </EntityTypeMapping>

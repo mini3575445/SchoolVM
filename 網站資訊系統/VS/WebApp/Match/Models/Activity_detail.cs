@@ -16,7 +16,7 @@ namespace Match.Models
     [MetadataType(typeof(MetaActivity_detail))]
     public partial class Activity_detail
     {
-        public string activity_detail_number { get; set; }
+        public int activity_detail_number { get; set; }
         public string activity_id { get; set; }
         public string member_id { get; set; }
         public System.DateTime join_date { get; set; }

@@ -14,6 +14,7 @@ namespace Match.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(MetaPlace_off_day))]
+
     public partial class Place_off_day
     {
         public int place_off_day_number { get; set; }

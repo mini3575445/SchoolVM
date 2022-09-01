@@ -84,6 +84,13 @@
                 @Html.ValidationMessageFor(model => model.place_hours_end, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.place_description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea name="place_description" id="place_description" class="form-control" rows="5"></textarea>
+                @Html.ValidationMessageFor(model => model.place_description, "", new { @class = "text-danger" })
+            </div>
+        </div>
         @ViewBag.ErrMsg
 
         <div class="form-group">

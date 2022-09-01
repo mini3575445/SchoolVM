@@ -14,6 +14,7 @@ namespace Match.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(MetaPlace))]
+
     public partial class Place
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -32,6 +33,7 @@ namespace Match.Models
         public Nullable<System.TimeSpan> place_hours_end { get; set; }
         public System.DateTime place_create_date { get; set; }
         public string place_photo_file { get; set; }
+        public string place_description { get; set; }
         public bool place_shutdown { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

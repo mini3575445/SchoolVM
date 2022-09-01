@@ -98,6 +98,14 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.DisplayNameFor(model => model.activity.First().activity_description)
+        <div class="col-md-10">
+            <textarea name="activity_description" id="activity_description" class="form-control" rows="5">@Model.activity.First().activity_description</textarea>
+            @Html.ValidationMessageFor(model => model.activity.First().activity_description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.DisplayNameFor(model => model.activity.First().State.state_name)
         <div class="col-md-10">
             <select class="form-control" name="state_id" id="state_id">

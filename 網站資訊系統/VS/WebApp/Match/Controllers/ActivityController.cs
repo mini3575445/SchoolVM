@@ -140,8 +140,8 @@ namespace Match.Controllers
             //建立日期
             activity.activity_create_date = DateTime.Now;
 
-            //member_id為登入者
-            activity.member_id = Session["member_id"].ToString();
+            //member_id為登入者(寫在create:hidden)
+            //activity.member_id = Session["member_id"].ToString();
 
             //報名狀態預設為報名中
             activity.state_id = 1;
@@ -152,10 +152,8 @@ namespace Match.Controllers
 
                 var lastNum = db.Activity_detail.OrderByDescending(ad => ad.activity_detail_number).FirstOrDefault().activity_detail_number;
                 Activity_detail activity_detail = new Activity_detail()
-                {
-                     
-
-                    activity_detail_number = lastNum,
+                {                    
+                    activity_detail_number = lastNum+1,
                     activity_id = activity.activity_id,
                     member_id = activity.member_id,
                     join_date = activity.activity_create_date

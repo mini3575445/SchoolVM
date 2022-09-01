@@ -14,6 +14,7 @@ namespace Match.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(MetaActivity_type))]
+
     public partial class Activity_type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
