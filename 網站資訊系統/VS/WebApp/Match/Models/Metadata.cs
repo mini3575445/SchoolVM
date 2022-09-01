@@ -56,7 +56,7 @@
         [Required]
         public int activity_upper { get; set; }
         [DisplayName("狀態編號")]
-        [RegularExpression("^[1-9]{1}$")]
+        //[Range(1,9)]
         [Required]
         public int state_id { get; set; }
     }
@@ -65,7 +65,7 @@
     {
         [DisplayName("流水號")]
         [Key]
-        public int activity_detail_number { get; set; }
+        public string activity_detail_number { get; set; }
 
         [DisplayName("活動編號")]
         [RegularExpression("^[A][0-9]{5}$")]

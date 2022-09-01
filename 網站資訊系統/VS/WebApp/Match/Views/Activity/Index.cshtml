@@ -128,6 +128,9 @@
                         @Html.DisplayNameFor(model => model.activity.First().activity_name)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.activity.First().Place.place_photo_file)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.activity.First().Place.shop_name)
                     </th>
                     <th>
@@ -170,6 +173,17 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => a.activity_name)
+                            </td>
+                            <td>
+                                @*路徑為空顯示預設圖片*@
+                                @if (a.Place.place_photo_file != null)
+                                {
+                                    <img src="~/PlacePhotos/@a.Place.place_photo_file" width="100">
+                                }
+                                else
+                                {
+                                    <img src="~/PlacePhotos/defaultPhoto.png" width="100">
+                                }
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => a.Place.shop_name)

@@ -121,19 +121,61 @@ namespace Match.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "activity_id,activity_type_id,activity_name,activity_datetime,place_id,member_id,activity_create_date,activity_join_deadline,activity_lower,activity_upper,state_id")] Activity activity)
+        public ActionResult Create(Activity activity)
         {
             //檢查活動地點是否為停業狀態
-            List<Place> place = db.Place.Where(p => p.place_id == activity.place_id).ToList();
-            var checkShutdown = place[0].place_shutdown;
-            if (checkShutdown) //ture為停業狀態
-            { 
-                ViewBag.ErrMsg = "地點已停業，請選擇其他地點";
-                return View(activity);
-            }
+            //List<Place> place = db.Place.Where(p => p.place_id == activity.place_id).ToList();
+            //var checkShutdown = place[0].place_shutdown;
+            //if (checkShutdown) //ture為停業狀態
+            //{ 
+            //    ViewBag.ErrMsg = "地點已停業，請選擇其他地點";
+            //    return View(activity);
+            //}
+
+            //自動編號
+            ChangeIDAuto changeIDAuto = new ChangeIDAuto();
+            var last_data = db.Activity.OrderByDescending(m => m.activity_id).FirstOrDefault();     //抓資料庫最後一筆資料
+            activity.activity_id = changeIDAuto.ChangeIDNumber(last_data.activity_id, "A", 5);    //A00005
+
+            //建立日期
+            activity.activity_create_date = DateTime.Now;
+
+            //member_id為登入者
+            activity.member_id = Session["member_id"].ToString();
+
+            //報名狀態預設為報名中
+            activity.state_id = 1;
 
             if (ModelState.IsValid)
             {
+                //新增成功再將資料寫入Activity_detail
+
+                var lastNum = db.Activity_detail.OrderByDescending(ad => ad.activity_detail_number).FirstOrDefault().activity_detail_number;
+                Activity_detail activity_detail = new Activity_detail()
+                {
+                     
+
+                    activity_detail_number = lastNum,
+                    activity_id = activity.activity_id,
+                    member_id = activity.member_id,
+                    join_date = activity.activity_create_date
+                };
+                activity.Activity_detail.Add(activity_detail);
+
+                //ICollection<Activity_detail> list2 = new List<Activity_detail>();
+                //list2.Add(db.Activity_detail.FirstOrDefault());
+
+                //List<Activity_detail> activity_detail = new List<Activity_detail>();
+
+                //Activity_detail activity_detail = new Activity_detail()
+                //{
+                //    activity_detail_number = db.Activity_detail.OrderByDescending(ad => ad.activity_detail_number).FirstOrDefault().activity_detail_number,
+                //    activity_id = activity.activity_id,
+                //    member_id = activity.member_id,
+                //    join_date = activity.activity_create_date
+                //};
+
+                //db.Activity_detail.Add(activity.Activity_detail);
                 db.Activity.Add(activity);
                 db.SaveChanges();
                 return RedirectToAction("Index");

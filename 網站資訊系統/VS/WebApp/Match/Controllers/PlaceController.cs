@@ -207,8 +207,22 @@ namespace Match.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Place place)
-        {            
+        public ActionResult Edit(Place place, HttpPostedFileBase photo)
+        {
+            //照片上傳
+            if (photo != null)
+            {
+                if (photo.ContentLength > 0)   //上傳檔案大小
+                {
+                    string extensionName = System.IO.Path.GetExtension(photo.FileName); //抓副檔名
+                    if (extensionName == ".jpg" || extensionName == ".png")
+                    {
+                        photo.SaveAs(Server.MapPath("~/PlacePhotos/" + place.place_id + extensionName));    //地點編號為照片檔名
+                        place.place_photo_file = place.place_id + extensionName;
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(place).State = EntityState.Modified;

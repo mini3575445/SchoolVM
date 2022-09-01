@@ -35,10 +35,9 @@ namespace Match.Controllers
                 return View(vMLogin);
             }          
             
-            var right = user.right_id;
-
             Session["user"] = user;
-            Session["right"] = right;
+            Session["right"] = user.right_id;
+            Session["member_id"] = user.member_id;
             return RedirectToAction("Index");
         }
 

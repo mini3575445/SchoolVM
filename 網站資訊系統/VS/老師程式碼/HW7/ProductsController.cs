@@ -20,14 +20,14 @@ namespace HW7Project.Controllers
             return View(db.Products.ToList());
         }
 
-        [LogReporter(recordFlag = false)]
+        [LogReporter(recordFlag =false)]
         public FileContentResult GetImage(string id)
         {
-            var photo = db.Products.Find(id);
-            if (photo == null)
+            var photo=db.Products.Find(id);
+            if(photo==null) 
                 return null;
 
-            return File(photo.PhotoFile, photo.ImageMimeType);
+            return File(photo.PhotoFile,photo.ImageMimeType);
         }
 
 
@@ -39,8 +39,6 @@ namespace HW7Project.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Products products = db.Products.Find(id);
-            //Products products = db.Products.Where(p => p.ProductID == id).FirstOrDefault();
-
             if (products == null)
             {
                 return HttpNotFound();
@@ -72,7 +70,7 @@ namespace HW7Project.Controllers
                 ViewBag.ErrMessage2 = "商品編號重複";
                 return View(products);
             }
-
+        
             products.ImageMimeType = photo.ContentType;
 
             products.PhotoFile = new byte[photo.ContentLength];

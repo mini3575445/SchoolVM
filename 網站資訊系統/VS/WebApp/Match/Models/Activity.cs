@@ -36,7 +36,7 @@ namespace Match.Models
     
         public virtual Activity_type Activity_type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Activity_detail> Activity_detail { get; set; }
+        public virtual ICollection<Activity_detail> Activity_detail { get; set; }        
         public virtual Member Member { get; set; }
         public virtual Place Place { get; set; }
         public virtual State State { get; set; }

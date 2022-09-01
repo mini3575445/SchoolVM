@@ -31,6 +31,19 @@
                 @Html.ValidationMessageFor(model => model.place_type_id, "", new { @class = "text-danger" })
             </div>
         </div>
+        @*預覽圖片*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.place_photo_file, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                <img width="200" id="newPhoto" />
+
+                <input type="file" name="photo" id="photo" class="from-control"/>
+                <span class="field-validation-valid text-danger" data-valmsg-for="photo" data-valmsg-replace="true"></span>
+                <span class="field-validation-valid text-danger">@ViewBag.ErrMsg</span>
+            </div>
+        </div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.shop_name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -39,15 +52,7 @@
                 @Html.ValidationMessageFor(model => model.shop_name, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.place_photo_file, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="photo" id="photo"/>
-                @Html.ValidationMessageFor(model => model.place_photo_file, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
+        
         <div class="form-group">
             @Html.LabelFor(model => model.place_address, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -96,3 +101,15 @@
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    //預覽圖片
+    $("#photo").change(() => {
+        var oFReader = new FileReader();
+        var file = document.getElementById('photo').files[0];
+        oFReader.readAsDataURL(file);
+        oFReader.onloadend = function (oFRevent) {
+            var src = oFRevent.target.result;
+            $('#newPhoto').attr('src', src);
+        }
+    });
+</script>

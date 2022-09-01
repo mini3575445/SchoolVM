@@ -21,5 +21,12 @@ namespace HW7Project.Controllers
 
             return View(products);
         }
+
+
+        public ActionResult MyCart()
+        {
+
+            return View();
+        }
     }
 }
