@@ -101,12 +101,33 @@ namespace Match.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Activity activity = db.Activity.Find(id);
+            //activity.Place = (from p in db.Place
+            //                  join a in db.Activity on p.place_id equals a.place_id
+            //                  where a.activity_id == id
+            //                  select p).FirstOrDefault();
+
             if (activity == null)
             {
                 return HttpNotFound();
             }
+            
             return View(activity);
+
+
+
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+
+            //Activity activity = db.Activity.Find(id);
+            //if (activity == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(activity);
         }
 
         //給前台會員新增活動

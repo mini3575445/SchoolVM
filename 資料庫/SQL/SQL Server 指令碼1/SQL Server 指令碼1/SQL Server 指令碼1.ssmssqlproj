@@ -283,6 +283,12 @@
           <AssociatedConnUserName />
           <FullPath>HW8.sql</FullPath>
         </FileNode>
+        <FileNode Name="HW9.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>HW9.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLQuery2.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>

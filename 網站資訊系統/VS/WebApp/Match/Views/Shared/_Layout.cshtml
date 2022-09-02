@@ -16,14 +16,21 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MynavbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="MynavbarMenu">
+            <div class="collapse navbar-collapse justify-content-between" id="MynavbarMenu">
                 <div class="navbar-nav">
                     @Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("活動", "UserIndex", "Activity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("個人檔案", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                    
+                </div>
+                <div class="navbar-text navbar-nav">
                     @if (Session["user"] != null)
                     {
-                        @Html.ActionLink("登出", "Logout", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                        <div class="row">
+                            <img src="~/MemberPhotos/@Session["member_photo_file"]" width="70" class="img-fluid" />
+                            <p><span class="text-white"><strong>@Session["member_name"]</strong> </span>會員 你好!!</p>
+                            @Html.ActionLink("登出", "Logout", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                        </div>
                     }
                     else
                     {

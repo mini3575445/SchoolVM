@@ -38,6 +38,8 @@ namespace Match.Controllers
             Session["user"] = user;
             Session["right"] = user.right_id;
             Session["member_id"] = user.member_id;
+            Session["member_name"] = user.member_name;
+            Session["member_photo_file"] = user.member_photo_file;
             return RedirectToAction("Index");
         }
 
