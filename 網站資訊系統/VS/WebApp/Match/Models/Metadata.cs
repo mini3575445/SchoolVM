@@ -94,12 +94,12 @@
         [DisplayName("參加者")]
         [RegularExpression("^[P][0-9]{5}$")]
         [Required]
-        public string member_id { get; set; }
+        public string member_id { get; set; } 
 
         [DisplayName("參加日期")]
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
-        public System.DateTime join_date { get; set; }
+        public System.DateTime join_date { get; set; }     
     }
 
     public class MetaActivity_type
@@ -163,7 +163,7 @@
         [RegularExpression("^[A-Za-z0-9]{6,30}$")]
         [Required]        
 
-        [CheckAccount(ErrorMessage ="已經有相同帳號",flag =false)] //驗證是否有相同帳號
+        //[CheckAccount(ErrorMessage ="已經有相同帳號"] //驗證是否有相同帳號
 
         public string member_account { get; set; }
 
@@ -290,19 +290,13 @@
         //檢查重複帳號的自訂驗證        
         public class CheckAccount : ValidationAttribute
         {
-            public bool flag = true;
-
             public override bool IsValid(object value)
             {
-                if (flag) 
-                { 
-                    MatchEntities db = new MatchEntities();
+                MatchEntities db = new MatchEntities();
 
-                    var account = db.Member.Where(m=>m.member_account == value.ToString()).FirstOrDefault();
+                var account = db.Member.Where(m=>m.member_account == value.ToString()).FirstOrDefault();
 
-                    return (account == null) ? true : false;
-                }
-                return true;
+                return (account == null) ? true : false;    
             }
         }
     }

@@ -249,6 +249,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UserActivityController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\Activity_typeController.cs" />
     <Compile Include="Controllers\ChangeIDAuto.cs" />
@@ -354,7 +355,7 @@
     <Content Include="Views\Place_type\Delete.cshtml" />
     <Content Include="Views\Place_type\Edit.cshtml" />
     <Content Include="Views\Place_type\Index.cshtml" />
-    <Content Include="Views\Activity\Details.cshtml" />
+    <Content Include="Views\Activity\UserDetails.cshtml" />
     <Content Include="Views\Activity\Edit.cshtml" />
     <Content Include="Views\Place_off_day\Create.cshtml" />
     <Content Include="Views\Place_off_day\Delete.cshtml" />
@@ -369,6 +370,11 @@
     <Content Include="Views\Activity\Index.cshtml" />
     <Content Include="Views\Activity\UserIndex.cshtml" />
     <Content Include="Views\Activity\Create.cshtml" />
+    <Content Include="Views\Activity\Details2.cshtml" />
+    <Content Include="Views\UserActivity\Create.cshtml" />
+    <Content Include="Views\UserActivity\Edit.cshtml" />
+    <Content Include="Views\UserActivity\Details.cshtml" />
+    <Content Include="Views\UserActivity\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

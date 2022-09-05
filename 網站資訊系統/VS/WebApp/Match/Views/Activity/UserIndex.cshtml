@@ -115,114 +115,39 @@
             {
                 <p class="alert alert-info text-center">@ViewBag.strTypeID</p>
             }
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().activity_id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().Activity_type.activity_type_name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().activity_name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().Place.shop_name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().Place.place_address)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().activity_datetime)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().activity_join_deadline)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().activity_lower)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().activity_upper)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity_detail.First().member_id)
-                    </th>
-                    <th>
-                        參加人數
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.activity.First().State.state_name)
-                    </th>
-
-                    <th></th>
-                </tr>
+            <div class="row">
                 @if (Model.activity.Count != 0)
                 {
                     foreach (var a in Model.activity)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.activity_id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.Activity_type.activity_type_name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.activity_name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.Place.shop_name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.Place.place_address)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.activity_datetime)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.activity_join_deadline)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.activity_lower)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.activity_upper)
-                            </td>
-                            <td>
-                                @{peopleCount = 0;}
-                                @foreach (var ad in Model.activity_detail)
+                        <a href="/Activity/UserDetails/@a.activity_id" class="card-col-2 m-2 text-decoration-none text-black-50">
+                            <div class="card" style="width: 16rem;">
+                                @if (a.Place.place_photo_file != null)
                                 {
-
-                                    if (ad.activity_id == a.activity_id)
-                                    {
-                                        <p>@Html.DisplayFor(modelItem => ad.Member.member_name)</p>
-                                        peopleCount += 1;
-                                    }
+                                    <img src="~/PlacePhotos/@a.Place.place_photo_file" class="w-100">
                                 }
-                            </td>
-                            <td>
-                                @peopleCount
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => a.State.state_name)
-                            </td>
-
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = a.activity_id }) |
-                                @Html.ActionLink("Details", "Details", new { id = a.activity_id }) |
-                            </td>
-                        </tr>
+                                else
+                                {
+                                    <img src="~/PlacePhotos/defaultPhoto.png" class="w-100">
+                                }
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger text-center"><strong>@Html.DisplayFor(modelItem => a.activity_name)</strong></h5>
+                                    <hr />
+                                    <p class="card-text"><i class="bi bi-signpost-fill" style="font-size:1.5rem; line-height:1;"></i>@Html.DisplayFor(modelItem => a.Place.place_address)</p>
+                                    <p class="card-text"><i class="bi bi-calendar" style="font-size:1.5rem; line-height:1;"></i>@Html.DisplayFor(modelItem => a.activity_datetime)</p>
+                                    <p class="card-text text-right">@Html.DisplayFor(modelItem => a.Member.member_name)</p>
+                                </div>
+                            </div>
+                        </a>
                     }
                 }
                 else
-                {
-                    <tr>
-                        <td colspan="11">
-                            <div class="alert alert-danger text-center">沒東西哦呵呵</div>
-                        </td>
-                    </tr>
+                {                    
+                    <div class="alert alert-danger text-center col-12">沒東西哦呵呵</div>
                 }
-            </table>
+
+            </div>
+
         </div>
     </div>
 </div>

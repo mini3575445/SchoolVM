@@ -1,0 +1,152 @@
+﻿@*@model IEnumerable<Match.Models.Activity>*@
+@model Match.ViewModels.VMActivity
+@{
+    ViewBag.Title = "活動管理";
+
+    int intTypeID = 0;
+    if (ViewBag.strTypeID != "所有類別")
+    {
+        intTypeID = Convert.ToInt16((ViewBag.strTypeID).Substring(1, 2));   //用於顯示類別名稱
+    }
+
+}
+<h2>活動管理</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="container">
+    
+
+    <div class="row">
+        <div class="btn-group col-7 pb-3">
+            <button type="button" class="btn btn-danger p-2">
+                @*<a href="#" class="text-white text-decoration-none">112312342</a>*@@Html.ActionLink("所有縣市", "Index", new { place_address = "所有縣市", activity_type_id = ViewBag.strTypeID }, new { @class = "text-white text-decoration-none" })
+            </button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    北部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("台北", "Index", new { place_address = "台北", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("新北", "Index", new { place_address = "新北", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("基隆", "Index", new { place_address = "基隆", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("桃園", "Index", new { place_address = "桃園", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("新竹", "Index", new { place_address = "新竹", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("宜蘭", "Index", new { place_address = "宜蘭", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    中部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("苗栗", "Index", new { place_address = "苗栗", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("台中", "Index", new { place_address = "台中", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("彰化", "Index", new { place_address = "彰化", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("南投", "Index", new { place_address = "南投", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("雲林", "Index", new { place_address = "雲林", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    南部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("嘉義", "Index", new { place_address = "嘉義", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("台南", "Index", new { place_address = "台南", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("高雄", "Index", new { place_address = "高雄", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("屏東", "Index", new { place_address = "屏東", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    東部區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("花蓮", "Index", new { place_address = "花蓮", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("台東", "Index", new { place_address = "台東", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    離島區域
+                </button>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("澎湖", "Index", new { place_address = "澎湖", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("金門", "Index", new { place_address = "金門", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                    @Html.ActionLink("馬祖", "Index", new { place_address = "馬祖", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+</div>
+
+        <div class="col-5">
+            <p class="alert alert-danger text-center">
+                @ViewBag.city
+            </p>
+        </div>
+
+        <div class="col-3">
+            <p class="alert alert-success text-center">類別名稱</p>
+            <ul class="list-group text-center">
+                <li class="list-group-item">
+                    @Html.ActionLink("所有類別", "Index", new { place_address = ViewBag.city, activity_type_id = "所有類別" })
+
+                </li>
+                @foreach (var at in Model.activity_type)
+                {
+                    <li class="list-group-item">
+                        @Html.ActionLink(at.activity_type_name, "Index", new { place_address = ViewBag.city, activity_type_id = at.activity_type_id })
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="col-9">
+            @if (ViewBag.strTypeID != "所有類別")   //顯示類別名稱
+            {
+                <p class="alert alert-info text-center">@Model.activity_type[intTypeID - 1].activity_type_name</p>
+            }
+            else
+            {
+                <p class="alert alert-info text-center">@ViewBag.strTypeID</p>
+            }
+            <div class="row">
+                @if (Model.activity.Count != 0)
+                {
+                    foreach (var a in Model.activity)
+                    {
+                        <a href="/UserActivity/Details/@a.activity_id" class="card-col-2 m-2 text-decoration-none text-black-50">
+                            <div class="card" style="width: 16rem;">
+                                @if (a.Place.place_photo_file != null)
+                                {
+                                    <img src="~/PlacePhotos/@a.Place.place_photo_file" class="w-100">
+                                }
+                                else
+                                {
+                                    <img src="~/PlacePhotos/defaultPhoto.png" class="w-100">
+                                }
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger text-center"><strong>@Html.DisplayFor(modelItem => a.activity_name)</strong></h5>
+                                    <hr />
+                                    <p class="card-text"><i class="bi bi-signpost-fill" style="font-size:1.5rem; line-height:1;"></i>@Html.DisplayFor(modelItem => a.Place.place_address)</p>
+                                    <p class="card-text"><i class="bi bi-calendar" style="font-size:1.5rem; line-height:1;"></i>@Html.DisplayFor(modelItem => a.activity_datetime)</p>
+                                    <p class="card-text text-right">@Html.DisplayFor(modelItem => a.Member.member_name)</p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+                else
+                {                    
+                    <div class="alert alert-danger text-center col-12">沒東西哦呵呵</div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>
