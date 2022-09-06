@@ -100,7 +100,7 @@
     <div class="form-group">
         @Html.DisplayNameFor(model => model.activity.First().activity_description)
         <div class="col-md-10">
-            <textarea name="activity_description" id="activity_description" class="form-control" rows="5">@Model.activity.First().activity_description</textarea>
+            <textarea name="activity_description" id="activity_description" class="form-control" rows="5" readonly = "readonly">@Model.activity.First().activity_description</textarea>
             @Html.ValidationMessageFor(model => model.activity.First().activity_description, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -126,7 +126,6 @@
 
 
     <div class="row">
-        @*可以用card顯示*@
         @Html.DisplayNameFor(model => model.activity_detail.First().member_id)
         @foreach (var ad in Model.activity_detail)
         {

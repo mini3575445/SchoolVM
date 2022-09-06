@@ -12,7 +12,7 @@ namespace Match.Controllers
         {
             if (context.Session["user"] == null)
             {
-                context.Response.Redirect("/Home/Index");
+                context.Response.Redirect("/HomeManager/Login");
             }
         }
 

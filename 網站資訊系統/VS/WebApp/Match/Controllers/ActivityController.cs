@@ -12,6 +12,7 @@ using Match.ViewModels;
 
 namespace Match.Controllers
 {
+    [RightCheck]
     public class ActivityController : Controller
     {
         private MatchEntities db = new MatchEntities();
@@ -92,7 +93,8 @@ namespace Match.Controllers
             {
                 return HttpNotFound();
             }
-            
+
+            //ViewBag.activity_detail = new SelectList(db.Activity_detail, "activity_detail_number", "activity_id");
             return View(activity);
 
 

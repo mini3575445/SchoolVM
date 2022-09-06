@@ -11,9 +11,6 @@
 
 }
 <h2>活動管理</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div class="container">
     
 
@@ -120,7 +117,7 @@
                     foreach (var a in Model.activity)
                     {
                         <a href="/UserActivity/Details/@a.activity_id" class="card-col-2 m-2 text-decoration-none text-black-50">
-                            <div class="card" style="width: 16rem;">
+                            <div class="card " style="width: 16rem;">
                                 @if (a.Place.place_photo_file != null)
                                 {
                                     <img src="~/PlacePhotos/@a.Place.place_photo_file" class="w-100">
@@ -130,11 +127,23 @@
                                     <img src="~/PlacePhotos/defaultPhoto.png" class="w-100">
                                 }
                                 <div class="card-body">
-                                    <h5 class="card-title text-danger text-center"><strong>@Html.DisplayFor(modelItem => a.activity_name)</strong></h5>
+                                    <h5 class="card-title text-primary text-center"><strong>@Html.DisplayFor(modelItem => a.activity_name)</strong></h5>
                                     <hr />
                                     <p class="card-text"><i class="bi bi-signpost-fill" style="font-size:1.5rem; line-height:1;"></i>@Html.DisplayFor(modelItem => a.Place.place_address)</p>
                                     <p class="card-text"><i class="bi bi-calendar" style="font-size:1.5rem; line-height:1;"></i>@Html.DisplayFor(modelItem => a.activity_datetime)</p>
-                                    <p class="card-text text-right">@Html.DisplayFor(modelItem => a.Member.member_name)</p>
+                                    @*<p class="card-text text-right">@Html.DisplayFor(modelItem => a.Member.member_name)</p>*@
+                                    <div class="p-1 card-text" style="display:inline-block; border-radius:20px; background-color:#d0d0d0;">
+                                        @*路徑為空顯示預設圖片*@
+                                        @if (a.Member.member_photo_file != null)
+                                        {
+                                            <img src="~/MemberPhotos/@a.Member.member_photo_file" width="30" style="border-radius:30px;">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/MemberPhotos/defaultPhoto.png" width="30" style="border-radius:30px;">
+                                        }
+                                        @a.Member.member_name
+                                    </div>                                    
                                 </div>
                             </div>
                         </a>

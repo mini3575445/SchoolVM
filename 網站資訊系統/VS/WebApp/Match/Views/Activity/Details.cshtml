@@ -7,7 +7,7 @@
 <div>
     <div class="row">
         <div class="col-6">
-            @*地點圖片，路徑為空顯示預設圖片*@
+            @*路徑為空顯示預設圖片*@
             @if (Model.Place.place_photo_file != null)
             {
                 <img src="~/PlacePhotos/@Model.Place.place_photo_file" width="450">
@@ -19,10 +19,10 @@
         </div>
         <div class="col-6 mt-4">
             <div class="p-1" style="display:inline-block; border-radius:20px; background-color:#d0d0d0;">
-                @*會員圖片，路徑為空顯示預設圖片*@
+                @*路徑為空顯示預設圖片*@
                 @if (Model.Member.member_photo_file != null)
                 {
-                    <img src="~/MemberPhotos/@Model.Member.member_photo_file" class="img-fluid" width="30" style="border-radius:20px;">
+                    <img src="~/MemberPhotos/@Model.Member.member_photo_file" width="30" style="border-radius:20px;">
                 }
                 else
                 {
@@ -68,6 +68,7 @@
         <hr class="col-12">
         <div class="col-12">
             <h3>@Html.DisplayNameFor(model => model.activity_description)</h3>
+
             @if (Model.activity_description != null)
             {
                 <p>@Html.Raw(@Model.activity_description.ToString().Replace("\n", "<br />"))</p>@*顯示<br/>*@
@@ -79,7 +80,7 @@
             <h3>參加者</h3>
             @*顯示參加者*@
             @foreach (var item in Model.Activity_detail)
-            {
+            {                
                 <div class="p-1" style="display:inline-block; border-radius:20px; background-color:#d0d0d0;">
                     @*會員照片，路徑為空顯示預設圖片*@
                     @if (item.Member.member_photo_file != null)

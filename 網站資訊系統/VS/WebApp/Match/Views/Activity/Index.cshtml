@@ -13,9 +13,6 @@
 
 }
 <h2>活動管理</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div class="container">
 
 
@@ -148,9 +145,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.activity.First().activity_upper)
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.activity_detail.First().member_id)
-                    </th>
+                    </th>*@
                     <th>
                         參加人數
                     </th>
@@ -203,7 +200,8 @@
                             <td>
                                 @Html.DisplayFor(modelItem => a.activity_upper)
                             </td>
-                            <td>
+                            @*<td>
+                                參加者
                                 @{peopleCount = 0;}
                                 @foreach (var ad in Model.activity_detail)
                                 {
@@ -214,8 +212,9 @@
                                         peopleCount += 1;
                                     }
                                 }
-                            </td>
+                            </td>*@
                             <td>
+                                @*參加人數*@
                                 @peopleCount
                             </td>
                             <td>
@@ -224,7 +223,7 @@
 
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = a.activity_id }) |
-                                @Html.ActionLink("Details", "Details", new { id = a.activity_id }) |
+                                @Html.ActionLink("Details", "Details", new { id = a.activity_id }) 
                             </td>
                         </tr>
                     }

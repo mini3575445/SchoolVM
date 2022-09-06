@@ -16,6 +16,7 @@ namespace Match.Controllers
     {
         private MatchEntities db = new MatchEntities();
 
+        [LoginCheck]
         //給前台會員新增活動
         public ActionResult Create()
         {
@@ -112,6 +113,11 @@ namespace Match.Controllers
             };
 
             ViewBag.state = db.State.ToList();
+            ViewBag.activity_type_id = new SelectList(db.Activity_type, "activity_type_id", "activity_type_name", activity.activity_type_id);
+            ViewBag.member_id = new SelectList(db.Member, "member_id", "member_account", activity.member_id);
+            ViewBag.place_id = new SelectList(db.Place, "place_id", "place_type_id", activity.place_id);
+            ViewBag.state_id = new SelectList(db.State, "state_id", "state_name", activity.state_id);
+
             return View(vmactivity);
         }
 
@@ -138,22 +144,12 @@ namespace Match.Controllers
             return View();
         }
 
-
-
-        
-
-
         public ActionResult Index(string activity_type_id="所有類別",string place_address="所有縣市")
         {
-            //活動可分為三種類型:
+            //活動可分為三種類型(二、三於View的按鈕判斷):
             //一、不顯示於前台:1.已完成 or 2.活動時間到期
             //二、顯示但不可加入:1.停止報名 or 2.報名截止日到期 or 3.人數已滿
             //三、顯示且可加入:1.報名中 and 2.活動時間未到期 and 3.報名截止未到期 and 4.人數未滿
-
-            //1.顯示index選擇的類別名稱
-            //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
-            ViewBag.strTypeID = activity_type_id;
-            ViewBag.city = place_address;
 
             //參數篩選條件不同(無法where="所有縣市")，可分為四種情形:
             //一、預設：activity_type_id="所有類別"；place_address="所有縣市"
@@ -210,10 +206,19 @@ namespace Match.Controllers
                                               where a.state_id != 3 && a.activity_datetime > DateTime.Now 
                                                     && p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
                                               select ad).ToList();
-            }                     
+            }
+
+
+            //1.顯示index選擇的類別名稱
+            //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
+            ViewBag.strTypeID = activity_type_id;
+            ViewBag.city = place_address;
+
+
             return View(vmactivity);
         }
 
+        [LoginCheck]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -222,7 +227,6 @@ namespace Match.Controllers
             }
 
             Activity activity = db.Activity.Find(id);
-
             if (activity == null)
             {
                 return HttpNotFound();
@@ -233,18 +237,23 @@ namespace Match.Controllers
 
 
         //User加入活動
+        [LoginCheck]
         public ActionResult JoinActivity(string id)
         {
+            //1.找的到activityID
+            //2.狀態為1
+            //3.報名截止時間>目前時間
+            //4.活動日期>目前時間
+            //5.加入後不大於最多人數
+            //***6.加入的活動中沒重複的MemberID
+
+
+            //參數不為空值
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //1.找的到activityID
-            //2.狀態為1
-            //3.活動截止時間>目前時間
-            //4.加入後不大於最多人數
-            //5.加入的活動中沒重複的MemberID
-
+           
             Activity activity = db.Activity.Find(id);
             //1.找的到activityID
             if (activity == null)
@@ -252,16 +261,35 @@ namespace Match.Controllers
                 return HttpNotFound();
             }
 
-            string sesstion_memberID = Session["member_id"].ToString();
+            //2.狀態為1
+            if (activity.state_id != 1)
+            {
+                return HttpNotFound();
+            }
 
-            //4.加入後不大於最多人數
+            //3.報名截止時間>目前時間
+            if (activity.activity_join_deadline < DateTime.Now)
+            {
+                return HttpNotFound();
+            }
+
+            //4.活動日期>目前時間
+            if (activity.activity_datetime < DateTime.Now)
+            {
+                return HttpNotFound();
+            }
+
+            //5.加入後不大於最多人數
             int peopleCount = db.Activity_detail.Where(ad => ad.activity_id == id).Count();
+            if (activity.activity_upper < peopleCount + 1)
+            {
+                return HttpNotFound();
+            }
 
-            //5.加入的活動中沒重複的MemberID
+            //6.加入的活動中沒重複的MemberID
+            string sesstion_memberID = Session["member_id"].ToString();
             Activity_detail checkMember = db.Activity_detail.Where(ad => ad.activity_id == id && ad.member_id == sesstion_memberID).FirstOrDefault();
-            
-            //2~5
-            if (activity.state_id != 1 || activity.activity_join_deadline < DateTime.Now || activity.activity_upper < peopleCount+1 || checkMember != null) 
+            if (checkMember != null) 
             {
                 return HttpNotFound();
             }
@@ -285,8 +313,6 @@ namespace Match.Controllers
             }
             return View(activity);
         }
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

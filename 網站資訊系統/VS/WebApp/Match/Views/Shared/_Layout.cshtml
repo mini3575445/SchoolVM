@@ -20,7 +20,7 @@
                 <div class="navbar-nav">
                     @Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("加入活動", "Index", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
-                    @Html.ActionLink("建立活動", "Index", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                    @Html.ActionLink("建立活動", "Create", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("我的活動", "Index", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("個人檔案", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
 
@@ -29,7 +29,7 @@
                     @if (Session["user"] != null)
                     {
                         <div class="row">
-                            @*路徑為空顯示預設圖片*@
+                            @*會員圖片，路徑為空顯示預設圖片*@
                             @if (Session["member_photo_file"] != null)
                             {
                                 <img src="~/MemberPhotos/@Session["member_photo_file"]" width="40" class="img-fluid" style="border-radius:20px;"/>

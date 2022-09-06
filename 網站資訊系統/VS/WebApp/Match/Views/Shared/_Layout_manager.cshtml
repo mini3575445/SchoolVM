@@ -32,7 +32,15 @@
                     @if (Session["user"] != null)
                     {
                         <div class="row">
-                            <img src="~/MemberPhotos/@Session["member_photo_file"]" width="70" class="img-fluid" />
+                            @*路徑為空顯示預設圖片*@
+                            @if (Session["member_photo_file"] != null)
+                            {
+                                <img src="~/MemberPhotos/@Session["member_photo_file"]" width="40" class="img-fluid" style="border-radius:20px;"/>
+                            }
+                            else
+                            {
+                                <img src="~/MemberPhotos/defaultPhoto.png" width="40" class="img-fluid" style="border-radius:20px;">
+                            }
                             <p><span class="text-white"><strong>@Session["member_name"]</strong> </span>管理員 你好!!</p>
                             @Html.ActionLink("登出", "Logout", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                         </div>
