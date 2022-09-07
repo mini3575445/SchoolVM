@@ -74,7 +74,6 @@ namespace Match.Controllers
             return View(vmactivity);
         }
 
-
         // GET: Activity/Details/5
         public ActionResult Details(string id)
         {
@@ -97,19 +96,6 @@ namespace Match.Controllers
             //ViewBag.activity_detail = new SelectList(db.Activity_detail, "activity_detail_number", "activity_id");
             return View(activity);
 
-
-
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-
-            //Activity activity = db.Activity.Find(id);
-            //if (activity == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(activity);
         }
         
         // GET: Activity/Edit/5

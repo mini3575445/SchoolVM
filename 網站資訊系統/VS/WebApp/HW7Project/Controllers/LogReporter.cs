@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-
-
 using HW7Project.Models;
+using System.IO;
+using System.Text;
 
 namespace HW7Project.Controllers
 {
-    public class LogReporter:ActionFilterAttribute
+    public class LogReporter : ActionFilterAttribute
     {
         HttpContext context;
-        public bool recordFlag = true;
+        public  bool recordFlag = true;
 
-        void LogValues(RouteData routeData, HttpContext context)
+        void LogValues(RouteData routeData,HttpContext context)
         {
             var logTime = DateTime.Now;
             var controllerName = routeData.Values["controller"];
@@ -25,10 +23,11 @@ namespace HW7Project.Controllers
             var parameter = routeData.Values["id"] == null ? "N/A" : routeData.Values["id"];
             var user = context.Session["user"] == null ? "Guest" : ((Employees)context.Session["user"]).EmployeeID.ToString();
 
-            StreamWriter sw = new StreamWriter(context.Server.MapPath("\\ValueLog.csv"), true, Encoding.Default);   //路徑,是不是append,編碼方法
+            StreamWriter sw = new StreamWriter(context.Server.MapPath("\\ValueLog.csv"),true,Encoding.Default);
 
-            sw.WriteLine(logTime + "," + controllerName + "," + actionName + "," + parameter + ", " + user);
+            sw.WriteLine(logTime + "," + controllerName + "," + actionName + "," + parameter+", " + user);
             sw.Close();
+
         }
 
         void RequestLog(HttpContext context)
@@ -54,12 +53,11 @@ namespace HW7Project.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (recordFlag) 
+            if (recordFlag)
             {
-                context = HttpContext.Current;  // HttpContext.Current取得HttpContext
+                context = HttpContext.Current;
                 LogValues(filterContext.RouteData, context);
             }
-            
         }
 
         public override void OnResultExecuted(ResultExecutedContext filterContext)

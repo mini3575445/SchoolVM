@@ -12,7 +12,7 @@ namespace HW7Project.Models
     {
         [Key]
         [DisplayName("訂單編號")]
-        [Column(Order = 1)]
+        [Column(Order =1)]
         public string OrderID { get; set; }
 
         [Key]

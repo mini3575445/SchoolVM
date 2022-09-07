@@ -9,31 +9,30 @@ namespace HW7Project.Models
 {
     public class Employees
     {
-        //這個動作叫做封裝
-        [Key]   //資料庫就會把它設為PK
+        [Key]
         public int EmployeeID { get; set; }
 
-        [Required(ErrorMessage = "必填欄位")]
-        [StringLength(100, ErrorMessage = "長度不超過100字元")]
+        [Required(ErrorMessage ="請填寫員工姓名")]
+        [StringLength(100,ErrorMessage = "員工姓名不超過100字")]
         [DisplayName("員工姓名")]
         public string EmployeeName { get; set; }
 
         [DisplayName("建立日期")]
-        [DataType(DataType.Date)]   //這是給View看的
-        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]    //設定日期格式預設為2022/7/18 09:12:00，ApplyFormatInEditMode一併套用至所有區域
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
         public DateTime CreatedDate { get; set; }
-        
-        [Required(ErrorMessage = "必填欄位")]
-        [StringLength(20, ErrorMessage = "長度不超過20字元")]
-        [RegularExpression("[A-Za-z][A-Za-z0-9]{4,19}")]//最少4次，最多19次
+
         [DisplayName("帳號")]
+        [Required(ErrorMessage = "請填寫帳號")]
+        [StringLength(20, ErrorMessage = "帳號不得超過20字")]
+        [RegularExpression("[A-Za-z][A-Za-z0-9]{4,19}", ErrorMessage = "帳號格式錯誤")]
         public string Account { get; set; }
 
-        [Required(ErrorMessage = "必填欄位")]
-        [MaxLength(20,ErrorMessage ="最大長度為20字元")]
-        [MinLength(8, ErrorMessage = "最小長度為8字元")]
-        [DataType(DataType.Password)]
         [DisplayName("密碼")]
+        [Required(ErrorMessage = "請填寫密碼")]
+        [DataType(DataType.Password)]
+        [MinLength(8, ErrorMessage = "密碼最少8碼")]
+        [MaxLength(20, ErrorMessage = "密碼最多20碼")]
         public string Password { get; set; }
     }
 }

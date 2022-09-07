@@ -9,17 +9,17 @@ namespace HW7Project.Models
 {
     public class VMLogin
     {
-        [Required(ErrorMessage = "必填欄位")]
-        [StringLength(20, ErrorMessage = "長度不超過20字元")]
-        [RegularExpression("[A-Za-z][A-Za-z0-9]{4,19}")]//最少4次，最多19次
         [DisplayName("帳號")]
+        [Required(ErrorMessage = "請填寫帳號")]
+        [StringLength(20, ErrorMessage = "帳號不得超過20字")]
+        [RegularExpression("[A-Za-z][A-Za-z0-9]{4,19}", ErrorMessage = "帳號格式錯誤")]
         public string Account { get; set; }
 
-        [Required(ErrorMessage = "必填欄位")]
-        [MaxLength(20, ErrorMessage = "最大長度為20字元")]
-        [MinLength(8, ErrorMessage = "最小長度為8字元")]
-        [DataType(DataType.Password)]
         [DisplayName("密碼")]
+        [Required(ErrorMessage = "請填寫密碼")]
+        [DataType(DataType.Password)]
+        [MinLength(8, ErrorMessage = "密碼最少8碼")]
+        [MaxLength(20, ErrorMessage = "密碼最多20碼")]
         public string Password { get; set; }
     }
 }

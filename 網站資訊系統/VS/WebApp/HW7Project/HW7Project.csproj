@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{943E3A8E-C84B-42F0-84B2-AE4ACE9D116A}</ProjectGuid>
+    <ProjectGuid>{9361131A-4C0C-4B70-9D8E-88E2141F0DF0}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -123,8 +123,8 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="MemberPhotos\defaultPhoto.jpg" />
-    <Content Include="MemberPhoto\defaultPhoto.jpg" />
+    <Content Include="HtmlPage1.html" />
+    <Content Include="MemberPhotos\defaultPhoto.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -153,8 +153,6 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -232,44 +230,6 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\EmployeesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HomeManagerController.cs" />
-    <Compile Include="Controllers\LoginCheck.cs" />
-    <Compile Include="Controllers\MembersController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DBInitializer.cs" />
-    <Compile Include="Models\Employees.cs" />
-    <Compile Include="Models\HW7ProjectContext.cs" />
-    <Compile Include="Controllers\LogReporter.cs" />
-    <Compile Include="Models\Members.cs" />
-    <Compile Include="Models\OrderDetails.cs" />
-    <Compile Include="Models\Orders.cs" />
-    <Compile Include="Models\PayTypes.cs" />
-    <Compile Include="Models\Products.cs" />
-    <Compile Include="Models\Shippers.cs" />
-    <Compile Include="Models\VMLogin.cs" />
-    <Compile Include="Models\VMMember.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\web.config" />
-    <None Include="packages.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Employees\Create.cshtml" />
-    <Content Include="Views\Employees\Delete.cshtml" />
-    <Content Include="Views\Employees\Details.cshtml" />
-    <Content Include="Views\Employees\Edit.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -280,15 +240,56 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeManagerController.cs" />
+    <Compile Include="Controllers\LoginCheck.cs" />
+    <Compile Include="Controllers\LogReporter.cs" />
+    <Compile Include="Controllers\MemberOrderController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBInitializer.cs" />
+    <Compile Include="Models\Employees.cs" />
+    <Compile Include="Models\HW7ProjectContext.cs" />
+    <Compile Include="Models\Members.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\PayTypes.cs" />
+    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\SetData.cs" />
+    <Compile Include="Models\Shippers.cs" />
+    <Compile Include="Models\VMLogin.cs" />
+    <Compile Include="Models\VMMember.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Members\Create.cshtml" />
     <Content Include="Views\Members\Details.cshtml" />
     <Content Include="Views\Members\Edit.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Shared\_Layout_Manager.cshtml" />
     <Content Include="Views\HomeManager\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\HomeManager\Login.cshtml" />
-    <Content Include="Views\Members\IndexModal.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
@@ -296,6 +297,9 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Home\MyCart.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\MemberOrder\_Order.cshtml" />
+    <Content Include="Views\Home\_ProductList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -325,9 +329,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>59803</DevelopmentServerPort>
+          <DevelopmentServerPort>62286</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59803/</IISUrl>
+          <IISUrl>http://localhost:62286/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

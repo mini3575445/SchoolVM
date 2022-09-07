@@ -218,6 +218,90 @@ namespace Match.Controllers
             return View(vmactivity);
         }
 
+
+
+        [LoginCheck]
+        public ActionResult MyActivity(string activity_type_id = "所有類別", string place_address = "所有縣市")
+        {
+            //***創建者為自己的活動
+
+
+
+            //活動可分為三種類型(二、三於View的按鈕判斷):
+            //一、不顯示於前台:1.已完成 or 2.活動時間到期
+            //二、顯示但不可加入:1.停止報名 or 2.報名截止日到期 or 3.人數已滿
+            //三、顯示且可加入:1.報名中 and 2.活動時間未到期 and 3.報名截止未到期 and 4.人數未滿
+
+            //參數篩選條件不同(無法where="所有縣市")，可分為四種情形:
+            //一、預設：activity_type_id="所有類別"；place_address="所有縣市"
+            //二、activity_type_id="C01"；place_address="所有縣市"
+            //三、activity_type_id="所有類別"；place_address="高雄"
+            //四、activity_type_id="C01"；place_address="高雄"
+
+            string LoginMember_id = Session["member_id"].ToString();
+
+            VMActivity vmactivity = new VMActivity()    //一、預設：activity_type_id="所有類別"；place_address="所有縣市"
+            {
+                activity_type = db.Activity_type.ToList(),
+                activity = db.Activity.Where(a => a.state_id != 3 && a.activity_datetime > DateTime.Now && a.member_id == LoginMember_id).ToList(),
+                activity_detail = (from ad in db.Activity_detail
+                                   join a in db.Activity on ad.activity_id equals a.activity_id
+                                   join p in db.Place on a.place_id equals p.place_id
+                                   where a.state_id != 3 && a.activity_datetime > DateTime.Now && a.member_id == LoginMember_id
+                                   select ad).ToList()
+            };
+
+            if (activity_type_id != "所有類別" && place_address == "所有縣市")   //二、activity_type_id="C01"；place_address="所有縣市"
+            {
+                vmactivity.activity = db.Activity.Where(a => a.state_id != 3 && a.activity_datetime > DateTime.Now && a.member_id == LoginMember_id
+                                                        && a.activity_type_id == activity_type_id).ToList();
+                vmactivity.activity_detail = (from ad in db.Activity_detail
+                                              join a in db.Activity on ad.activity_id equals a.activity_id
+                                              join p in db.Place on a.place_id equals p.place_id
+                                              where a.state_id != 3 && a.activity_datetime > DateTime.Now && a.member_id == LoginMember_id
+                                                    && a.activity_type_id == activity_type_id
+                                              select ad).ToList();
+            }
+            else if (activity_type_id == "所有類別" && place_address != "所有縣市")     //三、activity_type_id="所有類別"；place_address="高雄"
+            {
+                vmactivity.activity = (from a in db.Activity
+                                       join p in db.Place on a.place_id equals p.place_id
+                                       where a.state_id != 3 && a.activity_datetime > DateTime.Now && a.member_id == LoginMember_id
+                                            && p.place_address.StartsWith(place_address)
+                                       select a).ToList();
+                vmactivity.activity_detail = (from ad in db.Activity_detail
+                                              join a in db.Activity on ad.activity_id equals a.activity_id
+                                              join p in db.Place on a.place_id equals p.place_id
+                                              where a.state_id != 3 && a.activity_datetime > DateTime.Now && a.member_id == LoginMember_id
+                                                    && p.place_address.StartsWith(place_address)
+                                              select ad).ToList();
+            }
+            else if (activity_type_id != "所有類別" && place_address != "所有縣市")   //四、activity_type_id="C01"；place_address="高雄"
+            {
+                vmactivity.activity = (from a in db.Activity
+                                       join p in db.Place on a.place_id equals p.place_id
+                                       where a.state_id != 3 && a.activity_datetime > DateTime.Now && a.member_id == LoginMember_id
+                                            && p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
+                                       select a).ToList();
+                vmactivity.activity_detail = (from ad in db.Activity_detail
+                                              join a in db.Activity on ad.activity_id equals a.activity_id
+                                              join p in db.Place on a.place_id equals p.place_id
+                                              where a.state_id != 3 && a.activity_datetime > DateTime.Now && a.member_id == LoginMember_id
+                                                    && p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
+                                              select ad).ToList();
+            }
+
+
+            //1.顯示index選擇的類別名稱
+            //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
+            ViewBag.strTypeID = activity_type_id;
+            ViewBag.city = place_address;
+
+
+            return View(vmactivity);
+        }
+
+
         [LoginCheck]
         public ActionResult Details(string id)
         {

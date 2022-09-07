@@ -13,24 +13,20 @@ namespace HW7Project.Controllers
     public class ProductsController : Controller
     {
         private HW7ProjectContext db = new HW7ProjectContext();
-        
-        
-        
+
         // GET: Products
         public ActionResult Index()
-        {            
+        {
             return View(db.Products.ToList());
         }
 
         [LogReporter(recordFlag = false)]
-        //取得圖片
-        public FileContentResult GetImage(string id)    //***FileContentResult回傳結果為檔案，並不是路徑
+        public FileContentResult GetImage(string id)
         {
             var photo = db.Products.Find(id);
             if (photo == null)
-            { 
                 return null;
-            }
+
             return File(photo.PhotoFile, photo.ImageMimeType);
         }
 
@@ -43,11 +39,13 @@ namespace HW7Project.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Products products = db.Products.Find(id);
+            //Products products = db.Products.Where(p => p.ProductID == id).FirstOrDefault();
+
             if (products == null)
             {
                 return HttpNotFound();
             }
-            return View(products);
+            return PartialView(products);
         }
 
         // GET: Products/Create
@@ -62,31 +60,27 @@ namespace HW7Project.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Products products, HttpPostedFileBase photo)
-        {   
-            //照片不能空
+        {
             if (photo == null)
-            { 
+            {
                 ViewBag.ErrMessage = "請上傳商品照片";
                 return View(products);
             }
-            //商品編號不重複
+
             if (db.Products.Find(products.ProductID) != null)
             {
                 ViewBag.ErrMessage2 = "商品編號重複";
                 return View(products);
             }
 
-            products.ImageMimeType = photo.ContentType; //抓副檔名
+            products.ImageMimeType = photo.ContentType;
 
-            //照片檔案處理
             products.PhotoFile = new byte[photo.ContentLength];
             photo.InputStream.Read(products.PhotoFile, 0, photo.ContentLength);
-                                    //(byte[]檔案 ,從0開始,到結束)                       
-
             products.CreatedDate = DateTime.Today;
             products.Discontinued = false;
 
-            ModelState.Remove("PhotoFile");  //***移除驗證(不要驗證這個欄位)
+            ModelState.Remove("PhotoFile");
 
             if (ModelState.IsValid)
             {
@@ -137,6 +131,7 @@ namespace HW7Project.Controllers
             }
             return RedirectToAction("Index");
         }
+
         public ActionResult ProductStatusChange(string id)
         {
             if (id == null)

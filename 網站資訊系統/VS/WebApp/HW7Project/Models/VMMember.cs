@@ -9,6 +9,7 @@ namespace HW7Project.Models
 {
     public class VMMember
     {
+        
         [Key]
         public int MemberID { get; set; }
 
@@ -47,11 +48,14 @@ namespace HW7Project.Models
 
         [DisplayName("確認密碼")]
         [Required(ErrorMessage = "請再填寫一次密碼")]
-        [DataType(DataType.Password)]       //在View上把密碼遮蔽
+        [DataType(DataType.Password)]
         [MinLength(8, ErrorMessage = "密碼最少8碼")]
         [MaxLength(20, ErrorMessage = "密碼最多20碼")]
-        [Compare("Password", ErrorMessage = "兩次輸入不同")]  //compare與欄位做比較
+        [Compare("Password",ErrorMessage ="兩次輸入不同")]
         public string ConfirmPassword { get; set; }
+
         
+
+
     }
 }

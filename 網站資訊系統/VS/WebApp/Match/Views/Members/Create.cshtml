@@ -122,27 +122,29 @@
                 </div>
             </div>*@
 
-
         @*下拉式選單只顯示有權限建立的選項。EX:right="B"，下拉式選單為:高級會員、一般會員、被封鎖者*@
-        <div class="form-group">
-            @Html.LabelFor(model => model.right_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select class="form-control" name="right_id">
-                    @{
-                        var rightData = "ABCDE";
-                        var rightInt = rightData.IndexOf(Session["right"].ToString());
-                    }
-                    @foreach (var item in ViewBag.right_id)
-                    {
-                        if (rightInt < rightData.IndexOf(item.Value))
-                        {
-                            <option value="@item.Value">@item.Text</option>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.right_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select class="form-control" name="right_id">
+                        @{
+                            var rightData = "ABCDE";
+                            var rightInt = rightData.IndexOf(Session["right"].ToString());
                         }
-                    }
-                    @Html.ValidationMessageFor(model => model.right_id, "", new { @class = "text-danger" })
-                </select>
-            </div>
-        </div>
+                        @foreach (var item in ViewBag.right_id)
+                        {
+                            if (rightInt < rightData.IndexOf(item.Value))
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        }
+                        @Html.ValidationMessageFor(model => model.right_id, "", new { @class = "text-danger" })
+                    </select>
+                </div>
+            </div>        
+        
+        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

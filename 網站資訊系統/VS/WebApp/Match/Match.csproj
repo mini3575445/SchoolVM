@@ -373,6 +373,7 @@
     <Content Include="Views\UserActivity\Details.cshtml" />
     <Content Include="Views\UserActivity\Index.cshtml" />
     <Content Include="Views\Activity\Details.cshtml" />
+    <Content Include="Views\UserActivity\MyActivity.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

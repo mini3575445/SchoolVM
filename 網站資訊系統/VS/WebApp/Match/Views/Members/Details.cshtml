@@ -5,113 +5,37 @@
     Layout = "~/Views/Shared/_Layout_manager.cshtml";
 }
 
-<h2>@Html.DisplayFor(model => model.member_name)</h2>
+<div class="p-3">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h3>@Html.DisplayFor(model => model.member_name)</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.member_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.member_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_account)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.member_account)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_id_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.member_id_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_gender)
-        </dt>
-
-        @if (Model.member_gender == true)
-        {
-            <dd>男</dd>
-        }
-        else
-        {
-            <dd>女</dd>
-        }
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_birthday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.member_birthday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_cellphone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.member_cellphone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.member_email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.member_address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Right.right_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Right.right_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_photo_file)
-        </dt>
-
-        <dd>
-            @if (@Model.member_photo_file == null)
-            {
-                <img src="~/MemberPhotos/defaultPhoto.png">
-            }
-            else
-            {
-                <img src="~/MemberPhotos/@Model.member_photo_file">
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.member_create_date)
-        </dt>
-
-        <dd>
+                <div class="col-md-6">
+                    @*路徑為空顯示預設圖片*@
+                    @{
+                        var photo = Model.member_photo_file == null ? "defaultPhoto.png" : Model.member_photo_file;
+                    }
+                    <img src="~/MemberPhotos/@photo" class="img-thumbnail" />
+                </div>
+                <div class="col-md-6 pt-2">
+                    <h4>編號：@Html.DisplayFor(model => model.member_id)</h4>
+                    <h4>帳號：@Html.DisplayFor(model => model.member_account)</h4>
+                    <h4>姓名：@Html.DisplayFor(model => model.member_id_name)</h4>
+                    <h4>性別：@(Model.member_gender ? "男" : "女")</h4>
+                    <h4>生日：@Html.DisplayFor(model => model.member_birthday)</h4>
+                    <h4>手機：@Html.DisplayFor(model => model.member_cellphone)</h4>
+                    <h4>E-mail：@Html.DisplayFor(model => model.member_email)</h4>
+                    <h4>地址：@Html.DisplayFor(model => model.member_address)</h4>
+                    <h4>權限：@Html.DisplayFor(model => model.Right.right_name)</h4>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right bg-primary text-white">
             @Html.DisplayFor(model => model.member_create_date)
-        </dd>
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.member_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

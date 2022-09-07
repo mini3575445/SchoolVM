@@ -18,16 +18,14 @@ namespace HW7Project.Models
 
         [DisplayName("商品名稱")]
         [Required(ErrorMessage = "請輸入商品名稱")]
-        [StringLength(150, ErrorMessage = "商品名稱最多150個字")]
+        [StringLength(150, ErrorMessage = "商品名稱最多40個字")]
         public string ProductName { get; set; }
 
-        //***照片
         [DisplayName("商品照片")]
         [Required(ErrorMessage = "請上傳商品照片")]
         [MaxLength]
         public byte[] PhotoFile { get; set; }
 
-        //HiddenInput隱藏欄位
         [HiddenInput(DisplayValue = false)]
         [StringLength(20)]
         public string ImageMimeType { get; set; }
@@ -35,8 +33,7 @@ namespace HW7Project.Models
         [DisplayName("商品單價")]
         [Required(ErrorMessage = "請輸入商品單價")]
         [Range(0, short.MaxValue, ErrorMessage = "單價不可小於0")]
-        [DisplayFormat(DataFormatString = "{0:C0}", ApplyFormatInEditMode = true)]  //只影響VIEW顯示，不改變本身的型別
-        //DataFormatString = "{0:C0}"C0表示小數第0位
+        [DisplayFormat(DataFormatString = "{0:C0}", ApplyFormatInEditMode = true)]
         public short UnitPrice { get; set; }
 
         [DisplayName("商品說明")]

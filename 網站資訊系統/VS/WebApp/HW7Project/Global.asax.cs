@@ -17,15 +17,14 @@ namespace HW7Project
     {
         void Application_Start(object sender, EventArgs e)
         {
-            //新增這一段會初始化資料庫
-            //Database.SetInitializer<HW7ProjectContext>(new DBInitializer());
+           // Database.SetInitializer<HW7ProjectContext>(new DBInitializer());
+
 
             // 應用程式啟動時執行的程式碼
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);    
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);  
         }
-
     }
 }
