@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Match.Models;
+using PagedList;
 
 namespace Match.Controllers
 {
@@ -16,10 +17,13 @@ namespace Match.Controllers
         private MatchEntities db = new MatchEntities();
 
         // GET: Members
-        public ActionResult Index()
+        public ActionResult Index(int page=1)
         {
-            var member = db.Member.Include(m => m.Right);
-            return View(member.ToList());
+            List<Member> member = db.Member.Include(m => m.Right).ToList();
+
+            int pagesize = 5;
+            var pagedList = member.ToPagedList(page, pagesize);
+            return View(pagedList);
         }
 
         // GET: Members/Details/5
@@ -34,7 +38,7 @@ namespace Match.Controllers
             {
                 return HttpNotFound();
             }
-            return View(member);
+            return PartialView(member);
         }
 
         // GET: Members/Create

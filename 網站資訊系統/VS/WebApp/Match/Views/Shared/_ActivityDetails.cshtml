@@ -1,0 +1,111 @@
+﻿@model Match.Models.Activity
+
+@{
+    ViewBag.Title = "Details";
+    bool repeatMember = false;
+    Layout = "";
+}
+<div>
+    <div class="row">
+        <div class="col-6">
+            @*地點圖片，路徑為空顯示預設圖片*@
+            @if (Model.Place.place_photo_file != null)
+            {
+                <img src="~/PlacePhotos/@Model.Place.place_photo_file" width="450">
+            }
+            else
+            {
+                <img src="~/PlacePhotos/defaultPhoto.png" width="450">
+            }
+        </div>
+        <div class="col-6 mt-4">
+            <div class="p-1" style="display:inline-block; border-radius:20px; background-color:#d0d0d0;">
+                @*會員圖片，路徑為空顯示預設圖片*@
+                @if (Model.Member.member_photo_file != null)
+                {
+                    <img src="~/MemberPhotos/@Model.Member.member_photo_file" class="img-fluid" width="30" style="border-radius:20px;">
+                }
+                else
+                {
+                    <img src="~/MemberPhotos/defaultPhoto.png" width="30" style="border-radius:20px;">
+                }
+                @Model.Member.member_name
+            </div>
+            <h1 class="text-primary" style=" line-height:1.5;">@Model.activity_name <span class="btn btn-info btn-sm p-1 disabled" style="border-radius: 10px; line-height:1;">@Model.Activity_type.activity_type_name</span></h1>
+            <hr>
+            <p><i class="bi bi-shop" style="font-size:1.5rem; line-height:1;"></i> @Html.DisplayNameFor(model => model.Place.shop_name):@Model.Place.shop_name</p>
+            <p><i class="bi bi-signpost-fill" style="font-size:1.5rem; line-height:1;"></i> @Html.DisplayNameFor(model => model.Place.place_address):@Model.Place.place_address <a href="https://www.google.com.tw/maps/place/@Model.Place.place_address" class="btn btn-info btn-sm p-1" style="border-radius: 10px; line-height:1;">點我看地圖</a></p>
+            <p><i class="bi bi-calendar" style="font-size:1.5rem; line-height:1;"></i> @Html.DisplayNameFor(model => model.activity_datetime):@Model.activity_datetime</p>
+            <p><i class="bi bi-people-fill" style="font-size:1.5rem; line-height:1;"></i> 人數:@Model.activity_lower ~ @Model.activity_upper　　<i class="bi bi-person-lines-fill" style="font-size:1.5rem; line-height:1;"></i> 目前人數:@Model.Activity_detail.Count()</p>
+
+            @*活動可分為三種類型:
+        一、不顯示於前台:1.已完成 or 2.活動時間到期
+        二、顯示但不可加入:1.停止報名 or 2.報名截止日到期 or 3.人數已滿 4.已參加活動的會員
+        三、顯示且可加入:1.報名中 and 2.活動時間未到期 and 3.報名截止未到期 and 4.人數未滿*@
+
+            @*找重複會員*@
+            @foreach (var item in Model.Activity_detail)
+            {
+                if (item.member_id == @Session["member_id"].ToString()) { repeatMember = true; };
+            }
+
+            @*不同情況顯示不同按鈕*@
+            @if (Model.activity_datetime < DateTime.Now || Model.state_id == 3)
+            {
+                <span class="btn btn-block btn-success disabled">活動已結束</span>
+            }
+            @*找重複會員*@
+            else if (repeatMember)
+            {
+                <span class="btn btn-block btn-info disabled">您已經加入活動</span>
+            }
+            else if (Model.state_id == 1 && Model.activity_datetime > DateTime.Now && Model.activity_join_deadline > DateTime.Now && Model.activity_upper > @Model.Activity_detail.Count())
+            {
+                <a href="/UserActivity/JoinActivity/@Model.activity_id" class="btn btn-block btn-danger">加入活動</a>
+            }
+            else
+            {
+                <span class="btn btn-block btn-danger disabled">報名已截止</span>
+            }
+
+            <p class="text-right" style="line-height:3;">@Html.DisplayNameFor(model => model.activity_join_deadline):@Model.activity_join_deadline</p>
+
+        </div>
+        <hr class="col-12">
+        <div class="col-12">
+            <h3>@Html.DisplayNameFor(model => model.activity_description)</h3>
+            @if (Model.activity_description != null)
+            {
+                <p>@Html.Raw(@Model.activity_description.ToString().Replace("\n", "<br />"))</p>@*顯示<br/>*@
+            }
+            <p></p>
+        </div>
+        <hr class="col-12">
+        <div class="col-12">
+            <h3>參加者</h3>
+            @*顯示參加者*@
+            @foreach (var item in Model.Activity_detail)
+            {
+                <div class="p-1" style="display:inline-block; border-radius:20px; background-color:#d0d0d0;">
+                    @*會員照片，路徑為空顯示預設圖片*@
+                    @if (item.Member.member_photo_file != null)
+                    {
+                        <img src="~/MemberPhotos/@item.Member.member_photo_file" width="30" style="border-radius:20px;">
+                    }
+                    else
+                    {
+                        <img src="~/MemberPhotos/defaultPhoto.png" width="30" style="border-radius:20px;">
+                    }
+                    @item.Member.member_name
+                </div>
+            }
+        </div>
+        <hr class="col-12">
+        <div class="col-12">
+            <h3>留言</h3>
+        </div>
+    </div>
+
+</div>
+
+

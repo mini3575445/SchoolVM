@@ -1,0 +1,42 @@
+﻿@model Match.Models.Friend
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Friend</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.friend_create_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.friend_create_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.member_account)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.member_account)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member1.member_account)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member1.member_account)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.friend_number }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

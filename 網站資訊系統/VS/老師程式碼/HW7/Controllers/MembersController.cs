@@ -23,7 +23,7 @@ namespace HW7Project.Controllers
         {
             var members = db.Members.ToList();
 
-            int pagesize = 15;
+            int pagesize = 5;
 
 
             var pagedList = members.ToPagedList(page, pagesize);

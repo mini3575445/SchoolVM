@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout_manager.cshtml";
+    Layout = "";
 }
 
 <div class="p-3">
@@ -30,11 +30,12 @@
                     <h4>E-mail：@Html.DisplayFor(model => model.member_email)</h4>
                     <h4>地址：@Html.DisplayFor(model => model.member_address)</h4>
                     <h4>權限：@Html.DisplayFor(model => model.Right.right_name)</h4>
+                    <h4>建立時間：@Html.DisplayFor(model => model.member_create_date)</h4>                    
                 </div>
             </div>
         </div>
-        <div class="card-footer text-right bg-primary text-white">
-            @Html.DisplayFor(model => model.member_create_date)
+        <div class="card-footer text-right text-white">
+            @Html.ActionLink("修改", "Edit", new { id = Model.member_id }, new { @class = "btn btn-primary" })
         </div>
     </div>
 </div>

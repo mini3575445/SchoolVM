@@ -207,8 +207,6 @@ namespace Match.Controllers
                                                     && p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
                                               select ad).ToList();
             }
-
-
             //1.顯示index選擇的類別名稱
             //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
             ViewBag.strTypeID = activity_type_id;
@@ -218,9 +216,7 @@ namespace Match.Controllers
             return View(vmactivity);
         }
 
-
-
-        [LoginCheck]
+            [LoginCheck]
         public ActionResult MyActivity(string activity_type_id = "所有類別", string place_address = "所有縣市")
         {
             //***創建者為自己的活動
@@ -304,6 +300,13 @@ namespace Match.Controllers
 
         [LoginCheck]
         public ActionResult Details(string id)
+        {
+            ViewBag.ID = id;
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult _ActivityDetails(string id)
         {
             if (id == null)
             {
@@ -397,6 +400,7 @@ namespace Match.Controllers
             }
             return View(activity);
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

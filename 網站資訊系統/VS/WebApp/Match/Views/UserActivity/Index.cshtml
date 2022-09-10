@@ -14,12 +14,10 @@
 }
 <h2>活動管理</h2>
 <div class="container">
-    
-
     <div class="row">
         <div class="btn-group col-7 pb-3">
             <button type="button" class="btn btn-danger p-2">
-                @*<a href="#" class="text-white text-decoration-none">112312342</a>*@@Html.ActionLink("所有縣市", "Index", new { place_address = "所有縣市", activity_type_id = ViewBag.strTypeID }, new { @class = "text-white text-decoration-none" })
+                @*<a href="#" class="text-white text-decoration-none">112312342</a>*@@Html.ActionLink("所有縣市", actionName, new { place_address = "所有縣市", activity_type_id = ViewBag.strTypeID }, new { @class = "text-white text-decoration-none" })
             </button>
             <div class="btn-group">
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -80,7 +78,7 @@
                     @Html.ActionLink("馬祖", actionName, new { place_address = "馬祖", activity_type_id = ViewBag.strTypeID }, new { @class = "dropdown-item" })
                 </div>
             </div>
-</div>
+        </div>
 
         <div class="col-5">
             <p class="alert alert-danger text-center">
@@ -145,14 +143,14 @@
                                             <img src="~/MemberPhotos/defaultPhoto.png" width="30" style="border-radius:30px;">
                                         }
                                         @a.Member.member_name
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
                         </a>
                     }
                 }
                 else
-                {                    
+                {
                     <div class="alert alert-danger text-center col-12">沒東西哦呵呵</div>
                 }
 

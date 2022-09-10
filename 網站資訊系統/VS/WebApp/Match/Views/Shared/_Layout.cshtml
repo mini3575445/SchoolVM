@@ -24,6 +24,7 @@
                     @if (Session["user"] != null)
                     {
                         @Html.ActionLink("我的活動", "MyActivity", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                        @Html.ActionLink("好友", "Index", "Friend", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     }
                     @Html.ActionLink("個人檔案", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
 

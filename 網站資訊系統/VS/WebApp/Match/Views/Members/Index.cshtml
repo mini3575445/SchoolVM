@@ -1,102 +1,114 @@
-﻿@model IEnumerable<Match.Models.Member>
+﻿@using PagedList;
+@using PagedList.Mvc;
 
-@{
-    ViewBag.Title = "會員管理";
-    Layout = "~/Views/Shared/_Layout_manager.cshtml";
-}
+@*@model IEnumerable<Match.Models.Member>*@
+@model IPagedList<Match.Models.Member>
 
-<h2>會員管理</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.member_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.member_photo_file)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.member_account)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.member_name)
-        </th>        
-        <th>
-            @Html.DisplayNameFor(model => model.Right.right_name)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.member_create_date)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.member_id)
-            </td>
-            <td>
-                @*路徑為空顯示預設圖片*@
-                @if (item.member_photo_file != null)
-                {
-                    <img src="~/MemberPhotos/@item.member_photo_file" width="100">
-                }
-                else
-                {
-                    <img src="~/MemberPhotos/defaultPhoto.png" width="100">
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.member_account)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.member_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Right.right_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.member_create_date)
-            </td>
-            <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.member_id }, new { @class = "btn btn-info" })
-                @Html.ActionLink("詳細資料", "Details", new { id = item.member_id }, new { @class = "btn btn-info" })
-
-
-
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Launch demo modal
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </td>
-
-
-        </tr>
+    @{
+        ViewBag.Title = "會員管理";
+        Layout = "~/Views/Shared/_Layout_manager.cshtml";
     }
-</table>
+
+    <h2>會員管理</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().member_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().member_photo_file)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().member_account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().member_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Right.right_name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().member_create_date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.member_id)
+                </td>
+                <td>
+                    @*路徑為空顯示預設圖片*@
+                    @if (item.member_photo_file != null)
+                    {
+                        <img src="~/MemberPhotos/@item.member_photo_file" width="100">
+                    }
+                    else
+                    {
+                        <img src="~/MemberPhotos/defaultPhoto.png" width="100">
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.member_account)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.member_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Right.right_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.member_create_date)
+                </td>
+                <td>
+                    @*@Html.ActionLink("修改", "Edit", new { id = item.member_id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("詳細資料", "Details", new { id = item.member_id }, new { @class = "btn btn-info" })*@
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btnDetail" id="@item.member_id" data-toggle="modal" data-target="#exampleModal" title="@item.member_id">
+                        會員管理
+                    </button>
+                </td>
+            </tr>
+        }
+    </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">詳細資料</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+    @section scripts{
+        <script>
+            //會員管理modal
+            $('.btnDetail').click(function (evt) {
+                console.log("/Members/Details/" + evt.target.title);
+                $('#exampleModal .modal-body').load("/Members/Details/" + evt.target.title);
+            });
+
+            //分頁
+            $('.pagination-container').addClass("d-flex justify-content-center");
+            $('.pagination-container>ul>li').removeClass().addClass("page-item");
+            $('.pagination-container>ul>li>a').addClass("page-link");
+
+        </script>
+    }

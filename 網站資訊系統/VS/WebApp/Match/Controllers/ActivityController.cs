@@ -10,6 +10,7 @@ using Match.Models;
 using Match.ViewModels;
 
 
+
 namespace Match.Controllers
 {
     [RightCheck]
@@ -18,7 +19,7 @@ namespace Match.Controllers
         private MatchEntities db = new MatchEntities();
 
         // GET: Activity
-        public ActionResult Index(string activity_type_id = "所有類別", string place_address = "所有縣市")
+        public ActionResult Index(string activity_type_id = "所有類別", string place_address = "所有縣市", int page = 1)
         {
             //1.顯示index選擇的類別名稱
             //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
@@ -71,11 +72,23 @@ namespace Match.Controllers
                                               where p.place_address.StartsWith(place_address) && a.activity_type_id == activity_type_id
                                               select ad).ToList();
             }
+            //1.顯示index選擇的類別名稱
+            //2.用於Create頁面的下拉式選單selected：將參數帶入View再傳至Create超連結
+            ViewBag.strTypeID = activity_type_id;
+            ViewBag.city = place_address;
+
             return View(vmactivity);
         }
 
         // GET: Activity/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(string id)            
+        {
+            ViewBag.ID = id;
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult _ActivityDetails(string id)
         {
             if (id == null)
             {
@@ -83,21 +96,15 @@ namespace Match.Controllers
             }
 
             Activity activity = db.Activity.Find(id);
-            //activity.Place = (from p in db.Place
-            //                  join a in db.Activity on p.place_id equals a.place_id
-            //                  where a.activity_id == id
-            //                  select p).FirstOrDefault();
-
             if (activity == null)
             {
                 return HttpNotFound();
             }
 
-            //ViewBag.activity_detail = new SelectList(db.Activity_detail, "activity_detail_number", "activity_id");
             return View(activity);
-
         }
-        
+
+
         // GET: Activity/Edit/5
         public ActionResult Edit(string id)
         {

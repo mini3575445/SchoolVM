@@ -1,0 +1,64 @@
+﻿@model Match.Models.Friend
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "";
+}
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <p>請輸入對方的會員名稱</p>
+            <div class="col-md-10">
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="member_name" name="member_name" value="" />
+                </div>
+            </div>
+        </div>
+        <p class="text-danger">@ViewBag.errMsg</p>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.friend_number, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.friend_number, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.friend_number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.friend_member1, "friend_member1", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("friend_member1", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.friend_member1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.friend_member2, "friend_member2", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("friend_member2", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.friend_member2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.friend_create_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.friend_create_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.friend_create_date, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="提出申請" class="btn btn-dark" />
+            </div>
+        </div>
+    </div>
+}
+
