@@ -253,6 +253,12 @@
           <AssociatedConnUserName />
           <FullPath>37Trigger-3.sql</FullPath>
         </FileNode>
+        <FileNode Name="40存入訂單SP.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>40存入訂單SP.sql</FullPath>
+        </FileNode>
         <FileNode Name="EX01.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
@@ -288,12 +294,6 @@
           <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>HW9.sql</FullPath>
-        </FileNode>
-        <FileNode Name="SQLQuery2.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MCSDD11101-20:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>MCSDD11101-20</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>SQLQuery2.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

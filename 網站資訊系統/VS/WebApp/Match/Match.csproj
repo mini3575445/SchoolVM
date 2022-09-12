@@ -270,6 +270,7 @@
     <Compile Include="Controllers\LoginCheck.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\fileIOtestController.cs" />
+    <Compile Include="Controllers\ActivityMessage.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

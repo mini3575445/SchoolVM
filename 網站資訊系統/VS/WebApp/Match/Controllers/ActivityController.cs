@@ -101,12 +101,25 @@ namespace Match.Controllers
                 return HttpNotFound();
             }
 
+            ActivityMessage activityMessage = new ActivityMessage();
+            ViewBag.ID = id;
+
+            //留言內容
+            ViewBag.message = activityMessage.Read(id);
+
             return View(activity);
+        }
+        public ActionResult AddMessage(string activityID, string member_name, string text)
+        {
+            ActivityMessage activityMessage = new ActivityMessage();
+            activityMessage.Write(activityID, member_name, text);
+
+            return RedirectToAction("Details/"+ activityID);
         }
 
 
-        // GET: Activity/Edit/5
-        public ActionResult Edit(string id)
+            // GET: Activity/Edit/5
+            public ActionResult Edit(string id)
         {
             if (id == null)
             {
