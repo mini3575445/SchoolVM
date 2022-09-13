@@ -40,9 +40,9 @@
             <p><i class="bi bi-people-fill" style="font-size:1.5rem; line-height:1;"></i> 人數:@Model.activity_lower ~ @Model.activity_upper　　<i class="bi bi-person-lines-fill" style="font-size:1.5rem; line-height:1;"></i> 目前人數:@Model.Activity_detail.Count()</p>
 
             @*活動可分為三種類型:
-            一、不顯示於前台:1.已完成 or 2.活動時間到期
-            二、顯示但不可加入:1.停止報名 or 2.報名截止日到期 or 3.人數已滿 4.已參加活動的會員
-            三、顯示且可加入:1.報名中 and 2.活動時間未到期 and 3.報名截止未到期 and 4.人數未滿*@
+                一、不顯示於前台:1.已完成 or 2.活動時間到期
+                二、顯示但不可加入:1.停止報名 or 2.報名截止日到期 or 3.人數已滿 4.已參加活動的會員
+                三、顯示且可加入:1.報名中 and 2.活動時間未到期 and 3.報名截止未到期 and 4.人數未滿*@
 
             @*找重複會員*@
             @foreach (var item in Model.Activity_detail)
@@ -109,7 +109,7 @@
                     <p>@item</p>
                 }
             </div>
-            <input type="text" class="form-control" style="display:inline;width:85%;" placeholder="請輸入留言內容..." > <a class="btn btn-sm btn-danger">新增留言</a>
+            <input type="text" class="form-control" style="display:inline;width:85%;" placeholder="請輸入留言內容..." id="textBox" title="@Model.activity_id"> <a class="btn btn-sm btn-danger" id="submit">新增留言</a>
         </div>
     </div>
 </div>

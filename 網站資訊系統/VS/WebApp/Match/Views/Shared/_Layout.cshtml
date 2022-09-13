@@ -18,7 +18,6 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="MynavbarMenu">
                 <div class="navbar-nav">
-                    @Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("加入活動", "Index", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @Html.ActionLink("建立活動", "Create", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @if (Session["user"] != null)
@@ -26,7 +25,6 @@
                         @Html.ActionLink("我的活動", "MyActivity", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                         @Html.ActionLink("好友", "Index", "Friend", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     }
-                    @Html.ActionLink("個人檔案", "Index", "Home", new { area = "" }, new { @class = "nav-link font-weight-bold" })
 
                     </div>
                 <div class="navbar-text navbar-nav">
@@ -36,20 +34,21 @@
                             @*會員圖片，路徑為空顯示預設圖片*@
                             @if (Session["member_photo_file"] != null)
                             {
-                                <img src="~/MemberPhotos/@Session["member_photo_file"]" width="40" class="img-fluid" style="border-radius:20px;"/>
+                                <img src="~/MemberPhotos/@Session["member_photo_file"]" width="40" class="img-fluid" style="border-radius:20px;" />
                             }
                             else
                             {
                                 <img src="~/MemberPhotos/defaultPhoto.png" width="40" class="img-fluid" style="border-radius:20px;">
                             }
-                            
+
                             <p><span class="text-white"><strong>@Session["member_name"]</strong> </span>會員 你好!!</p>
                             @Html.ActionLink("登出", "Logout", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                         </div>
                     }
                     else
                     {
-                        @Html.ActionLink("登入", "Login", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" })
+                        @Html.ActionLink("註冊", "Create", "Members", new { area = "" }, new { @class = "nav-link font-weight-bold" , style = "display:inline;" })
+                        @Html.ActionLink("登入", "Login", "HomeManager", new { area = "" }, new { @class = "nav-link font-weight-bold" , style = "display:inline;" })
                     }
                 </div>
             </div>

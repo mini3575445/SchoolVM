@@ -319,6 +319,9 @@ namespace Match.Controllers
                 return HttpNotFound();
             }
 
+            ActivityMessage activityMessage = new ActivityMessage();
+            ViewBag.message = activityMessage.Read(id); //留言內容
+
             return View(activity);
         }
 

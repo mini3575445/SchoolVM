@@ -22,8 +22,9 @@ namespace Match.Controllers
         }
         [HttpPost]
         public ActionResult Login(VMLogin vMLogin)
-        {           
-            var user = db.Member.Where(m => m.member_account == vMLogin.member_account && m.member_password == vMLogin.member_password).FirstOrDefault();
+        {
+            string pw = Member.getHashPassword(vMLogin.member_password);    //將登入的密碼Hash
+            var user = db.Member.Where(m => m.member_account == vMLogin.member_account && m.member_password == pw).FirstOrDefault();
             if (user == null)
             {
                 ViewBag.ErrMsg = "帳號或密碼有錯!";

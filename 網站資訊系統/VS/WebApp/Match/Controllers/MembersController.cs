@@ -10,13 +10,13 @@ using Match.Models;
 using PagedList;
 
 namespace Match.Controllers
-{
-    [RightCheck]
+{    
     public class MembersController : Controller
     {
         private MatchEntities db = new MatchEntities();
 
         // GET: Members
+        [RightCheck]
         public ActionResult Index(int page=1)
         {
             List<Member> member = db.Member.Include(m => m.Right).ToList();
@@ -26,6 +26,7 @@ namespace Match.Controllers
             return View(pagedList);
         }
 
+        [RightCheck]
         // GET: Members/Details/5
         public ActionResult Details(string id)
         {
@@ -40,6 +41,7 @@ namespace Match.Controllers
             }
             return PartialView(member);
         }
+
 
         // GET: Members/Create
         public ActionResult Create()
@@ -97,10 +99,11 @@ namespace Match.Controllers
             }
 
             ViewBag.right_id = new SelectList(db.Right, "right_id", "right_name", member.right_id);
-            ViewBag.ErrMsg = "照片檔案類型必須為jpg或png";
+            //ViewBag.ErrMsg = "照片檔案類型必須為jpg或png";
             return View();
         }
 
+        [RightCheck]
         // GET: Members/Edit/5
         public ActionResult Edit(string id)
         {
@@ -131,6 +134,7 @@ namespace Match.Controllers
         // POST: Members/Edit/5
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [RightCheck]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Member member, HttpPostedFileBase photo)

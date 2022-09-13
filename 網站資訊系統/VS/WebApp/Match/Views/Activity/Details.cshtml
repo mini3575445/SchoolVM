@@ -6,3 +6,16 @@
 <div>
     @Html.Action("_ActivityDetails", new { id = ViewBag.ID })
 </div>
+@section scripts{
+    <script>
+        //新增留言
+        $('#textBox').change(function (evt) {
+            console.log(evt.target.value);
+            var href = "/message/addmessage?activityID=" + evt.target.title + "&text=" + evt.target.value;
+            changeHref(href);
+        });
+        function changeHref(href) {
+            $('#submit').attr("href", href);
+        }
+    </script>
+}

@@ -101,21 +101,13 @@ namespace Match.Controllers
                 return HttpNotFound();
             }
 
-            ActivityMessage activityMessage = new ActivityMessage();
-            ViewBag.ID = id;
-
-            //留言內容
-            ViewBag.message = activityMessage.Read(id);
+            ActivityMessage activityMessage = new ActivityMessage();            
+            ViewBag.message = activityMessage.Read(id); //留言內容
 
             return View(activity);
         }
-        public ActionResult AddMessage(string activityID, string member_name, string text)
-        {
-            ActivityMessage activityMessage = new ActivityMessage();
-            activityMessage.Write(activityID, member_name, text);
 
-            return RedirectToAction("Details/"+ activityID);
-        }
+        
 
 
             // GET: Activity/Edit/5

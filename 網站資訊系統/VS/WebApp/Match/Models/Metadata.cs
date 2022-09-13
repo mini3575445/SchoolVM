@@ -170,7 +170,43 @@
         [DisplayName("密碼")]
         [Required]
         [DataType(DataType.Password)]
-        public string member_password { get; set; }
+        public string member_password 
+        {
+            get
+            {
+                return member_password;
+
+            }
+            set
+            {
+                member_password = getHashPassword(value);
+            }
+        }
+
+        public static string getHashPassword(string pw)
+        {
+            byte[] hashValue;
+            string result = "";
+
+            System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
+
+            byte[] pwBytes = ue.GetBytes(pw);
+
+            SHA256 shHash = SHA256.Create();
+
+            hashValue = shHash.ComputeHash(pwBytes);
+
+            foreach (byte b in hashValue)
+            {
+                result += b.ToString();
+            }
+
+            return result;
+        }
+
+
+
+
 
         ////***member_password的get、set要貼到Member.cs運作
         //string password;

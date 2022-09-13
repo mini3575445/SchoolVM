@@ -12,6 +12,7 @@ namespace Match.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Security.Cryptography;
 
     [MetadataType(typeof(MetaMember))]
 
@@ -28,7 +29,20 @@ namespace Match.Models
     
         public string member_id { get; set; }
         public string member_account { get; set; }
-        public string member_password { get; set; }
+
+        string password;  //定義一個password的field
+        public string member_password
+        {
+            get
+            {
+                return password;
+
+            }
+            set
+            {
+                password = getHashPassword(value);
+            }
+        }
         public string member_name { get; set; }
         public string member_id_name { get; set; }
         public bool member_gender { get; set; }
@@ -49,5 +63,27 @@ namespace Match.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Friend> Friend1 { get; set; }
         public virtual Right Right { get; set; }
+
+
+        public static string getHashPassword(string pw)
+        {
+            byte[] hashValue;
+            string result = "";
+
+            System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
+
+            byte[] pwBytes = ue.GetBytes(pw);
+
+            SHA256 shHash = SHA256.Create();
+
+            hashValue = shHash.ComputeHash(pwBytes);
+
+            foreach (byte b in hashValue)
+            {
+                result += b.ToString();
+            }
+
+            return result;
+        }
     }
 }
