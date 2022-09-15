@@ -11,6 +11,7 @@ using Match.ViewModels;
 
 namespace Match.Controllers
 {
+    [RightCheck]
     public class Place_off_dayController : Controller
     {
         private MatchEntities db = new MatchEntities();

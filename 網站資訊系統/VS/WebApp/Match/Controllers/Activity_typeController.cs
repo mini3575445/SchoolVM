@@ -10,6 +10,7 @@ using Match.Models;
 
 namespace Match.Controllers
 {
+    [RightCheck]
     public class Activity_typeController : Controller
     {
         private MatchEntities db = new MatchEntities();
@@ -49,6 +50,7 @@ namespace Match.Controllers
             return View(activity_type);
         }
 
+        [RightCheck]
         // GET: Activity_type/Edit/5
         public ActionResult Edit(string id)
         {
@@ -67,6 +69,7 @@ namespace Match.Controllers
         // POST: Activity_type/Edit/5
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [RightCheck]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "activity_type_id,activity_type_name")] Activity_type activity_type)

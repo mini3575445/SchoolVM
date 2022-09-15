@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Match.Models;
+using Match.ViewModels;
 
 namespace Match.Controllers
 {
@@ -14,8 +15,12 @@ namespace Match.Controllers
         [RightCheck]
         public ActionResult Index()
         {
-            return View();
+            VMActivity vmActivity = new VMActivity();
+            vmActivity.activity = db.Activity.OrderByDescending(a => a.activity_create_date).ToList();
+
+            return View(vmActivity);
         }
+
         public ActionResult Login()
         {            
             return View();
@@ -49,6 +54,10 @@ namespace Match.Controllers
         {
 
             Session["user"] = null;
+            Session["right"] = null;
+            Session["member_id"] = null;
+            Session["member_name"] = null;
+            Session["member_photo_file"] = null;
             return RedirectToAction("Index", "Home");
         }
 

@@ -8,7 +8,7 @@
 <h2>地點類別管理</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增地點類別", "Create",null, new { @class = "btn btn-sm btn-info" })
 </p>
 <table class="table table-hover">
     <tr>
@@ -31,8 +31,8 @@
             @Html.DisplayFor(modelItem => item.place_type_name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.place_type_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.place_type_id })
+            @Html.ActionLink("修改", "Edit", new { id=item.place_type_id }, new { @class = "btn btn-sm btn-info" }) 
+            @Html.ActionLink("刪除", "Delete", new { id=item.place_type_id }, new { @class = "btn btn-sm btn-info" })
         </td>
     </tr>
 }

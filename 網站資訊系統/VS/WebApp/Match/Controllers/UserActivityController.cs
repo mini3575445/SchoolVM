@@ -310,6 +310,7 @@ namespace Match.Controllers
         {
             if (id == null)
             {
+                
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 

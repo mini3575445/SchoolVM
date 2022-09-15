@@ -109,8 +109,8 @@ namespace Match.Controllers
             var result = db.Member.Where(m => m.member_name == member_name).FirstOrDefault();
             if (result == null) 
             {
-                ViewBag.errMsg = "找不到此會員名稱";
-                return View();
+                ViewBag.ErrMsg = "找不到此名稱";
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Friend friend = new Friend();
             //流水號

@@ -11,6 +11,7 @@ using Match.ViewModels;
 
 namespace Match.Controllers
 {
+    [RightCheck]
     public class PlaceController : Controller
     {
         private MatchEntities db = new MatchEntities();

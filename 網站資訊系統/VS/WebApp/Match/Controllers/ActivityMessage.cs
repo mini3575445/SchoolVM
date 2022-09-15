@@ -9,10 +9,11 @@ namespace Match.Controllers
 {
     public class ActivityMessage
     {
+        string path = @"D:\SchoolVM\網站資訊系統\VS\WebApp\Match\ActivityMessage\";
+
         public void Write(string activityID, string member_name, string text)
         {
-            string path = @"D:\SchoolVM\網站資訊系統\VS\WebApp\Match\ActivityMessage\" + activityID + ".txt";
-                        
+            path = path + activityID + ".txt";                        
             if (!System.IO.File.Exists(path))
             {                
                 using (StreamWriter sw = System.IO.File.CreateText(path)){}
@@ -26,7 +27,7 @@ namespace Match.Controllers
 
         public List<string> Read(string activityID)
         {
-            string path = @"D:\SchoolVM\網站資訊系統\VS\WebApp\Match\ActivityMessage\" + activityID + ".txt";
+            path = path + activityID + ".txt";
             List<string> result = new List<string>();
 
             if (System.IO.File.Exists(path))

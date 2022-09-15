@@ -124,6 +124,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="ErrorPage.html" />
     <Content Include="Global.asax" />
     <Content Include="Models\Match.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -254,6 +255,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -270,7 +272,6 @@
     <Compile Include="Controllers\RightCheck.cs" />
     <Compile Include="Controllers\LoginCheck.cs" />
     <Compile Include="Controllers\MembersController.cs" />
-    <Compile Include="Controllers\fileIOtestController.cs" />
     <Compile Include="Controllers\ActivityMessage.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -391,6 +392,7 @@
     <Content Include="Views\Friend\Details.cshtml" />
     <Content Include="Views\Friend\Edit.cshtml" />
     <Content Include="Views\Friend\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

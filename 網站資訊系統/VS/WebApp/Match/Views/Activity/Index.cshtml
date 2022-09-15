@@ -222,8 +222,8 @@
                             </td>
 
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = a.activity_id }) |
-                                @Html.ActionLink("Details", "Details", new { id = a.activity_id }) 
+                                @Html.ActionLink("修改", "Edit", new { id = a.activity_id }, new { @class = "btn btn-sm btn-info" }) 
+                                @Html.ActionLink("詳細資料", "Details", new { id = a.activity_id }, new { @class = "btn btn-sm btn-info mt-2" }) 
                             </td>
                         </tr>
                     }

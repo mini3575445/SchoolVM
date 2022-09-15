@@ -10,6 +10,7 @@ using Match.Models;
 
 namespace Match.Controllers
 {
+    [RightCheck]
     public class Place_typeController : Controller
     {
         private MatchEntities db = new MatchEntities();

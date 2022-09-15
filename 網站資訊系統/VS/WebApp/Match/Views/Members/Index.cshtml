@@ -11,7 +11,7 @@
 
     <h2>會員管理</h2>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("新增會員", "Create",null, new { @class = "btn btn-sm btn-info" })
     </p>
     <table class="table table-hover">
         <tr>
@@ -71,7 +71,7 @@
                         @Html.ActionLink("詳細資料", "Details", new { id = item.member_id }, new { @class = "btn btn-info" })*@
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btnDetail" id="@item.member_id" data-toggle="modal" data-target="#exampleModal" title="@item.member_id">
+                    <button type="button" class="btn btn-sm btn-info btnDetail" id="@item.member_id" data-toggle="modal" data-target="#exampleModal" title="@item.member_id">
                         會員管理
                     </button>
                 </td>
