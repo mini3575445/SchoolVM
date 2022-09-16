@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 專題</title>
+    <title>@ViewBag.Title - Match揪團</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
@@ -12,21 +12,21 @@
 <body>
     <div class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
         <div class="container">
-            @Html.ActionLink("專題", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Match揪團", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MynavbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="MynavbarMenu">
                 <div class="navbar-nav">
                     @Html.ActionLink("加入活動", "Index", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
-                    @Html.ActionLink("建立活動", "Create", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     @if (Session["user"] != null)
                     {
+                        @Html.ActionLink("建立活動", "Create", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                         @Html.ActionLink("我的活動", "MyActivity", "UserActivity", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                         @Html.ActionLink("好友", "Index", "Friend", new { area = "" }, new { @class = "nav-link font-weight-bold" })
                     }
 
-                    </div>
+                </div>
                 <div class="navbar-text navbar-nav">
                     @if (Session["user"] != null)
                     {
@@ -61,7 +61,7 @@
     </section>
     <hr />
     <footer class="bg-dark mt-5">
-        <p class="text-white text-center p-3">Copyright &copy; @DateTime.Now.Year - 專題 All Rights Reserved.</p>
+        <p class="text-white text-center p-3">Copyright &copy; @DateTime.Now.Year - Match揪團 All Rights Reserved.</p>
     </footer>
 
 

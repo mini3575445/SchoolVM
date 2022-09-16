@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using Match.Controllers;
 
-namespace HW7Project.App_Start
+namespace Match.App_Start
 {
     public class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            
+            filters.Add(new LogReporter());            
             filters.Add(new HandleErrorAttribute()
             {
                 View = "Error"

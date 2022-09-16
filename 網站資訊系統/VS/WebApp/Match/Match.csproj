@@ -258,6 +258,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\LogReporter.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\UserActivityController.cs" />
