@@ -84,8 +84,8 @@ function setLoop() {
 
 //靜音
 function setMuted() {
-    audio.muted = !audio.muted;
-    //能不要用判斷式就不要用，盡量使用傳參數的方法
+    audio.muted = !audio.muted;    //能不要用判斷式就不要用，盡量使用傳參數的方法    
+    audio.muted?info.children[0].innerText = "目前靜音中":info.children[0].innerText = "";    
 }
 
 //*進度條事件
@@ -182,6 +182,7 @@ function Play() {
 function Stop() {
     audio.pause();
     audio.currentTime = 0;
+    btnPlay.innerText = "4";
     info.children[0].innerText = "目前停止中";
 }
 //快轉與倒轉

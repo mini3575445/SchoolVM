@@ -2,35 +2,47 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>個人履歷簡介</title>
     <style>
-        body{font-size:24px;}
+        body{
+            font-size:24px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
         
         table {           
             margin: auto;
-            width:60vw;
-        }
-        table .header .name{
-            text-align:right;            
-            font-weight:bold;            
-        }
-            table .header .name p {
-                font-size: 30pt;
-                background-color: #e08989;
-                padding: 10px;
-            }
-            table .header td span {
-            font-size:14pt;
-            font-weight:100;
-            }
+            margin-bottom:20px;
+            width:60vw;            
+        }                 
 
-            table th {
-                font-size:28pt;
-                border-bottom: solid 6px;
-                border-color: #e08989;
-                text-align: left;
-                padding: 5px;
-            }
+        table th {
+            font-size:28pt;
+            border-bottom: solid 6px;
+            border-color: #e08989;
+            text-align: left;
+            padding: 5px;
+        }
+        
+        .name{
+            padding:20px;
+        }
+
+        .nameDiv{
+            text-align:right;            
+            font-weight:bold;
+            background-color: #e08989;
+            padding: 10px;
+            padding-right: 25px;
+            border-radius:0px 60px 60px 0 ; 
+            line-height: 0.3;
+        }
+        .nameDiv>p
+        {
+            
+            font-size: 18;
+        }
 
         .photo {
             width: 200px;
@@ -40,32 +52,68 @@
         .photoTd{
             text-align:center;
         }
+        .job{
+            font-size: 21px;
+            margin-top:5px;
+        }
+        .mySelf{
+            font-size: 21px;
+        }
+        .QR{
+            text-align: center;
+        }
+        .QRmemo{
+            margin:0px;
+            font-size:18px;
+        }
 
         .footer {
+            width:60%;
             text-align: center;
-            color: #fcb9c5;
+            color: #e08989;
+            display: flex; 
+            padding: auto;
+            margin:auto;            
+            justify-content:space-between;
+        }
+        .icon{
+            height: 130px;
+            width: 130px;
+            line-height: 0.3;
+            border-radius:100px;
+            font-size:20px;
+            padding:10px;
+        }
+        .icon:hover{            
+            background-color: #fdd6dd;
+            transition:0.5s;
+        }
+        .icon>a{
+            color: #e08989;
+            text-decoration:none;
+        }
+        i{
+            font-size: 72px;
         }        
-            .footer .icon td{
-                font-family:Webdings;            
-                font-size:44pt;
-                
-            }
-            .footer td a {                
-                text-decoration: none;
-                color: #fcb9c5;
-            }
-                .footer td a:hover {                    
-                    text-decoration: none;
-                    color: #e08989;
-                }        
+
+        @media screen and (max-width: 600px){
+    .nameDiv>p{
+        display: none;
+    }
+    .footer p{
+        font-size:14px;
+        line-height:1;
+    }
+}
+                              
     </style>
 </head>
 
 <body>
     <table>
         <tr class="header">
-            <td width="30%" class="photoTd"><div><img src="Koala.jpg" class="photo" /></div></td>            
-            <td width="67%" colspan="2" class="name"><p>柯昱廷<br /><span>座號019</span></p></td>
+            <td width="25%" class="photoTd"><div><img src="photo.jpg" class="photo" /></div></td>            
+            <td width="67%" colspan="2" class="name"><div class="nameDiv"><h2>柯昱廷</h2><p>高雄市小港區松金街38號1樓　0987328307</p></div></td>
         </tr>        
         <tr>
             <th>應徵職務</th>
@@ -73,41 +121,49 @@
             <th>工作經驗</th>
         </tr>
         <tr>
-            <td><b>網頁程式設計師</b><br />從事網站系統軟體與程式語言的開發、撰寫、測試及上線</td>
+            <td>
+                <ul>
+                    <li>前端工程師</li>
+                    <li>後端工程師</li>
+                    <li>資料庫管理人員</li>
+                </ul>
+                
+            </td>
             <td></td>
             <td>
                 <ul>
-                    <li><b>豐軒科技股份有限公司-網頁工程師</b><br />主要工作內容為撰寫HTML、CSS、JavaScript程式語言以及SRS軟體需求規格書。</li>                    
+                    <li><b>豐軒科技股份有限公司-網頁工程師</b><br /><p class="job">1.擔任WordPress技術支援：Plesk伺服器設定與管理、WordPress套件管理(WooCommerce購物車、金物流串接、Yoast SEO、LINE Notify串接、聊天機器人等)，教育內部人員安裝、操作流程、套版上稿等<br />
+                        2.例行維護VM主機與客戶網站<br />
+                        3.編寫HTML、CSS、JavaScript、SRS軟體需求規格書</p></li>                    
                 </ul>
             </td>
         </tr>
         <tr>
             <th>專長</th>
             <td></td>
-            <th>志工經驗或領導經驗</th>
+            <th>自我介紹</th>
         </tr>
         <tr>
             <td>
                 <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
+                    <li>HTML、CSS</li>
                     <li>JavaScript</li>
                     <li>JQeury</li>
                     <li>Bootstrap</li>
                     <li>Java</li>
                     <li>C#</li>
                     <li>ASP.NET MVC</li>
-                    <li>T-SQL</li>                    
+                    <li>MS-SQL</li>  
+                    <li>Git</li>        
                 </ul>
             </td>
             <td></td>
             <td>
-                <ul>
-                    <li>大學時期擔任羽球社長，舉辦兩屆羽球雙打、單打比賽，共有2人參加</li>
-                    <li>大學時期於班上擔任康樂股長，沒做什麼事</li>
-                    <li>偶爾會扶老太太過馬路、去旗津海邊淨灘</li>
-                </ul>
-                
+                <p class="mySelf">
+                    自學HTML、CSS、JavaScript半年後，很幸運能進入科技公司任職網頁工程師，工作內容為網站監控、網頁切版、網頁互動(使用JavaScript操控DOM)、Node.js需求文件撰寫。擔任WordPress技術支援，包含套版上稿、購物網站插件、金流物流串接等。
+                    <br>
+                    2022/3/29至2022/9/23參加勞動力發展署「行動商務系統設計與開發職能課程」，通過ICAP職能導向課程認證，課程包含軟體系統設計與規劃、網頁前端、網頁後端、跨裝置之響應式網頁、資料庫設計與規劃及實作資料庫、資料庫程式碼、Android APP。
+                </p>                
             </td>
         </tr>
         <tr>
@@ -116,27 +172,19 @@
             <th>學歷</th>
         </tr>
         <tr>
-            <td></td>
+            <td class="QR"><img src="QR.gif" width="55%"/><p class="QRmemo">https://mini3575445.github.io/</p></td>
             <td></td>
             <td>
-                高雄應用科技大學：國際貿易系｜四技畢業
+                高雄應用科技大學：國際貿易系｜四技畢業<br />
+                私立復華中學：資料處理科｜高職畢業
             </td>
         </tr>
-
     </table>
-    <table class="footer">
-        <tr class="icon">
-            <td width="25%">s</td>
-            <td width="25%">d</td>
-            <td width="25%">f</td>
-            <td width="25%">h</td>
-        </tr>
-        <tr>
-            <td><a href="#">電子郵件</a></td>
-            <td><a href="#">TWITTER</a></td>
-            <td><a href="#">電話</a></td>
-            <td><a href="#">FACEBOOK</a></td>
-        </tr>
-    </table>
+    <div class="footer">
+        <div class="icon"><a href="https://www.youtube.com/watch?v=jevyEOuWbIo" target=_blank><i class="bi bi-youtube"></i><p>Match揪團網</p></a></div>
+        <div class="icon"><a href="https://mini3575445.github.io/Portfolio/JSMusicPlayer/37HW3" target=_blank><i class="bi bi-music-note-beamed"></i><p>音樂播放器</p></a></div>
+        <div class="icon"><a href="https://mini3575445.github.io/Portfolio/WebAPI/HW5" target=_blank><i class="bi bi-card-text"></i><p>Web-API</p></a></div>
+        <div class="icon"><a href="https://github.com/mini3575445/Portfolio" target=_blank><i class="bi bi-github"></i><p>GitHub程式碼</p></a></div>
+    </div>    
 </body>
 </html>
